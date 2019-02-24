@@ -29,11 +29,34 @@ private:
 	int m_observer_priority;
 };
 
+class CDeleteTests : public IObserver<SWeatherInfo>
+{
+public:
+	CDeleteTests(CObservable<SWeatherInfo>& observable, int observerPriority)
+		: m_observable(observable),
+		m_observer_priority(observerPriority)
+	{
+		m_observable.RegisterObserver(*this, m_observer_priority);
+	}
+
+private:
+	void Update(const SWeatherInfo& data) override
+	{
+		m_observable.RemoveObserver(*this);
+	}
+
+	CObservable<SWeatherInfo>& m_observable;
+	int m_observer_priority;
+};
+
 TEST_CASE("Safely notify observers")
 {
 	CWeatherData weatherData;
 
-	CHECK(true == true);
+	CDeleteTests testObserver1(weatherData, 2);
+	weatherData.RegisterObserver(testObserver1, 2);
+
+	REQUIRE_NOTHROW(weatherData.SetMeasurements(-10, 0.8, 761));
 
 };
 

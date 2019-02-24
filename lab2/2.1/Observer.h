@@ -1,6 +1,8 @@
 #pragma once
 #include <set>
 #include <functional>
+#include <map>
+#include <iterator>
 
 template <typename T>
 class IObserver
@@ -15,7 +17,7 @@ class IObservable
 {
 public:
 	virtual ~IObservable() = default;
-	virtual void RegisterObserver(IObserver<T> & observer) = 0;
+	virtual void RegisterObserver(IObserver<T> & observer, int priority) = 0;
 	virtual void NotifyObservers() = 0;
 	virtual void RemoveObserver(IObserver<T> & observer) = 0;
 };
@@ -24,36 +26,43 @@ template <class T>
 class CObservable : public IObservable<T>
 {
 public:
-	typedef IObserver<T> ObserverType;
+	typedef IObserver<T> ObserverType;	
 
-	void RegisterObserver(ObserverType & observer) override
+	void RegisterObserver(ObserverType & observer, int priority) override
 	{
-		m_observers.insert(&observer);
+		m_observers.insert(std::pair<int, ObserverType *> (priority, &observer));
 	}
 
 	void NotifyObservers() override
 	{
 		T data = GetChangedData();
-		set<ObserverType *> observers;
-		copy(observers, m_observers);
+		std::multimap<int, ObserverType *> observers;
+		observers = m_observers;
 
-		for (auto & observer : observers)
+		for (std::pair<int, ObserverType *> currObserver : observers)
 		{
-			observer->Update(data);
+			currObserver.second->Update(data);
 		}
 	}
 
 	void RemoveObserver(ObserverType & observer) override
-	{
-		m_observers.erase(&observer);
+	{	
+		ObserverType * currObserver = &observer;
+		for (auto it = m_observers.begin(); it != m_observers.end(); ++it)
+		{
+			if (it->second == currObserver)
+			{
+				m_observers.erase(it);
+				break;
+			}
+		}
 	}
 
 protected:
-	//  лассы-наследники должны перегрузить данный метод, 
-	// в котором возвращать информацию об изменени¤х в объекте
 	virtual T GetChangedData()const = 0;
 
 private:
-	set<ObserverType *> m_observers;
+	std::multimap<int, ObserverType *> m_observers;
 };
 
+ 

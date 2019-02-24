@@ -51,7 +51,6 @@ public:
 	}
 
 private:
-
 	void PrintStatsValue()
 	{
 		cout << "Max " << m_maxValue << endl;
@@ -124,7 +123,7 @@ public:
 		MeasurementsChanged();
 	}
 protected:
-	SWeatherInfo GetChangedData()const override
+	SWeatherInfo GetChangedData() const override	
 	{
 		SWeatherInfo info;
 		info.temperature = GetTemperature();

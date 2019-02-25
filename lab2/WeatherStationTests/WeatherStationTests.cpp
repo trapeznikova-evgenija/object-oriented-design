@@ -10,8 +10,7 @@ class CNotifyTests: public IObserver<SWeatherInfo>
 {
 public:
 	CNotifyTests(CObservable<SWeatherInfo>& observable, int observerPriority, vector<int>& prioritiesSet)
-		: m_observable(observable),
-		m_observer_priority(observerPriority),
+		: m_observer_priority(observerPriority),
 		m_priorities_set(prioritiesSet)
 
 	{
@@ -21,10 +20,8 @@ private:
 	void Update(const SWeatherInfo& data) override
 	{
 		m_priorities_set.push_back(m_observer_priority);
-		m_observable.RemoveObserver(*this);
 	}
 
-	CObservable<SWeatherInfo>& m_observable;
 	vector<int> &m_priorities_set;
 	int m_observer_priority;
 };
@@ -57,7 +54,6 @@ TEST_CASE("Safely notify observers")
 	weatherData.RegisterObserver(testObserver1, 2);
 
 	REQUIRE_NOTHROW(weatherData.SetMeasurements(-10, 0.8, 761));
-
 };
 
 TEST_CASE("Observer priority testing")
@@ -68,10 +64,12 @@ TEST_CASE("Observer priority testing")
 	CNotifyTests testObserver1(weatherData, 1, prioritiesSet);
 	CNotifyTests testObserver2(weatherData, 2, prioritiesSet);
 	CNotifyTests testObserver3(weatherData, 5, prioritiesSet);
+	CNotifyTests testObserver4(weatherData, 5, prioritiesSet);
 	
 	weatherData.RegisterObserver(testObserver1, 1);
 	weatherData.RegisterObserver(testObserver2, 2);
 	weatherData.RegisterObserver(testObserver3, 5);
+	weatherData.RegisterObserver(testObserver4, 5);
 
 	weatherData.NotifyObservers();
 
@@ -81,6 +79,5 @@ TEST_CASE("Observer priority testing")
 		resultPriorityString += to_string(prioritiesSet[i]);
 	}
 
-	CHECK(resultPriorityString == "125");
-
+	CHECK(resultPriorityString == "1255");
 };

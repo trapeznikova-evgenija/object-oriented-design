@@ -53,7 +53,7 @@ TEST_CASE("Safely notify observers")
 	CDeleteTests testObserver1(weatherData, 2);
 	weatherData.RegisterObserver(testObserver1, 2);
 
-	REQUIRE_NOTHROW(weatherData.SetMeasurements(-10, 0.8, 761));
+	REQUIRE_NOTHROW(weatherData.SetMeasurements(-10, 0.8, 761, 10, 90));
 };
 
 TEST_CASE("Observer priority testing")

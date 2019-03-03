@@ -8,12 +8,18 @@
 
 using namespace std;
 
+struct StationInfo
+{
+	std::string position;
+};
+
 struct SWeatherInfo
 {
 	double temperature = 0;
 	double humidity = 0;
 	double pressure = 0;
-	std::string position_name = "";
+
+	StationInfo stationInfo;
 };
 
 class CDisplay : public IObserver<SWeatherInfo>
@@ -22,7 +28,8 @@ private:
 
 	void Update(SWeatherInfo const& data) override
 	{
-		std::cout << "Current Position " << data.position_name << std::endl;
+		std::cout << "State Position " << data.stationInfo.position << std::endl;
+
 		std::cout << "Current Temp " << data.temperature << std::endl;
 		std::cout << "Current Hum " << data.humidity << std::endl;
 		std::cout << "Current Pressure " << data.pressure << std::endl;
@@ -73,6 +80,9 @@ private:
 
 	void Update(SWeatherInfo const& data) override
 	{
+		PrintSensorTypeName("State Position");
+		cout << data.stationInfo.position << endl;
+
 		PrintSensorTypeName("Temperature");
 		temperature.UpdateStatsData(data.temperature);
 
@@ -81,9 +91,6 @@ private:
 
 		PrintSensorTypeName("Pressure");
 		pressure.UpdateStatsData(data.pressure);
-
-		PrintSensorTypeName("Location");
-		cout << data.position_name << endl;
 	}
 
 	void PrintSensorTypeName(const string& name)
@@ -96,8 +103,8 @@ class CWeatherData : public CObservable<SWeatherInfo>
 {
 public:
 
-	CWeatherData(const std::string& position_name)
-		: m_position_name(position_name)
+	CWeatherData(const StationInfo& stationInfo)
+		: m_stationInfo(stationInfo)
 	{
 		
 	}
@@ -117,9 +124,9 @@ public:
 		return m_pressure;
 	}
 
-	std::string GetWeatherDataName()const
+	StationInfo GetStationInfo()const
 	{
-		return m_position_name;
+		return m_stationInfo;
 	}
 
 	void MeasurementsChanged()
@@ -140,15 +147,15 @@ protected:
 	SWeatherInfo GetChangedData() const override
 	{
 		SWeatherInfo info;
+		info.stationInfo = GetStationInfo();
 		info.temperature = GetTemperature();
 		info.humidity = GetHumidity();
 		info.pressure = GetPressure();
-		info.position_name = GetWeatherDataName();
 		return info;
 	}
 private:
 	double m_temperature = 0.0;
 	double m_humidity = 0.0;
 	double m_pressure = 760.0;
-	std::string m_position_name = "";
+	StationInfo m_stationInfo;
 };

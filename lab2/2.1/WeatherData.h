@@ -97,28 +97,28 @@ private:
 class CStatsDisplay : public IObserver<SWeatherInfo>
 {
 private:
-	CStatsData temperature;
-	CStatsData humidity;
-	CStatsData pressure;
-	CStatsData windSpeed;
-	CAverageWindDirection windDirection;
+	CStatsData m_temperature;
+	CStatsData m_humidity;
+	CStatsData m_pressure;
+	CStatsData m_windSpeed;
+	CAverageWindDirection m_windDirection;
 
 	void Update(SWeatherInfo const& data) override
 	{
 		PrintSensorTypeName("Temperature");
-		temperature.UpdateStatsData(data.temperature);
+		m_temperature.UpdateStatsData(data.temperature);
 
 		PrintSensorTypeName("Humidity");
-		humidity.UpdateStatsData(data.humidity);
+		m_humidity.UpdateStatsData(data.humidity);
 
 		PrintSensorTypeName("Pressure");
-		pressure.UpdateStatsData(data.pressure);
+		m_pressure.UpdateStatsData(data.pressure);
 
 		PrintSensorTypeName("Wind Speed");
-		windSpeed.UpdateStatsData(data.windSpeed);
+		m_windSpeed.UpdateStatsData(data.windSpeed);
 
 		PrintSensorTypeName("Wind Direction");
-		double averageWindDirection = windDirection.CalculateAverageWindDirection(data.direction, data.windSpeed);
+		double averageWindDirection = m_windDirection.CalculateAverageWindDirection(data.direction, data.windSpeed);
 		cout << "Average " <<  averageWindDirection << endl;
 		cout << "----------------" << endl;
 	}

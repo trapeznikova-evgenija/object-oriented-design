@@ -8,11 +8,6 @@
 
 using namespace std;
 
-struct StationInfo
-{
-	std::string position;
-};
-
 struct SWeatherInfo
 {
 	double temperature = 0;

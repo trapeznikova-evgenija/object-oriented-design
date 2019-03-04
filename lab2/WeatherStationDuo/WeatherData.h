@@ -18,21 +18,21 @@ struct SWeatherInfo
 	double temperature = 0;
 	double humidity = 0;
 	double pressure = 0;
-
-	StationInfo stationInfo;
 };
 
-class CDisplay : public IObserver<SWeatherInfo>
+typedef std::pair<std::string, SWeatherInfo> WeatherDataInfo;
+
+class CDisplay : public IObserver<WeatherDataInfo>
 {
 private:
 
-	void Update(SWeatherInfo const& data) override
+	void Update(const WeatherDataInfo& data) override
 	{
-		std::cout << "State Position " << data.stationInfo.position << std::endl;
+		std::cout << "State Position " << data.first << std::endl;
 
-		std::cout << "Current Temp " << data.temperature << std::endl;
-		std::cout << "Current Hum " << data.humidity << std::endl;
-		std::cout << "Current Pressure " << data.pressure << std::endl;
+		std::cout << "Current Temp " << data.second.temperature << std::endl;
+		std::cout << "Current Hum " << data.second.humidity << std::endl;
+		std::cout << "Current Pressure " << data.second.pressure << std::endl;
 		std::cout << "----------------" << std::endl;
 	}
 };
@@ -71,26 +71,26 @@ private:
 	unsigned m_countAcc = 0;
 };
 
-class CStatsDisplay : public IObserver<SWeatherInfo>
+class CStatsDisplay : public IObserver<WeatherDataInfo>
 {
 private:
-	CStatsData temperature;
-	CStatsData humidity;
-	CStatsData pressure;
+	CStatsData m_temperature;
+	CStatsData m_humidity;
+	CStatsData m_pressure;
 
-	void Update(SWeatherInfo const& data) override
+	void Update(const WeatherDataInfo& data) override
 	{
 		PrintSensorTypeName("State Position");
-		cout << data.stationInfo.position << endl;
+		cout << data.first << endl;
 
 		PrintSensorTypeName("Temperature");
-		temperature.UpdateStatsData(data.temperature);
+		m_temperature.UpdateStatsData(data.second.temperature);
 
 		PrintSensorTypeName("Humidity");
-		humidity.UpdateStatsData(data.humidity);
+		m_humidity.UpdateStatsData(data.second.humidity);
 
 		PrintSensorTypeName("Pressure");
-		pressure.UpdateStatsData(data.pressure);
+		m_pressure.UpdateStatsData(data.second.pressure);
 	}
 
 	void PrintSensorTypeName(const string& name)
@@ -99,12 +99,12 @@ private:
 	}
 };
 
-class CWeatherData : public CObservable<SWeatherInfo>
+class CWeatherData : public CObservable<WeatherDataInfo>
 {
 public:
 
-	CWeatherData(const StationInfo& stationInfo)
-		: m_stationInfo(stationInfo)
+	CWeatherData(const string& location)
+		: m_stationLocation(location)
 	{
 		
 	}
@@ -124,9 +124,9 @@ public:
 		return m_pressure;
 	}
 
-	StationInfo GetStationInfo()const
+	std::string GetStationLocation()const
 	{
-		return m_stationInfo;
+		return m_stationLocation;
 	}
 
 	void MeasurementsChanged()
@@ -144,18 +144,18 @@ public:
 	}
 
 protected:
-	SWeatherInfo GetChangedData() const override
+	WeatherDataInfo GetChangedData() const override
 	{
-		SWeatherInfo info;
-		info.stationInfo = GetStationInfo();
-		info.temperature = GetTemperature();
-		info.humidity = GetHumidity();
-		info.pressure = GetPressure();
+		WeatherDataInfo info;
+		info.first = GetStationLocation();
+		info.second.temperature = GetTemperature();
+		info.second.humidity = GetHumidity();
+		info.second.pressure = GetPressure();
 		return info;
 	}
 private:
 	double m_temperature = 0.0;
 	double m_humidity = 0.0;
 	double m_pressure = 760.0;
-	StationInfo m_stationInfo;
+	std::string m_stationLocation;
 };

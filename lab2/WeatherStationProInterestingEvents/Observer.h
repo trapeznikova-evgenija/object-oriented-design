@@ -3,6 +3,7 @@
 #include <functional>
 #include <map>
 #include <iterator>
+#include "InterestEvents.h"
 
 template <typename T>
 class IObserver
@@ -17,7 +18,7 @@ class IObservable
 {
 public:
 	virtual ~IObservable() = default;
-	virtual void RegisterObserver(IObserver<T> & observer, int priority) = 0;
+	virtual void RegisterObserver(IObserver<T> & observer, int priority, InterestingEvents& events) = 0;
 	virtual void NotifyObservers() = 0;
 	virtual void RemoveObserver(IObserver<T> & observer) = 0;
 };
@@ -28,7 +29,7 @@ class CObservable : public IObservable<T>
 public:
 	typedef IObserver<T> ObserverType;
 
-	void RegisterObserver(ObserverType & observer, int priority) override
+	void RegisterObserver(ObserverType & observer, int priority, InterestingEvents& events) override
 	{
 		m_observers.insert(std::pair<int, ObserverType *>(priority, &observer));
 	}

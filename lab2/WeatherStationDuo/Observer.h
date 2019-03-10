@@ -5,15 +5,18 @@
 #include <iterator>
 
 template <typename T>
+class IObservable;
+
+template <typename T>
 class IObserver
 {
 public:
-	virtual void Update(T const& data) = 0;
+	virtual void Update(T const& data, const IObservable<T>& observable) = 0;
 	virtual ~IObserver() = default;
 };
 
-template <typename T>
-class IObservable
+	template <typename T>
+	class IObservable
 {
 public:
 	virtual ~IObservable() = default;
@@ -41,7 +44,7 @@ public:
 
 		for (std::pair<int, ObserverType *> currObserver : observers)
 		{
-			currObserver.second->Update(data);
+			currObserver.second->Update(data, *this);
 		}
 	}
 

@@ -15,21 +15,35 @@ struct SWeatherInfo
 	double pressure = 0;
 };
 
-typedef std::pair<std::string, SWeatherInfo> WeatherDataInfo;
-
-class CDisplay : public IObserver<WeatherDataInfo>
+class CDisplay : public IObserver<SWeatherInfo>
 {
+public:
+	CDisplay(CWeatherData& inStation, CWeatherData& outStation)
+		: m_inStation(inStation),
+		m_outStation(outStation)
+    {
+	};
+
 private:
+	void Update(const SWeatherInfo& data, const IObservable<SWeatherInfo>& observable) override
+	{	
+		if (&observable == &m_inStation)
+		{
+			std::cout << "State Position in" << std::endl;
+		}
+		else if (&observable == &m_outStation)
+		{
+			std::cout << "State Position out" << std::endl;
+		}
 
-	void Update(const WeatherDataInfo& data) override
-	{
-		std::cout << "State Position " << data.first << std::endl;
-
-		std::cout << "Current Temp " << data.second.temperature << std::endl;
-		std::cout << "Current Hum " << data.second.humidity << std::endl;
-		std::cout << "Current Pressure " << data.second.pressure << std::endl;
+		std::cout << "Current Temp " << data.temperature << std::endl;
+		std::cout << "Current Hum " << data.humidity << std::endl;
+		std::cout << "Current Pressure " << data.pressure << std::endl;
 		std::cout << "----------------" << std::endl;
 	}
+
+	CWeatherData& m_inStation;
+	CWeatherData& m_outStation;
 };
 
 class CStatsData
@@ -66,44 +80,54 @@ private:
 	unsigned m_countAcc = 0;
 };
 
-class CStatsDisplay : public IObserver<WeatherDataInfo>
+class CStatsDisplay : public IObserver<SWeatherInfo>
 {
-private:
-	CStatsData m_temperature;
-	CStatsData m_humidity;
-	CStatsData m_pressure;
-
-	void Update(const WeatherDataInfo& data) override
+public:
+	CStatsDisplay(CWeatherData& inStation, CWeatherData& outStation)
+		: m_inStation(inStation),
+		m_outStation(outStation)
 	{
-		PrintSensorTypeName("State Position");
-		cout << data.first << endl;
+		
+	}
+
+private:
+	void Update(const SWeatherInfo& data, const IObservable<SWeatherInfo>& observable) override
+	{
+		if (&observable == &m_inStation)
+		{
+			std::cout << "State Position in" << std::endl;
+		}
+		else if (&observable == &m_outStation)
+		{
+			std::cout << "State Position out" << std::endl;
+		}
 
 		PrintSensorTypeName("Temperature");
-		m_temperature.UpdateStatsData(data.second.temperature);
+		m_temperature.UpdateStatsData(data.temperature);
 
 		PrintSensorTypeName("Humidity");
-		m_humidity.UpdateStatsData(data.second.humidity);
+		m_humidity.UpdateStatsData(data.humidity);
 
 		PrintSensorTypeName("Pressure");
-		m_pressure.UpdateStatsData(data.second.pressure);
+		m_pressure.UpdateStatsData(data.pressure);
 	}
 
 	void PrintSensorTypeName(const string& name)
 	{
 		cout << name << ": " << endl;
 	}
+
+	CStatsData m_temperature;
+	CStatsData m_humidity;
+	CStatsData m_pressure;
+
+	CWeatherData& m_inStation;
+	CWeatherData& m_outStation;
 };
 
-class CWeatherData : public CObservable<WeatherDataInfo>
+class CWeatherData : public CObservable<SWeatherInfo>
 {
 public:
-
-	CWeatherData(const string& location)
-		: m_stationLocation(location)
-	{
-		
-	}
-
 	double GetTemperature()const
 	{
 		return m_temperature;
@@ -124,6 +148,11 @@ public:
 		return m_stationLocation;
 	}
 
+	void SetLocationName(std::string const& location)
+	{
+		m_stationLocation = location;
+	}
+
 	void MeasurementsChanged()
 	{
 		NotifyObservers();
@@ -139,13 +168,12 @@ public:
 	}
 
 protected:
-	WeatherDataInfo GetChangedData() const override
+	SWeatherInfo GetChangedData() const override
 	{
-		WeatherDataInfo info;
-		info.first = GetStationLocation();
-		info.second.temperature = GetTemperature();
-		info.second.humidity = GetHumidity();
-		info.second.pressure = GetPressure();
+		SWeatherInfo info;
+		info.temperature = GetTemperature();
+		info.humidity = GetHumidity();
+		info.pressure = GetPressure();
 		return info;
 	}
 private:

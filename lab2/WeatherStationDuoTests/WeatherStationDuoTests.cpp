@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class CTestedObserver : public IObserver<SWeatherInfo>
+/*class CTestedObserver : public IObserver<SWeatherInfo>
 {
 public:
 	CTestedObserver(StationInfo& info)
@@ -69,4 +69,4 @@ TEST_CASE("Supervision over several subjects")
 
 		CHECK(observerPositionName == "in");
 	}
-}
+} */

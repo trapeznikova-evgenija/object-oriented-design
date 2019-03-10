@@ -114,7 +114,6 @@ public:
 		return atan2(m_yCoord / m_countAcc, m_xCoord / m_countAcc) * (180 / M_PI);
 	}
 private:
-
 	double m_xCoord = 0;
 	double m_yCoord = 0;
 	unsigned m_countAcc = 0;

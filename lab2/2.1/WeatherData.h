@@ -150,7 +150,7 @@ public:
 
 	double GetWindSpeed()const
 	{
-		return m_wind_speed;
+		return m_windSpeed;
 	}
 
 	double GetWindDirection()const
@@ -169,7 +169,7 @@ public:
 		m_temperature = temp;
 		m_pressure = pressure;
 		m_direction = direction;
-		m_wind_speed = windSpeed;
+		m_windSpeed = windSpeed;
 
 		MeasurementsChanged();
 	}
@@ -188,6 +188,6 @@ private:
 	double m_temperature = 0.0;
 	double m_humidity = 0.0;
 	double m_pressure = 760.0;
-	double m_wind_speed = 0;
+	double m_windSpeed = 0;
 	double m_direction = 0;
 };

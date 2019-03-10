@@ -11,7 +11,7 @@ template <typename T>
 class IObserver
 {
 public:
-	virtual void Update(T const& data, const IObservable<T>& observable) = 0;
+	virtual void Update(T & data, const IObservable<T>& observable) = 0;
 	virtual ~IObserver() = default;
 };
 

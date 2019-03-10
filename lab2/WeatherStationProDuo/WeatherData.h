@@ -10,56 +10,52 @@
 
 using namespace std;
 
-struct StationInfo
-{
-	std::string position;
-};
-
 struct SWeatherInfo
 {
 	double temperature = 0;
 	double humidity = 0;
-	double pressure = 0;
-	double windSpeed = 0;
-	double direction = 0;
+	double pressure = 0;	
 
-	StationInfo stationInfo;
+	void PrintInfo() 
+	{
+		std::cout << "Current Temp " << temperature << std::endl;
+		std::cout << "Current Hum " << humidity << std::endl;
+		std::cout << "Current Pressure " << pressure << std::endl;
+	}
 };
 
 struct SWeatherInfoPro : public SWeatherInfo
 {
 	double windSpeed = 0;
 	double direction = 0;
+
+	void PrintInfo()
+	{
+		std::cout << "Current Wind Speed " << windSpeed << std::endl;
+		std::cout << "Current Wind Direction " << direction << std::endl;
+	}
 };
 
 class CDisplay : public IObserver<SWeatherInfo>
 {
+public:
+	CDisplay(CWeatherData& inStation, CWeatherData& outStation)
+		: m_inStation(inStation),
+		m_outStation(outStation)
+	{
+	};
+
 private:
-
-	void Update(SWeatherInfo const& data) override
+	void Update(SWeatherInfo& data, const IObservable<SWeatherInfo>& observable) override
 	{
-		std::cout << "State Position " << data.stationInfo.position << std::endl;
-
-		std::cout << "Current Temp " << data.temperature << std::endl;
-		std::cout << "Current Hum " << data.humidity << std::endl;
-		std::cout << "Current Pressure " << data.pressure << std::endl;
+		(&observable == &m_inStation) ? std::cout << "State Position in" << std::endl 
+			                          : std::cout << "State Position out" << std::endl;
+		data.PrintInfo();
 		std::cout << "----------------" << std::endl;
 	}
-};
 
-class CDisplayPro : public IObserver<SWeatherInfoPro>
-{
-	void Update(SWeatherInfoPro const& data) override
-	{
-		std::cout << "State Position " << data.stationInfo.position << std::endl;
-
-		std::cout << "Current Wind Speed " << data.windSpeed << std::endl;
-		std::cout << "Current Wind Direction " << data.direction << std::endl;
-		std::cout << "Current Temp " << data.temperature << std::endl;
-		std::cout << "Current Hum " << data.humidity << std::endl;
-		std::cout << "Current Pressure " << data.pressure << std::endl;
-		std::cout << "----------------" << std::endl;
-	}
+	CWeatherData& m_inStation;
+	CWeatherData& m_outStation;
 };
 
 class CStatsData
@@ -126,10 +122,9 @@ private:
 	CStatsData humidity;
 	CStatsData pressure;
 
-	void Update(SWeatherInfo const& data) override
+	void Update(SWeatherInfo& data, const IObservable<SWeatherInfo>& observable) override
 	{
-		PrintSensorTypeName("State Position");
-		cout << data.stationInfo.position << endl;
+		std::cout << "State Position in" << std::endl;
 
 		PrintSensorTypeName("Temperature");
 		temperature.UpdateStatsData(data.temperature);
@@ -150,31 +145,24 @@ private:
 class CStatsDisplayPro : public IObserver<SWeatherInfoPro>
 {
 private:
-	CStatsData temperature;
-	CStatsData humidity;
-	CStatsData pressure;
-	CStatsData windSpeed;
-	CAverageWindDirection windDirection;
-
-	void Update(SWeatherInfoPro const& data) override
+	void Update(SWeatherInfoPro& data, const IObservable<SWeatherInfoPro>& observable) override
 	{
-		PrintSensorTypeName("State Position");
-		cout << data.stationInfo.position << endl;
+		std::cout << "State Position in" << std::endl;
 
 		PrintSensorTypeName("Temperature");
-		temperature.UpdateStatsData(data.temperature);
+		m_temperature.UpdateStatsData(data.temperature);
 
 		PrintSensorTypeName("Humidity");
-		humidity.UpdateStatsData(data.humidity);
+		m_humidity.UpdateStatsData(data.humidity);
 
 		PrintSensorTypeName("Pressure");
-		pressure.UpdateStatsData(data.pressure);
+		m_pressure.UpdateStatsData(data.pressure);
 
 		PrintSensorTypeName("Wind Speed");
-		windSpeed.UpdateStatsData(data.windSpeed);
+		m_windSpeed.UpdateStatsData(data.windSpeed);
 
 		PrintSensorTypeName("Wind Direction");
-		double averageWindDirection = windDirection.CalculateAverageWindDirection(data.direction, data.windSpeed);
+		double averageWindDirection = m_windDirection.CalculateAverageWindDirection(data.direction, data.windSpeed);
 		cout << "Average " << averageWindDirection << endl;
 		cout << "----------------" << endl;
 	}
@@ -183,18 +171,17 @@ private:
 	{
 		cout << name << ": " << endl;
 	}
+
+	CStatsData m_temperature;
+	CStatsData m_humidity;
+	CStatsData m_pressure;
+	CStatsData m_windSpeed;
+	CAverageWindDirection m_windDirection;
 };
 
 class CWeatherData : public CObservable<SWeatherInfo>
 {
 public:
-
-	CWeatherData(const StationInfo& stationInfo)
-		: m_stationInfo(stationInfo)
-	{
-
-	}
-
 	double GetTemperature()const
 	{
 		return m_temperature;
@@ -210,9 +197,14 @@ public:
 		return m_pressure;
 	}
 
-	StationInfo GetStationInfo()const
+	std::string GetStationLocation()const
 	{
-		return m_stationInfo;
+		return m_stationLocation;
+	}
+
+	void SetLocationName(std::string const& location)
+	{
+		m_stationLocation = location;
 	}
 
 	void MeasurementsChanged()
@@ -232,7 +224,6 @@ protected:
 	SWeatherInfo GetChangedData() const override
 	{
 		SWeatherInfo info;
-		info.stationInfo = GetStationInfo();
 		info.temperature = GetTemperature();
 		info.humidity = GetHumidity();
 		info.pressure = GetPressure();
@@ -242,19 +233,12 @@ private:
 	double m_temperature = 0.0;
 	double m_humidity = 0.0;
 	double m_pressure = 760.0;
-	StationInfo m_stationInfo;
+	std::string m_stationLocation;
 };
 
 class CWeatherDataPro : public CObservable<SWeatherInfoPro>
 {
 public:
-
-	CWeatherDataPro(const StationInfo& stationInfo)
-		: m_stationInfo(stationInfo)
-	{
-		
-	}
-
 	double GetTemperature()const
 	{
 		return m_temperature;
@@ -270,9 +254,14 @@ public:
 		return m_pressure;
 	}
 
-	StationInfo GetStationInfo()const
+	std::string GetStationLocation()const
 	{
-		return m_stationInfo;
+		return m_stationLocation;
+	}
+
+	void SetLocationName(std::string const& location)
+	{
+		m_stationLocation = location;
 	}
 
 	double GetWindSpeed()const
@@ -305,7 +294,6 @@ protected:
 	SWeatherInfoPro GetChangedData() const override
 	{
 		SWeatherInfoPro info;
-		info.stationInfo = GetStationInfo();
 		info.temperature = GetTemperature();
 		info.humidity = GetHumidity();
 		info.pressure = GetPressure();
@@ -319,6 +307,6 @@ private:
 	double m_pressure = 760.0;
 	double m_wind_speed = 0;
 	double m_direction = 0;
-	StationInfo m_stationInfo;
+	std::string m_stationLocation;
 };
 

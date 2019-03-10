@@ -22,10 +22,6 @@ struct SWeatherInfo
 class CDisplay : public IObserver<SWeatherInfo>
 {
 private:
-	/* Метод Update сделан приватным, чтобы ограничить возможность его вызова напрямую
-	Классу CObservable он будет доступен все равно, т.к. в интерфейсе IObserver он
-	остается публичным
-	*/
 	void Update(SWeatherInfo const& data) override
 	{
 		std::cout << "Current Wind Speed " << data.windSpeed << std::endl;
@@ -76,7 +72,12 @@ private:
 class CAverageWindDirection
 {
 public:
-	double CalculateAverageWindDirection(const double degree, const double speed)
+	double GetAverageWindDirection()const
+	{
+		return atan2(m_yCoord / m_countAcc, m_xCoord / m_countAcc) * (180 / M_PI);
+	}
+
+	void UpdateAverageWindDirection(const double degree, const double speed)
 	{
 		double x = cos(degree * M_PI / 180) * speed;
 		double y = sin(degree * M_PI / 180) * speed;
@@ -85,9 +86,8 @@ public:
 
 		m_xCoord += x;
 		m_yCoord += y;
-
-		return atan2(m_yCoord / m_countAcc, m_xCoord / m_countAcc) * (180 / M_PI);
 	}
+
 private:
 	double m_xCoord = 0;
 	double m_yCoord = 0;
@@ -118,8 +118,8 @@ private:
 		m_windSpeed.UpdateStatsData(data.windSpeed);
 
 		PrintSensorTypeName("Wind Direction");
-		double averageWindDirection = m_windDirection.CalculateAverageWindDirection(data.direction, data.windSpeed);
-		cout << "Average " <<  averageWindDirection << endl;
+		m_windDirection.UpdateAverageWindDirection(data.direction, data.windSpeed);
+		cout << "Average " << m_windDirection.GetAverageWindDirection() << endl;
 		cout << "----------------" << endl;
 	}
 

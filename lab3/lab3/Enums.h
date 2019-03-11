@@ -20,3 +20,9 @@ enum class TeaSort
 	EarlGray,
 	Hibiscus
 };
+
+enum class LiquorType
+{
+	Nut,
+	Chocolate
+};

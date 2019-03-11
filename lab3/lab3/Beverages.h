@@ -103,7 +103,7 @@ public:
 	}
 
 private:
-	std::string GetTeaDescription(TeaSort currSort)
+	static std::string GetTeaDescription(TeaSort currSort)
 	{
 		switch (currSort)
 		{
@@ -146,7 +146,7 @@ public:
 	}
 
 private:
-	std::string GetMilkshakeDescription(MilkShakePortion portion)
+	static std::string GetMilkshakeDescription(MilkShakePortion portion)
 	{
 		switch (portion)
 		{

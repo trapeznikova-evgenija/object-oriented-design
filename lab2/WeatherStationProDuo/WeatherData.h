@@ -39,7 +39,7 @@ struct SWeatherInfoPro : public SWeatherInfo
 class CDisplay : public IObserver<SWeatherInfo>
 {
 public:
-	CDisplay(CWeatherData& inStation, CWeatherData& outStation)
+	CDisplay(CWeatherData& inStation, CWeatherDataPro& outStation)
 		: m_inStation(inStation),
 		m_outStation(outStation)
 	{
@@ -55,7 +55,7 @@ private:
 	}
 
 	CWeatherData& m_inStation;
-	CWeatherData& m_outStation;
+	CWeatherDataPro& m_outStation;
 };
 
 class CStatsData

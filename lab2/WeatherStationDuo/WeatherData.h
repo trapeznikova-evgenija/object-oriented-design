@@ -30,6 +30,7 @@ private:
 		if (&observable == &m_inStation)
 		{
 			std::cout << "State Position in" << std::endl;
+
 		}
 		else if (&observable == &m_outStation)
 		{

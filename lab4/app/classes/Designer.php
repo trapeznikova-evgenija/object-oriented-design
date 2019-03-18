@@ -30,7 +30,7 @@ class Designer implements DesignerInterface
             try
             {
                 $shape = $this->shapeFactory->createShape($clientInput);
-                $pictureDraft->AddShapeInBox($shape);
+                $pictureDraft->addShapeInBox($shape);
             }
             catch (ShapeException $exception)
             {
@@ -38,7 +38,6 @@ class Designer implements DesignerInterface
                 break;
             }
         }
-
 
         return $pictureDraft;
 

@@ -5,12 +5,11 @@ namespace App;
 
 class Painter implements PainterInterface
 {
-    public function drawPicture(PictureDraft $pictureDraft, Canvas $canvas)
+    public function drawPicture(PictureDraft $pictureDraft, CanvasInterface $canvas)
     {
-        $allShapesOnDraft = $pictureDraft->GetShapesBox();
-
-        foreach ($allShapesOnDraft as $shape)
+        for ($i = 0; $i < $pictureDraft->getShapeCount(); $i++)
         {
+            $shape = $pictureDraft->getShapeAt($i);
             $shape->draw($canvas);
         }
     }

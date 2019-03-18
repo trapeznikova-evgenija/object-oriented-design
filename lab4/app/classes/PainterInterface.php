@@ -5,5 +5,5 @@ namespace App;
 
 interface PainterInterface
 {
-    public function drawPicture(PictureDraft $pictureDraft, Canvas $canvas);
+    public function drawPicture(PictureDraft $pictureDraft, CanvasInterface $canvas);
 }

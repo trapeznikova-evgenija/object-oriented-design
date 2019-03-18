@@ -17,6 +17,5 @@ abstract class Shape
         return $this->color;
     }
 
-    abstract protected function draw(Canvas $canvas);
-
+    abstract public function draw(CanvasInterface $canvas);
 }

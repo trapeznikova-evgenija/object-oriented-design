@@ -7,6 +7,7 @@
     $factory = new ShapeFactory();
     $designer = new Designer($factory);
     $client = new Client($canvas);
+
     $client->getPictureDraft($designer);
     $client->drawPictureOnCanvas($painter);
     

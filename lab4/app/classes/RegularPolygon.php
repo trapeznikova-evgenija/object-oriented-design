@@ -32,7 +32,7 @@ class RegularPolygon extends Shape
         return $this->radius;
     }
 
-    public function draw(Canvas $canvas)
+    public function draw(CanvasInterface $canvas)
     {
         echo "I draw polygon";
     }

@@ -32,7 +32,7 @@ class Ellipse extends Shape
         return $this->verticalRadius;
     }
 
-    public function draw(Canvas $canvas)
+    public function draw(CanvasInterface $canvas)
     {
         echo "I draw ellipse" . PHP_EOL;
     }

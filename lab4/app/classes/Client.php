@@ -8,7 +8,7 @@ class Client
     private $pictureDraft;
     private $canvas;
 
-    public function __construct(Canvas $canvas)
+    public function __construct(CanvasInterface $canvas)
     {
         $this->canvas = $canvas;
     }

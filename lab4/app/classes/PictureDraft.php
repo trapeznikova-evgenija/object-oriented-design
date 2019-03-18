@@ -7,17 +7,17 @@ class PictureDraft
 {
     private $shapesBox = [];
 
-    public function GetShapeCount() : int
+    public function getShapeCount(): int
     {
         return count($this->shapesBox);
     }
 
-    public function GetShapesBox()
+    public function getShapeAt(int $position): Shape
     {
-        return $this->shapesBox;
+        return $this->shapesBox[$position];
     }
 
-    public function AddShapeInBox(Shape $shape)
+    public function addShapeInBox(Shape $shape)
     {
         array_push($this->shapesBox, $shape);
     }

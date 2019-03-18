@@ -34,7 +34,7 @@ class ShapeFactory implements ShapeFactoryInterface
         }
     }
 
-    private function createEllipse(string $parsedString) : Shape
+    private function createEllipse($parsedString) : Shape
     {
         $shapeColor = Color::getColorCode($parsedString[1]);
         $centerPointCoord = new Point($parsedString[2], $parsedString[3]);
@@ -44,7 +44,7 @@ class ShapeFactory implements ShapeFactoryInterface
         return new Ellipse($shapeColor, $centerPointCoord, $horizontalRadius, $verticalRadius);
     }
 
-    private function createPolygon(string $parsedString) : Shape
+    private function createPolygon($parsedString) : Shape
     {
         $shapeColor = Color::getColorCode($parsedString[1]);
         $vertexCount = $parsedString[2];
@@ -54,7 +54,7 @@ class ShapeFactory implements ShapeFactoryInterface
         return new RegularPolygon($shapeColor, $vertexCount, $center, $raduis);
     }
 
-    private function createTriangle(string $parsedString) : Shape
+    private function createTriangle($parsedString) : Shape
     {
         $shapeColor = Color::getColorCode($parsedString[1]);
         $vertex1 = new Point($parsedString[2], $parsedString[3]);
@@ -64,7 +64,7 @@ class ShapeFactory implements ShapeFactoryInterface
         return new Triangle($shapeColor, $vertex1, $vertex2, $vertex3);
     }
 
-    private function createRectangle(string $parsedString) : Shape
+    private function createRectangle($parsedString) : Shape
     {
         $shapeColor = Color::getColorCode($parsedString[1]);
         $leftTop = new Point($parsedString[2], $parsedString[3]);
@@ -73,7 +73,7 @@ class ShapeFactory implements ShapeFactoryInterface
         return new Rectangle($shapeColor, $leftTop, $rightBottom);
     }
 
-    private function getParsedString(string $string) : string
+    private function getParsedString(string $string)
     {
         return explode(" ", $string);
     }

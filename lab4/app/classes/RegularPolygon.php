@@ -32,9 +32,8 @@ class RegularPolygon extends Shape
         return $this->radius;
     }
 
-    protected function draw(Canvas $canvas)
+    public function draw(Canvas $canvas)
     {
-        // TODO: Implement draw() method.
         echo "I draw polygon";
     }
 }

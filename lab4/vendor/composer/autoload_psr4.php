@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'shapeException\\' => array($baseDir . '/app/classes/exception'),
     'App\\' => array($baseDir . '/app/classes'),
 );

@@ -25,7 +25,7 @@ class Rectangle extends Shape
         return $this->topLeft;
     }
 
-    protected function draw(Canvas $canvas)
+    public function draw(Canvas $canvas)
     {
         echo "I draw rectangle" . PHP_EOL;
     }

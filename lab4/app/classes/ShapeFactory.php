@@ -36,6 +36,10 @@ class ShapeFactory implements ShapeFactoryInterface
 
     private function createEllipse($parsedString) : Shape
     {
+        if (count($parsedString) != 6)
+        {
+            throw new ShapeException("Incorrect argument numbers");
+        }
         $shapeColor = Color::getColorCode($parsedString[1]);
         $centerPointCoord = new Point($parsedString[2], $parsedString[3]);
         $horizontalRadius = $parsedString[4];

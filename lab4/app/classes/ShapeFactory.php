@@ -14,71 +14,102 @@ class ShapeFactory implements ShapeFactoryInterface
 
     public function createShape(string $description) : Shape
     {
-        $parsedString = $this->getParsedString($description);
+        $parsedArray = $this->getParsedString($description);
 
-        switch ($parsedString[0])
+        switch ($parsedArray[0])
         {
             case self::ELLIPSE :
-                return $this->createEllipse($parsedString);
+                return $this->createEllipse($parsedArray);
 
             case self::POLYGON :
-                return $this->createPolygon($parsedString);
+                return $this->createPolygon($parsedArray);
 
             case self::RECTANGLE :
-                return $this->createRectangle($parsedString);
+                return $this->createRectangle($parsedArray);
 
             case self::TRIANGLE :
-                return $this->createTriangle($parsedString);
+                return $this->createTriangle($parsedArray);
             default:
                 throw new ShapeException("There is no such shape.");
         }
     }
 
-    private function createEllipse($parsedString) : Shape
+    private function createEllipse($parsedArray) : Shape
     {
-        if (count($parsedString) != 6)
+        if (count($parsedArray) != 6)
         {
             throw new ShapeException("Incorrect argument numbers");
         }
-        $shapeColor = Color::getColorCode($parsedString[1]);
-        $centerPointCoord = new Point($parsedString[2], $parsedString[3]);
-        $horizontalRadius = $parsedString[4];
-        $verticalRadius = $parsedString[5];
+
+        $shapeColor = Color::getColorCode($parsedArray[1]);
+        $centerPointCoord = new Point($parsedArray[2], $parsedArray[3]);
+        $horizontalRadius = $parsedArray[4];
+        $verticalRadius = $parsedArray[5];
 
         return new Ellipse($shapeColor, $centerPointCoord, $horizontalRadius, $verticalRadius);
     }
 
-    private function createPolygon($parsedString) : Shape
+    private function createPolygon($parsedArray) : Shape
     {
-        $shapeColor = Color::getColorCode($parsedString[1]);
-        $vertexCount = $parsedString[2];
-        $center = new Point($parsedString[3], $parsedString[4]);
-        $raduis = $parsedString[5];
+        if (count($parsedArray) != 6)
+        {
+            throw new ShapeException("Incorrect argument numbers");
+        }
+
+        $shapeColor = Color::getColorCode($parsedArray[1]);
+        $vertexCount = $parsedArray[2];
+        $center = new Point($parsedArray[3], $parsedArray[4]);
+        $raduis = $parsedArray[5];
 
         return new RegularPolygon($shapeColor, $vertexCount, $center, $raduis);
     }
 
-    private function createTriangle($parsedString) : Shape
+    private function createTriangle($parsedArray) : Shape
     {
-        $shapeColor = Color::getColorCode($parsedString[1]);
-        $vertex1 = new Point($parsedString[2], $parsedString[3]);
-        $vertex2 = new Point($parsedString[4], $parsedString[5]);
-        $vertex3 = new Point($parsedString[6], $parsedString[7]);
+        if (count($parsedArray) != 8)
+        {
+            throw new ShapeException("Incorrect argument numbers");
+        }
+
+        $shapeColor = Color::getColorCode($parsedArray[1]);
+        $vertex1 = new Point($parsedArray[2], $parsedArray[3]);
+        $vertex2 = new Point($parsedArray[4], $parsedArray[5]);
+        $vertex3 = new Point($parsedArray[6], $parsedArray[7]);
 
         return new Triangle($shapeColor, $vertex1, $vertex2, $vertex3);
     }
 
-    private function createRectangle($parsedString) : Shape
+    private function createRectangle($parsedArray) : Shape
     {
-        $shapeColor = Color::getColorCode($parsedString[1]);
-        $leftTop = new Point($parsedString[2], $parsedString[3]);
-        $rightBottom = new Point($parsedString[4], $parsedString[5]);
+        if (count($parsedArray) != 8)
+        {
+            throw new ShapeException("Incorrect argument numbers");
+        }
+
+        $shapeColor = Color::getColorCode($parsedArray[1]);
+        $leftTop = new Point($parsedArray[2], $parsedArray[3]);
+        $rightBottom = new Point($parsedArray[4], $parsedArray[5]);
 
         return new Rectangle($shapeColor, $leftTop, $rightBottom);
     }
 
     private function getParsedString(string $string)
     {
-        return explode(" ", $string);
+        $parsingArray = explode(" ", $string);
+        $resultArray = [];
+
+        for ($i = 0; $i < count($parsingArray); $i++)
+        {
+            if ($i != 0 && $i != 1)
+            {
+                $resultArray[$i] = (float) $parsingArray[$i];
+            }
+            else
+            {
+                $resultArray[$i] = $parsingArray[$i];
+            }
+        }
+
+        return $resultArray;
     }
 }

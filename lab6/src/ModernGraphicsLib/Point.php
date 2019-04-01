@@ -1,6 +1,6 @@
 <?php
 
-namespace ModernGraphicsRenderer;
+namespace ModernGraphicsLib;
 
 
 class Point

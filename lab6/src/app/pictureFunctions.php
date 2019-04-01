@@ -2,9 +2,8 @@
 
 namespace app;
 
-use function foo\func;
 use GraphicsLib\Canvas;
-use ModernGraphicsRenderer\ModernGraphicsRenderer;
+use ModernGraphicsLib\ModernGraphicsRenderer;
 use ShapeDrawingLib\CanvasPainter;
 use ShapeDrawingLib\Point;
 use ShapeDrawingLib\Rectangle;
@@ -28,7 +27,8 @@ function paintPicture(CanvasPainter $painter)
     $triangle = new Triangle($trianglePoint1, $trianglePoint2, $trianglePoint3);
     $rectangle = new Rectangle($rectanglePoint1, 18, 24);
 
-    //TODO: нарисовать прямоугольник и треугольник при помощи painter
+    $painter->draw($triangle);
+    $painter->draw($rectangle);
 }
 
 function paintPictureOnCanvas()
@@ -40,7 +40,9 @@ function paintPictureOnCanvas()
 
 function paintPictureOnModernGraphicsRenderer()
 {
+    echo '!!!';
     $renderer = new ModernGraphicsRenderer();
-    //TODO ри помощи существующей функции PaintPicture() нарисовать картину на renderer Подсказка: используйте паттерн "Адаптер"
+    $painter = new CanvasPainter(new CanvasAdapter($renderer));
+    paintPicture($painter);
 }
 

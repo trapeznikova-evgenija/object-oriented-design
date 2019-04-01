@@ -4,11 +4,14 @@
     echo "Should we use new API (y)?";
     $clientInput = readline();
 
+    use function app\paintPictureOnCanvas;
+    use function app\paintPictureOnModernGraphicsRenderer;
+
     if ($clientInput && $clientInput == "y" || $clientInput == "Y")
     {
-        app\paintPictureOnModernGraphicsRenderer();
+        paintPictureOnModernGraphicsRenderer();
     }
     else
     {
-        app\paintPictureOnCanvas();
+        paintPictureOnCanvas();
     }

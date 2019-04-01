@@ -1,6 +1,10 @@
 {
   "autoload" : {
     "psr-4" : {
+      "app\\" : "src/app",
+      "GraphicsLib\\" : "src/GraphicsLib",
+      "ModernGraphicsLib\\": "src/ModernGraphicsLib",
+      "ShapeDrawingLib\\" : "src/ShapeDrawingLib"
     }
   },
   "require-dev": {

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 31.03.19
- * Time: 23:24
- */
 
 namespace ShapeDrawingLib;
 
@@ -13,19 +7,22 @@ use GraphicsLib\CanvasInterface;
 
 class Triangle implements CanvasDrawableInterface
 {
-    private $x;
-    private $y;
-    private $z;
+    private $vertex1;
+    private $vertex2;
+    private $vertex3;
 
     public function __construct(Point $x, Point $y, Point $z)
     {
-        $this->x = $x;
-        $this->y = $y;
-        $this->z = $z;
+        $this->vertex1 = $x;
+        $this->vertex2 = $y;
+        $this->vertex3 = $z;
     }
 
     public function draw(CanvasInterface $canvas)
     {
-        // TODO: Implement Draw() method.
+        $canvas->moveTo($this->vertex1->x, $this->vertex2->y);
+        $canvas->lineTo($this->vertex2->x, $this->vertex2->y);
+        $canvas->lineTo($this->vertex3->x, $this->vertex3->y);
+        $canvas->lineTo($this->vertex1->x, $this->vertex1->y);
     }
 }

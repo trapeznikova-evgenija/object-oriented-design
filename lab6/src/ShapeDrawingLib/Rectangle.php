@@ -19,6 +19,10 @@ class Rectangle implements CanvasDrawableInterface
 
     public function draw(CanvasInterface $canvas)
     {
-        // TODO: Implement Draw() method.
+        $canvas->moveTo($this->leftTop->x, $this->leftTop->y);
+        $canvas->lineTo($this->leftTop->x + $this->width, $this->leftTop->y);
+        $canvas->lineTo($this->leftTop->x + $this->width, $this->leftTop->y + $this->height);
+        $canvas->lineTo($this->leftTop->x, $this->leftTop->y + $this->height);
+        $canvas->lineTo($this->leftTop->x, $this->leftTop->y);
     }
 }

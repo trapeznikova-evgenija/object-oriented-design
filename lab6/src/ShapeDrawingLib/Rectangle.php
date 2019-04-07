@@ -3,7 +3,6 @@
 namespace ShapeDrawingLib;
 
 use GraphicsLib\CanvasInterface;
-
 class Rectangle implements CanvasDrawableInterface
 {
     private $leftTop;
@@ -19,6 +18,8 @@ class Rectangle implements CanvasDrawableInterface
 
     public function draw(CanvasInterface $canvas)
     {
+        echo "draw Rectangle" .PHP_EOL;
+
         $canvas->moveTo($this->leftTop->x, $this->leftTop->y);
         $canvas->lineTo($this->leftTop->x + $this->width, $this->leftTop->y);
         $canvas->lineTo($this->leftTop->x + $this->width, $this->leftTop->y + $this->height);

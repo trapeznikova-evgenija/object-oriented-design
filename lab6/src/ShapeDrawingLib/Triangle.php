@@ -20,7 +20,9 @@ class Triangle implements CanvasDrawableInterface
 
     public function draw(CanvasInterface $canvas)
     {
-        $canvas->moveTo($this->vertex1->x, $this->vertex2->y);
+        echo "draw Triangle" . PHP_EOL;
+
+        $canvas->moveTo($this->vertex1->x, $this->vertex1->y);
         $canvas->lineTo($this->vertex2->x, $this->vertex2->y);
         $canvas->lineTo($this->vertex3->x, $this->vertex3->y);
         $canvas->lineTo($this->vertex1->x, $this->vertex1->y);

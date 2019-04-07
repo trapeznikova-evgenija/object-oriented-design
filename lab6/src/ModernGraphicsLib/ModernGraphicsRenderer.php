@@ -2,6 +2,8 @@
 
 namespace ModernGraphicsLib;
 
+use SebastianBergmann\CodeCoverage\Report\PHP;
+
 class ModernGraphicsRenderer
 {
     private $isDrawing = false;
@@ -22,7 +24,7 @@ class ModernGraphicsRenderer
             throw LogicException("Drawing has already begun");
         }
 
-        $this->outstream .= "<draw>";
+        echo "<draw>" . PHP_EOL;
         $this->isDrawing = true;
     }
 
@@ -33,7 +35,7 @@ class ModernGraphicsRenderer
             throw LogicException("DrawLine is allowed between BeginDraw()/EndDraw() only");
         }
 
-        $this->outstream .= "<line fromX=\"{$start->getXCoord()}\" fromY=\"{$start->getYCoord()}\" toX=\"{$end->getXCoord()}\" toY=\"{$end->getYCoord()}\"/>)";
+        echo "<line fromX=". $start->getXCoord() . " fromY=" . $start->getYCoord() . " toX=" . $end->getXCoord() . " toY=" . $end->getYCoord() . "/>" . PHP_EOL;
     }
 
     public function endDraw()
@@ -43,7 +45,7 @@ class ModernGraphicsRenderer
             throw LogicException("Drawing has not been started");
         }
 
-        $this->outstream .= "</draw>";
+        echo "</draw>" . PHP_EOL;
         $this->isDrawing = false;
     }
 }

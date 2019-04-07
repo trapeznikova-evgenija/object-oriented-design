@@ -4,7 +4,8 @@
       "app\\" : "src/app",
       "GraphicsLib\\" : "src/GraphicsLib",
       "ModernGraphicsLib\\": "src/ModernGraphicsLib",
-      "ShapeDrawingLib\\" : "src/ShapeDrawingLib"
+      "ShapeDrawingLib\\" : "src/ShapeDrawingLib",
+      "tests\\" : "tests"
     }
   },
   "require-dev": {

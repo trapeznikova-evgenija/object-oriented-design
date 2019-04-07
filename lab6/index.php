@@ -46,6 +46,8 @@ function paintPictureOnModernGraphicsRenderer()
     paintPicture($painter);
 }
 
+function runApp()
+{
     echo "Should we use new API (y)?" . PHP_EOL;
     $clientInput = readline();
 
@@ -57,3 +59,7 @@ function paintPictureOnModernGraphicsRenderer()
     {
         paintPictureOnCanvas();
     }
+}
+
+runApp();
+

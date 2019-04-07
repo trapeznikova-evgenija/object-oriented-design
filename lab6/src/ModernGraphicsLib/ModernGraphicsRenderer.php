@@ -2,12 +2,10 @@
 
 namespace ModernGraphicsLib;
 
-use SebastianBergmann\CodeCoverage\Report\PHP;
 
 class ModernGraphicsRenderer
 {
     private $isDrawing = false;
-    private $outstream = "";
 
     public function __destruct()
     {

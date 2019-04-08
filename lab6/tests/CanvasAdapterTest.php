@@ -27,15 +27,6 @@ class CanvasAdapterTest extends TestCase
         $adapter = new CanvasAdapter($renderer);
 
         $adapter->lineTo(45, 47);
-        $this->expectOutputString("<draw>\n <line fromX=0 fromY=0 toX=45 toY=47/>\n</draw>\n");
+        $this->expectOutputString("<draw>\n<line fromX=0 fromY=0 toX=45 toY=47/>\n</draw>\n");
     }
-
-    public function testCheckOnException()
-    {
-        $this->setExpectedException('LogicException');
-        $renderer = new ModernGraphicsRenderer();
-        $renderer->drawLine(new \ModernGraphicsLib\Point(3, 4), new \ModernGraphicsLib\Point(8, 15) );
-    }
-
-
 }

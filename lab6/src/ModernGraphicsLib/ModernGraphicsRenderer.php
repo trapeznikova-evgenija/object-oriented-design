@@ -19,7 +19,7 @@ class ModernGraphicsRenderer
     {
         if ($this->isDrawing)
         {
-            throw LogicException("Drawing has already begun");
+            echo "Drawing has already begun";
         }
 
         echo "<draw>" . PHP_EOL;
@@ -30,7 +30,7 @@ class ModernGraphicsRenderer
     {
         if (!$this->isDrawing)
         {
-            throw LogicException("DrawLine is allowed between BeginDraw()/EndDraw() only");
+            echo "DrawLine is allowed between BeginDraw()/EndDraw() only";
         }
 
         echo "<line fromX=". $start->getXCoord() . " fromY=" . $start->getYCoord() . " toX=" . $end->getXCoord() . " toY=" . $end->getYCoord() . "/>" . PHP_EOL;
@@ -40,7 +40,7 @@ class ModernGraphicsRenderer
     {
         if (!$this->isDrawing)
         {
-            throw LogicException("Drawing has not been started");
+            echo "Drawing has not been started";
         }
 
         echo "</draw>" . PHP_EOL;

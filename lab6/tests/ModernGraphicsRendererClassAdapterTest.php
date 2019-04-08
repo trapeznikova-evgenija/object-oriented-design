@@ -4,18 +4,18 @@ namespace tests;
 
 use PHPUnit\Framework\TestCase;
 
-use app\ModerGraphicsRendererClassAdapter;
+use app\ModernGraphicsRendererClassAdapter;
 use ShapeDrawingLib\Point;
 
 class ModernGraphicsRendererClassAdapterTest extends TestCase
 {
     public function testCheckDrawRectangle()
     {
-        $adapter = new ModerGraphicsRendererClassAdapter();
+        $adapter = new ModernGraphicsRendererClassAdapter();
 
         $adapter->moveTo(2, 2);
         $adapter->lineTo(2 + 10, 2);
-        $adapter->lineTo(2+ 10, 2 + 15);
+        $adapter->lineTo(2 + 10, 2 + 15);
         $adapter->lineTo(2, 2 + 15);
         $adapter->lineTo(2, 2);
 
@@ -24,7 +24,7 @@ class ModernGraphicsRendererClassAdapterTest extends TestCase
 
     public function testCheckDrawTriangle()
     {
-        $adapter = new ModerGraphicsRendererClassAdapter();
+        $adapter = new ModernGraphicsRendererClassAdapter();
 
         $vertex1 = new Point();
         $vertex1->x = 1;

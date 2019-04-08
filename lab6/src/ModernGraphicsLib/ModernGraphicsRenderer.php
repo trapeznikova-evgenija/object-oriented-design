@@ -5,7 +5,7 @@ namespace ModernGraphicsLib;
 
 class ModernGraphicsRenderer
 {
-    private $isDrawing = false;
+    public $isDrawing = false;
 
     public function __destruct()
     {

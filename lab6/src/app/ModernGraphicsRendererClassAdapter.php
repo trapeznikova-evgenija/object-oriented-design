@@ -7,13 +7,15 @@ use GraphicsLib\CanvasInterface;
 use ModernGraphicsLib\ModernGraphicsRenderer;
 use ModernGraphicsLib\Point;
 
-class ModerGraphicsRendererClassAdapter extends ModernGraphicsRenderer implements CanvasInterface
+class ModernGraphicsRendererClassAdapter extends ModernGraphicsRenderer implements CanvasInterface
 {
     /* ModernGraphicsRenderer Point */
     private $currPoint;
 
     public function __construct()
     {
+        var_dump("!!!!");
+        var_dump($this->isDrawing);
         $this->beginDraw();
         $this->currPoint = new Point(0, 0);
     }

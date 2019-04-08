@@ -5,10 +5,6 @@ use PHPUnit\Framework\TestCase;
 
 use app\CanvasAdapter;
 use ModernGraphicsLib\ModernGraphicsRenderer;
-use ShapeDrawingLib\CanvasPainter;
-use ShapeDrawingLib\Point;
-use ShapeDrawingLib\Rectangle;
-use ShapeDrawingLib\Triangle;
 
 class CanvasAdapterTest extends TestCase
 {

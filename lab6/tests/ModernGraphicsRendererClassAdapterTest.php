@@ -12,6 +12,7 @@ class ModernGraphicsRendererClassAdapterTest extends TestCase
     public function testCheckDrawRectangle()
     {
         $adapter = new ModernGraphicsRendererClassAdapter();
+        $adapter->beginDraw();
 
         $adapter->moveTo(2, 2);
         $adapter->lineTo(2 + 10, 2);
@@ -19,12 +20,14 @@ class ModernGraphicsRendererClassAdapterTest extends TestCase
         $adapter->lineTo(2, 2 + 15);
         $adapter->lineTo(2, 2);
 
+        $adapter->endDraw();
         $this->expectOutputString("<draw>\n<line fromX=2 fromY=2 toX=12 toY=2/>\n<line fromX=12 fromY=2 toX=12 toY=17/>\n<line fromX=12 fromY=17 toX=2 toY=17/>\n<line fromX=2 fromY=17 toX=2 toY=2/>\n</draw>\n");
     }
 
     public function testCheckDrawTriangle()
     {
         $adapter = new ModernGraphicsRendererClassAdapter();
+        $adapter->beginDraw();
 
         $vertex1 = new Point();
         $vertex1->x = 1;
@@ -43,6 +46,7 @@ class ModernGraphicsRendererClassAdapterTest extends TestCase
         $adapter->lineTo($vertex3->x, $vertex3->y);
         $adapter->lineTo($vertex1->x, $vertex1->y);
 
+        $adapter->endDraw();
         $this->expectOutputString("<draw>\n<line fromX=1 fromY=2 toX=5 toY=6/>\n<line fromX=5 fromY=6 toX=10 toY=15/>\n<line fromX=10 fromY=15 toX=1 toY=2/>\n</draw>\n");
     }
 }

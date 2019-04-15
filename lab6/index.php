@@ -42,8 +42,11 @@ function paintPictureOnCanvas()
 function paintPictureOnModernGraphicsRenderer()
 {
     $renderer = new ModernGraphicsRenderer();
-    $painter = new CanvasPainter(new CanvasAdapter($renderer));
+    $adapter = new CanvasAdapter($renderer);
+    $adapter->beginDraw();
+    $painter = new CanvasPainter($adapter);
     paintPicture($painter);
+    $adapter->endDraw();
 }
 
 function runApp()

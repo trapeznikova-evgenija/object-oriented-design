@@ -14,10 +14,17 @@ class ModernGraphicsRendererClassAdapter extends ModernGraphicsRenderer implemen
 
     public function __construct()
     {
-        var_dump("!!!!");
-        var_dump($this->isDrawing);
-        $this->beginDraw();
         $this->currPoint = new Point(0, 0);
+    }
+
+    public function beginDraw()
+    {
+        parent::beginDraw();
+    }
+
+    public function endDraw()
+    {
+        parent::endDraw();
     }
 
     public function moveTo(int $x, int $y)
@@ -29,7 +36,11 @@ class ModernGraphicsRendererClassAdapter extends ModernGraphicsRenderer implemen
     public function lineTo(int $x, int $y)
     {
         $endPoint = new Point($x, $y);
-        $this->drawLine($this->currPoint, $endPoint);
+
+        $copiedCurrPoint = clone $this->currPoint;
+        $copiedEndPoint = clone $endPoint;
+
+        $this->drawLine($copiedCurrPoint, $copiedEndPoint);
         $this->moveTo($x, $y);
     }
 }

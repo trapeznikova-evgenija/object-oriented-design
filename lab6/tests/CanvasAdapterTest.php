@@ -12,8 +12,10 @@ class CanvasAdapterTest extends TestCase
     {
         $renderer = new ModernGraphicsRenderer();
         $adapter = new CanvasAdapter($renderer);
+        $adapter->beginDraw();
 
         $adapter->moveTo(12, 10);
+        $adapter->endDraw();
         $this->expectOutputString("<draw>\n</draw>\n");
     }
 
@@ -21,8 +23,10 @@ class CanvasAdapterTest extends TestCase
     {
         $renderer = new ModernGraphicsRenderer();
         $adapter = new CanvasAdapter($renderer);
+        $adapter->beginDraw();
 
         $adapter->lineTo(45, 47);
+        $adapter->endDraw();
         $this->expectOutputString("<draw>\n<line fromX=0 fromY=0 toX=45 toY=47/>\n</draw>\n");
     }
 }

@@ -25,7 +25,7 @@ function paintPicture(CanvasPainter $painter)
     $rectanglePoint1->x = 30;
     $rectanglePoint1->y = 40;
 
-    $triangle = new Triangle($trianglePoint1, $trianglePoint2, $trianglePoint3);
+    $triangle = new Triangle($trianglePoint1, $trianglePoint2, $trianglePoint3, new \ModernGraphicsLib\RGBAColor(3,2,4,0.5));
     $rectangle = new Rectangle($rectanglePoint1, 18, 24);
 
     $painter->draw($triangle);

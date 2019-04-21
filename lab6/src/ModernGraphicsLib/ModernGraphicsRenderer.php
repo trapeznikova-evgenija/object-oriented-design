@@ -2,7 +2,6 @@
 
 namespace ModernGraphicsLib;
 
-
 class ModernGraphicsRenderer
 {
     private $isDrawing = false;
@@ -26,14 +25,16 @@ class ModernGraphicsRenderer
         $this->isDrawing = true;
     }
 
-    public function drawLine(Point $start, Point $end)
+    public function drawLine(Point $start, Point $end, RGBAColor $color)
     {
         if (!$this->isDrawing)
         {
             echo "DrawLine is allowed between BeginDraw()/EndDraw() only";
         }
 
-        echo "<line fromX=". $start->getXCoord() . " fromY=" . $start->getYCoord() . " toX=" . $end->getXCoord() . " toY=" . $end->getYCoord() . "/>" . PHP_EOL;
+        echo "<line fromX=". $start->getXCoord() . " fromY=" . $start->getYCoord() . " toX=" . $end->getXCoord() . " toY=" . $end->getYCoord() . ">";
+        echo "<color r=" . $color->r . " g=" . $color->g . " b=" . $color->b . " a=" . $color->a . " />";
+        echo "</line>" . PHP_EOL;
     }
 
     public function endDraw()

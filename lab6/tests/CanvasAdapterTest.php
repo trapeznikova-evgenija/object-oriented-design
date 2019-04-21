@@ -27,6 +27,6 @@ class CanvasAdapterTest extends TestCase
 
         $adapter->lineTo(45, 47);
         $adapter->endDraw();
-        $this->expectOutputString("<draw>\n<line fromX=0 fromY=0 toX=45 toY=47/>\n</draw>\n");
+        $this->expectOutputString("<draw>\n<line fromX=0 fromY=0 toX=45 toY=47><color r=0 g=0 b=0 a=1 /></line>\n</draw>\n");
     }
 }

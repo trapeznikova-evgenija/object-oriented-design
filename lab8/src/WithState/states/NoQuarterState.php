@@ -1,6 +1,8 @@
 <?php
 
-class SoldOutState implements StateInterface
+namespace WithState;
+
+class NoQuarterState implements StateInterface
 {
     private $gumBallMachine;
 
@@ -11,26 +13,27 @@ class SoldOutState implements StateInterface
 
     public function insertQuarter()
     {
-        // TODO: Implement insertQuarter() method.
+        echo "You inserted a quarter\n";
+        $this->gumBallMachine->setHasQuarterState();
     }
 
     public function ejectQuarter()
     {
-        // TODO: Implement ejectQuarter() method.
+        echo "You haven't inserted a quarter\n";
     }
 
     public function turnCrank()
     {
-        // TODO: Implement turnCrank() method.
+        echo "You turned but there's no quarter\n";
     }
 
     public function dispense()
     {
-        // TODO: Implement dispense() method.
+        echo "You need to pay first\n";
     }
 
     public function toString()
     {
-        // TODO: Implement toString() method.
+        echo "waiting for quarter";
     }
 }

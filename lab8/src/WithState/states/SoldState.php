@@ -1,5 +1,7 @@
 <?php
 
+namespace WithState;
+
 class SoldState implements StateInterface
 {
     private $gumballMachine;

@@ -1,5 +1,7 @@
 <?php
 
+namespace WithState;
+
 interface GumBallMachineInterface
 {
     public function releaseBall();

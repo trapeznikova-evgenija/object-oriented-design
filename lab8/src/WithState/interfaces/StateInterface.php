@@ -1,5 +1,7 @@
 <?php
 
+namespace WithState;
+
 interface StateInterface
 {
     public function insertQuarter();

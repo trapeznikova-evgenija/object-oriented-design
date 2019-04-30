@@ -8,6 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'tests\\' => array($baseDir . '/tests'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'WithState\\' => array($baseDir . '/src/WithState'),
+    'WithState/states\\' => array($baseDir . '/src/WithState/states'),
+    'WithState/interfaces\\' => array($baseDir . '/src/WithState/interfaces'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),

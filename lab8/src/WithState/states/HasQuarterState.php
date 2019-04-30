@@ -1,6 +1,8 @@
 <?php
 
-namespace WithState;
+namespace WithState\states;
+use WithState\interfaces\StateInterface;
+use WithState\interfaces\GumBallMachineInterface;
 
 class HasQuarterState implements StateInterface
 {
@@ -33,8 +35,8 @@ class HasQuarterState implements StateInterface
         echo "No gumball dispensed\n";
     }
 
-    public function toString()
+    public function toString() : string
     {
-        echo "waiting for turn of crank";
+        return "waiting for turn of crank";
     }
 }

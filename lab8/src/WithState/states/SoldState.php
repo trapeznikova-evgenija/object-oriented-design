@@ -1,6 +1,8 @@
 <?php
 
-namespace WithState;
+namespace WithState\states;
+use WithState\interfaces\StateInterface;
+use WithState\interfaces\GumBallMachineInterface;
 
 class SoldState implements StateInterface
 {
@@ -40,8 +42,8 @@ class SoldState implements StateInterface
         }
     }
 
-    public function toString()
+    public function toString() : string
     {
-        echo "delivering a gumball";
+        return "delivering a gumball";
     }
 }

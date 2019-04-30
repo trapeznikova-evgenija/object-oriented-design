@@ -1,6 +1,8 @@
 <?php
 
-namespace WithState;
+namespace WithState\states;
+use WithState\interfaces\StateInterface;
+use WithState\interfaces\GumBallMachineInterface;
 
 class NoQuarterState implements StateInterface
 {
@@ -32,8 +34,8 @@ class NoQuarterState implements StateInterface
         echo "You need to pay first\n";
     }
 
-    public function toString()
+    public function toString() : string
     {
-        echo "waiting for quarter";
+        return "waiting for quarter";
     }
 }

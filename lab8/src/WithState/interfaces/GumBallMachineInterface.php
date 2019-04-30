@@ -1,6 +1,6 @@
 <?php
 
-namespace WithState;
+namespace WithState\interfaces;
 
 interface GumBallMachineInterface
 {
@@ -11,5 +11,4 @@ interface GumBallMachineInterface
     public function setNoQuarterState(); //состояние нет монетки
     public function setSoldState(); //выдача шарика
     public function setHasQuarterState(); //состояние есть монетка
-
 }

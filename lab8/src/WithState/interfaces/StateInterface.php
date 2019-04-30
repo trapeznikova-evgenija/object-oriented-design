@@ -1,6 +1,6 @@
 <?php
 
-namespace WithState;
+namespace WithState\interfaces;
 
 interface StateInterface
 {
@@ -9,5 +9,5 @@ interface StateInterface
     public function turnCrank(); //дергаем за рычаг
     public function dispense(); //выдача шириков пользователю
 
-    public function toString();
+    public function toString() : string;
 }

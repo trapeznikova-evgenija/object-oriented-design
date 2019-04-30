@@ -6,6 +6,7 @@ interface GumBallMachineInterface
 {
     public function releaseBall();
     public function getBallCount();
+    public function toString() : string;
 
     public function setSoldOutState(); //все шарики распроданы
     public function setNoQuarterState(); //состояние нет монетки

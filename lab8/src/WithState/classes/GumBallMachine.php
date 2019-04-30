@@ -33,6 +33,17 @@ class GumBallMachine implements GumBallMachineInterface
         }
     }
 
+    public function toString(): string
+    {
+        $strTemplate = "Mighty Gumball, Inc.
+                        PHP-enabled Standing Gumball Model #2019 (with state)
+                        Inventory: %d gumball%s
+                        Machine is %s";
+
+        echo sprintf($strTemplate, $this->count, ($this->count !== 1 ? "s" : ""), $this->state->toString()) . PHP_EOL;
+        return sprintf($strTemplate, $this->count, ($this->count !== 1 ? "s" : ""), $this->state->toString());
+    }
+
     public function ejectQuarter()
     {
         $this->state->ejectQuarter();

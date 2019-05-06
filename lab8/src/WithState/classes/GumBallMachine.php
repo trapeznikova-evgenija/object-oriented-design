@@ -2,6 +2,10 @@
 
 namespace WithState\classes;
 use WithState\interfaces\GumBallMachineInterface;
+use WithState\states\HasQuarterState;
+use WithState\states\NoQuarterState;
+use WithState\states\SoldOutState;
+use WithState\states\SoldState;
 
 class GumBallMachine implements GumBallMachineInterface
 {
@@ -20,10 +24,10 @@ class GumBallMachine implements GumBallMachineInterface
 
     public function __construct($numBalls)
     {
-        $this->soldState = $this;
-        $this->soldOutState = $this;
-        $this->noQuarterState = $this;
-        $this->hasQuarterState = $this;
+        $this->soldState = new SoldState($this);
+        $this->soldOutState = new SoldOutState($this);
+        $this->noQuarterState = new NoQuarterState($this);
+        $this->hasQuarterState = new HasQuarterState($this);
         $this->state = $this->soldOutState;
         $this->count = $numBalls;
 
@@ -40,7 +44,6 @@ class GumBallMachine implements GumBallMachineInterface
                         Inventory: %d gumball%s
                         Machine is %s";
 
-        echo sprintf($strTemplate, $this->count, ($this->count !== 1 ? "s" : ""), $this->state->toString()) . PHP_EOL;
         return sprintf($strTemplate, $this->count, ($this->count !== 1 ? "s" : ""), $this->state->toString());
     }
 

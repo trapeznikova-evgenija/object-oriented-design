@@ -35,6 +35,7 @@ class SoldState implements StateInterface
         if ($this->gumballMachine->getBallCount() == 0)
         {
             echo "Oops, out of gumballs\n";
+            $this->gumballMachine->setSoldOutState();
         }
         else
         {

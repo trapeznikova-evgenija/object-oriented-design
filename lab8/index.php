@@ -1,7 +1,7 @@
 <?php
     require_once 'vendor/autoload.php';
 
-    $gm = new \WithState\GumBallMachine(12);
-    $state = new \WithState\HasQuarterState($gm);
-
-    echo $state->toString();
+    $gbm = new \WithState\classes\GumBallMachine(3);
+$gbm->insertQuarter();
+$gbm->turnCrank();
+$gbm->turnCrank();

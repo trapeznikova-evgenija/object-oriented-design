@@ -1,6 +1,7 @@
 <?php
 
 namespace WithState\classes;
+use SebastianBergmann\CodeCoverage\Report\PHP;
 use WithState\interfaces\GumBallMachineInterface;
 use WithState\states\HasQuarterState;
 use WithState\states\NoQuarterState;
@@ -39,10 +40,7 @@ class GumBallMachine implements GumBallMachineInterface
 
     public function toString(): string
     {
-        $strTemplate = "Mighty Gumball, Inc.
-                        PHP-enabled Standing Gumball Model #2019 (with state)
-                        Inventory: %d gumball%s
-                        Machine is %s";
+        $strTemplate = "Mighty Gumball, Inc.\nPHP-enabled Standing Gumball Model #2019 (with state)\nInventory: %d gumball%s\nMachine is %s";
 
         return sprintf($strTemplate, $this->count, ($this->count !== 1 ? "s" : ""), $this->state->toString());
     }

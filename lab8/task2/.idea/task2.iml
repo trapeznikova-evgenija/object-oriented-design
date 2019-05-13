@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/WithState" isTestSource="false" packagePrefix="WithState\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Naive" isTestSource="false" packagePrefix="Naive\" />
       <sourceFolder url="file://$MODULE_DIR$/src/WithState/states" isTestSource="false" packagePrefix="WithState/states\" />
       <sourceFolder url="file://$MODULE_DIR$/src/WithState/interfaces" isTestSource="false" packagePrefix="WithState/interfaces\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" packagePrefix="tests\" />

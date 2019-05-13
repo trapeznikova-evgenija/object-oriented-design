@@ -2,6 +2,7 @@
   "autoload" : {
     "psr-4" : {
       "WithState\\" : "src/WithState",
+      "Naive\\" : "src/Naive",
       "WithState/interfaces\\" : "src/WithState/interfaces",
       "WithState/states\\" : "src/WithState/states",
       "tests\\" : "tests"

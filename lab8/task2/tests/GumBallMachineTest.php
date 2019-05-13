@@ -99,8 +99,7 @@ class GumBallMachineTest extends TestCase
     public function testEjectOneQuarter()
     {
         $gbm = new GumBallMachine(2);
-        $instruction = function () use ($gbm)
-        {
+        $instruction = function () use ($gbm) {
             $gbm->insertQuarter();
             $gbm->ejectQuarter();
         };
@@ -115,8 +114,7 @@ class GumBallMachineTest extends TestCase
     public function testEjectAllInsertedQuarters()
     {
         $gbm = new GumBallMachine(2);
-        $instruction = function () use ($gbm)
-        {
+        $instruction = function () use ($gbm) {
             $gbm->insertQuarter();
             $gbm->insertQuarter();
             $gbm->insertQuarter();
@@ -137,8 +135,7 @@ class GumBallMachineTest extends TestCase
     public function testEjectQuarterWhenNoQuarter()
     {
         $gbm = new GumBallMachine(3);
-        $instruction = function () use ($gbm)
-        {
+        $instruction = function () use ($gbm) {
             $gbm->setNoQuarterState();
             $gbm->ejectQuarter();
         };
@@ -150,8 +147,7 @@ class GumBallMachineTest extends TestCase
     public function testEjectQuarterWhenTurnCrank()
     {
         $gbm = new GumBallMachine(3);
-        $instruction = function () use ($gbm)
-        {
+        $instruction = function () use ($gbm) {
             $gbm->insertQuarter();
             $gbm->insertQuarter();
             $gbm->turnCrank();
@@ -168,6 +164,34 @@ class GumBallMachineTest extends TestCase
         $this->expectOutputStringWitnMultipleOutput($instruction, $expectedString);
     }
 
+    public function testEjectQuarterWhenSoldOutState()
+    {
+        $gbm = new GumBallMachine(2);
+        $instruction = function () use ($gbm) {
+            $gbm->insertQuarter();
+            $gbm->insertQuarter();
+            $gbm->insertQuarter();
+            $gbm->turnCrank();
+            $gbm->turnCrank();
+            $gbm->turnCrank();
+            $gbm->ejectQuarter();
+        };
+
+        $expectedString = "You inserted a quarter\n";
+        $expectedString .= "Quarter inserted. Quarter count 1\n";
+        $expectedString .= "Quarter inserted. Quarter count 2\n";
+        $expectedString .= "Quarter inserted. Quarter count 3\n";
+        $expectedString .= "You turned...\n";
+        $expectedString .= "A gumball comes rolling out the slot...\n";
+        $expectedString .= "You turned...\n";
+        $expectedString .= "A gumball comes rolling out the slot...\n";
+        $expectedString .= "Oops, out of gumballs\n";
+        $expectedString .= "You turned but there's no gumballs\n";
+        $expectedString .= "No gumball dispensed\n";
+        $expectedString .= "Returned 1 quarter\n";
+
+        $this->expectOutputStringWitnMultipleOutput($instruction, $expectedString);
+    }
 
     public function testAgainTurnCrankWhereSoldOutState()
     {

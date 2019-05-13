@@ -22,7 +22,7 @@ class HasQuarterStateTest extends TestCase
     {
         $this->gumBallMachine = new GumBallMachine(15);
         $currState = new HasQuarterState($this->gumBallMachine);
-        $this->expectOutputString("You turned...\n");
+        $this->expectOutputString("You turned...\nYou cannot return a quarter because you did not add it.\n");
         $currState->turnCrank();
 
     }
@@ -31,7 +31,7 @@ class HasQuarterStateTest extends TestCase
     {
         $this->gumBallMachine = new GumBallMachine(15);
         $currState = new HasQuarterState($this->gumBallMachine);
-        $this->expectOutputString("Quarter returned\n");
+        $this->expectOutputString("Returned 0 quarters\n");
         $currState->ejectQuarter();
     }
 
@@ -47,7 +47,7 @@ class HasQuarterStateTest extends TestCase
     {
         $this->gumBallMachine = new GumBallMachine(16);
         $currState = new HasQuarterState($this->gumBallMachine);
-        $this->expectOutputString("You can't insert another quarter\n");
+        $this->expectOutputString("Quarter inserted. Quarter count 1\n");
         $currState->insertQuarter();
     }
 }

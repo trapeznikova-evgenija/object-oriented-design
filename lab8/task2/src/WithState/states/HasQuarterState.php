@@ -31,6 +31,7 @@ class HasQuarterState implements StateInterface
         echo "You turned...\n";
         $this->quarterRegulator->decrementQuarterCounter();
         $this->gumBallMachine->setSoldState();
+
     }
 
     public function dispense()

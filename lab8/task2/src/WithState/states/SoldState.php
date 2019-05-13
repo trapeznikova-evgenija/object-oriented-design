@@ -37,9 +37,13 @@ class SoldState implements StateInterface
             echo "Oops, out of gumballs\n";
             $this->gumballMachine->setSoldOutState();
         }
-        else
+        else if ($this->gumballMachine->getQuarterRegulator()->getQuarterCounter() == 0)
         {
             $this->gumballMachine->setNoQuarterState();
+        }
+        else
+        {
+            $this->gumballMachine->setHasQuarterState();
         }
     }
 

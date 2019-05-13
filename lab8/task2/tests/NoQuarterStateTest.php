@@ -23,7 +23,6 @@ class NoQuarterStateTest extends TestCase
         $currState = new NoQuarterState($this->gumBallMachine);
         $this->expectOutputString("You turned but there's no quarter\n");
         $currState->turnCrank();
-
     }
 
     public function testEjectQuarter()
@@ -46,7 +45,7 @@ class NoQuarterStateTest extends TestCase
     {
         $this->gumBallMachine = new GumBallMachine(16);
         $currState = new NoQuarterState($this->gumBallMachine);
-        $this->expectOutputString("You inserted a quarter\n");
+        $this->expectOutputString("You inserted a quarter\nQuarter inserted. Quarter count 1\n");
         $currState->insertQuarter();
     }
 }

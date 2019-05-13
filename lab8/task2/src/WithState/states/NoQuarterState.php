@@ -7,15 +7,18 @@ use WithState\interfaces\GumBallMachineInterface;
 class NoQuarterState implements StateInterface
 {
     private $gumBallMachine;
+    private $quarterRegulator;
 
     public function __construct(GumBallMachineInterface $gumBallMachine)
     {
         $this->gumBallMachine = $gumBallMachine;
+        $this->quarterRegulator = $this->gumBallMachine->getQuarterRegulator();
     }
 
     public function insertQuarter()
     {
         echo "You inserted a quarter\n";
+        $this->quarterRegulator->incrementQuarterCounter();
         $this->gumBallMachine->setHasQuarterState();
     }
 

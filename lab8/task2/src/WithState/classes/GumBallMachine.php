@@ -26,13 +26,13 @@ class GumBallMachine implements GumBallMachineInterface
 
     public function __construct($numBalls)
     {
+        $this->quarterRegulator = new QuarterRegulator();
         $this->soldState = new SoldState($this);
         $this->soldOutState = new SoldOutState($this);
         $this->noQuarterState = new NoQuarterState($this);
         $this->hasQuarterState = new HasQuarterState($this);
         $this->state = $this->soldOutState;
         $this->ballsCount = $numBalls;
-        $this->quarterRegulator = new QuarterRegulator();
 
         if ($this->ballsCount > 0)
         {

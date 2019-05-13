@@ -21,7 +21,7 @@ class QuarterRegulator
     {
         if (self::getQuarterCounter() >= 0)
         {
-            $strTemplate = "Returned " . self::getQuarterCounter() . "quarter%s";
+            $strTemplate = "Returned " . self::getQuarterCounter() . " quarter%s";
             $suffix = (self::getQuarterCounter() != 1) ? "s" : "";
             $strTemplate = sprintf($strTemplate, $suffix);
             self::setToZeroQuarterCounter();
@@ -32,10 +32,10 @@ class QuarterRegulator
     public function incrementQuarterCounter()
     {
         if ($this->getQuarterCounter() < 5) {
-            echo "Quarter inserted. Quarter count " . $this->getQuarterCounter();
             $this->quarterCounter++;
+            echo "Quarter inserted. Quarter count " . $this->getQuarterCounter() . PHP_EOL;
         } else {
-            echo "GumBallMachine no longer accepting quarters";
+            echo "GumBallMachine no longer accepting quarters" . PHP_EOL;
         }
     }
 
@@ -44,7 +44,7 @@ class QuarterRegulator
         if ($this->quarterCounter > 0) {
             $this->quarterCounter--;
         } else {
-            echo "You cannot return a coin because you did not add it.";
+            echo "You cannot return a quarter because you did not add it." . PHP_EOL;
         }
     }
 

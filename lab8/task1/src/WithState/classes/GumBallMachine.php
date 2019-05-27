@@ -1,7 +1,6 @@
 <?php
 
 namespace WithState\classes;
-use SebastianBergmann\CodeCoverage\Report\PHP;
 use WithState\interfaces\GumBallMachineInterface;
 use WithState\states\HasQuarterState;
 use WithState\states\NoQuarterState;

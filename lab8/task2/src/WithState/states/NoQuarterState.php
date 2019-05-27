@@ -7,18 +7,16 @@ use WithState\interfaces\GumBallMachineContextInterface;
 class NoQuarterState implements StateInterface
 {
     private $gumBallMachine;
-    private $quarterRegulator;
 
     public function __construct(GumBallMachineContextInterface $gumBallMachine)
     {
         $this->gumBallMachine = $gumBallMachine;
-        $this->quarterRegulator = $this->gumBallMachine->getQuarterRegulator();
     }
 
     public function insertQuarter()
     {
         echo "You inserted a quarter\n";
-        $this->quarterRegulator->incrementQuarterCounter();
+        $this->gumBallMachine->getQuarterRegulator()->incrementQuarterCounter();
         $this->gumBallMachine->setHasQuarterState();
     }
 
@@ -40,5 +38,15 @@ class NoQuarterState implements StateInterface
     public function toString() : string
     {
         return "waiting for quarter";
+    }
+
+    public function fillMachine(int $num): void
+    {
+        if ($num == 0)
+        {
+            $this->gumBallMachine->setSoldOutState();
+        }
+
+        $this->gumBallMachine->setNumBalls($num);
     }
 }

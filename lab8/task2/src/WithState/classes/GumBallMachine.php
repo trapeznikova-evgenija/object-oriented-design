@@ -4,7 +4,7 @@ namespace WithState\classes;
 
 class GumBallMachine
 {
-    /* int */
+    /* GumBallMachineContext */
     private $context;
 
     public function __construct($numBalls)
@@ -42,8 +42,8 @@ class GumBallMachine
         return $this->context->getBallCount();
     }
 
-    public function getQuarterRegulator() : QuarterRegulator
+    public function fillMachine(int $num) : void
     {
-        return $this->context->getQuarterRegulator();
+        $this->context->fillMachine($num);
     }
 }

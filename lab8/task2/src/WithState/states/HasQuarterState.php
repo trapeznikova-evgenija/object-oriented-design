@@ -7,29 +7,27 @@ use WithState\interfaces\GumBallMachineContextInterface;
 class HasQuarterState implements StateInterface
 {
     private $gumBallMachine;
-    private $quarterRegulator;
 
     public function __construct(GumBallMachineContextInterface $gumBallMachine)
     {
         $this->gumBallMachine = $gumBallMachine;
-        $this->quarterRegulator = $this->gumBallMachine->getQuarterRegulator();
     }
 
     public function insertQuarter()
     {
-        $this->quarterRegulator->incrementQuarterCounter();
+        $this->gumBallMachine->getQuarterRegulator()->incrementQuarterCounter();
     }
 
     public function ejectQuarter()
     {
-        $this->quarterRegulator->returnQuarter();
+        $this->gumBallMachine->getQuarterRegulator()->returnQuarter();
         $this->gumBallMachine->setNoQuarterState();
     }
 
     public function turnCrank()
     {
         echo "You turned...\n";
-        $this->quarterRegulator->decrementQuarterCounter();
+        $this->gumBallMachine->getQuarterRegulator()->decrementQuarterCounter();
         $this->gumBallMachine->setSoldState();
 
     }
@@ -42,5 +40,15 @@ class HasQuarterState implements StateInterface
     public function toString() : string
     {
         return "waiting for turn of crank";
+    }
+
+    public function fillMachine(int $num) : void
+    {
+        if ($num == 0)
+        {
+            $this->gumBallMachine->setSoldOutState();
+        }
+
+        $this->gumBallMachine->setNumBalls($num);
     }
 }

@@ -10,4 +10,5 @@ interface StateInterface
     public function dispense(); //выдача шириков пользователю
 
     public function toString() : string;
+    public function fillMachine(int $num) : void;
 }

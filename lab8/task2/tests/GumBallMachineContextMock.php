@@ -78,11 +78,6 @@ class GumBallMachineContextMock implements GumBallMachineContextInterface
         return $this->ballsCount;
     }
 
-    public function getQuarterRegulator() : QuarterRegulator
-    {
-        return $this->quarterRegulator;
-    }
-
     public function setSoldState()
     {
         echo "Set Sold State" . PHP_EOL;
@@ -101,5 +96,19 @@ class GumBallMachineContextMock implements GumBallMachineContextInterface
     public function setSoldOutState()
     {
         echo "Set Sold Out State" . PHP_EOL;
+    }
+
+    public function getQuarterRegulator() : QuarterRegulator
+    {
+        return $this->quarterRegulator;
+    }
+
+    public function setNumBalls(int $num) : void
+    {
+        $this->ballsCount = $num + $this->ballsCount;
+    }
+    public function fillMachine(int $num)
+    {
+        $this->state->fillMachine($num);
     }
 }

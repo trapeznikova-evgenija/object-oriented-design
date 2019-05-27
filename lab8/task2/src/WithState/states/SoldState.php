@@ -51,4 +51,9 @@ class SoldState implements StateInterface
     {
         return "delivering a gumball";
     }
+
+    public function fillMachine(int $num): void
+    {
+        echo "Can not fill the machine gum balls" . PHP_EOL;
+    }
 }

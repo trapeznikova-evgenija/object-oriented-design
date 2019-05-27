@@ -132,18 +132,6 @@ class GumBallMachineTest extends TestCase
         $this->expectOutputStringWitnMultipleOutput($instruction, $expectedString);
     }
 
-    public function testEjectQuarterWhenNoQuarter()
-    {
-        $gbm = new GumBallMachine(3);
-        $instruction = function () use ($gbm) {
-            $gbm->setNoQuarterState();
-            $gbm->ejectQuarter();
-        };
-
-        $expectedString = "You haven't inserted a quarter\n";
-        $this->expectOutputStringWitnMultipleOutput($instruction, $expectedString);
-    }
-
     public function testEjectQuarterWhenTurnCrank()
     {
         $gbm = new GumBallMachine(3);
@@ -196,8 +184,7 @@ class GumBallMachineTest extends TestCase
     public function testAgainTurnCrankWhereSoldOutState()
     {
         $gmb = new GumBallMachine(1);
-        $instructions = function () use ($gmb)
-        {
+        $instructions = function () use ($gmb) {
             $gmb->insertQuarter();
             $gmb->turnCrank();
             $gmb->turnCrank();
@@ -217,8 +204,7 @@ class GumBallMachineTest extends TestCase
     public function testAgainTurnCrankWhereSoldState()
     {
         $gmb = new GumBallMachine(3);
-        $instructions = function () use ($gmb)
-        {
+        $instructions = function () use ($gmb) {
             $gmb->insertQuarter();
             $gmb->turnCrank();
             $gmb->turnCrank();
@@ -230,6 +216,44 @@ class GumBallMachineTest extends TestCase
         $expectedString .= "A gumball comes rolling out the slot...\n";
         $expectedString .= "You turned but there's no quarter\n";
         $expectedString .= "You need to pay first\n";
+
+        $this->expectOutputStringWitnMultipleOutput($instructions, $expectedString);
+    }
+
+    public function testFillMachineWithZeroBalls()
+    {
+        $gbm = new GumBallMachine(4);
+        $instructions = function () use ($gbm) {
+            $gbm->fillMachine(0);
+        };
+
+        $expectedString = "You can not fill the machine with emptiness\n";
+
+        $this->expectOutputStringWitnMultipleOutput($instructions, $expectedString);
+    }
+
+    public function testFillMachineWithBalls()
+    {
+        $gbm = new GumBallMachine(3);
+        $gbm->fillMachine(4);
+
+        $this->assertEquals(7, $gbm->getBallCount());
+    }
+
+    public function testFillMachineAndCheckQuarters()
+    {
+        $gbm = new GumBallMachine(4);
+        $instructions = function () use ($gbm) {
+            $gbm->insertQuarter();
+            $gbm->insertQuarter();
+            $gbm->fillMachine(3);
+            $gbm->insertQuarter();
+        };
+
+        $expectedString = "You inserted a quarter\n";
+        $expectedString .= "Quarter inserted. Quarter count 1\n";
+        $expectedString .= "Quarter inserted. Quarter count 2\n";
+        $expectedString .= "Quarter inserted. Quarter count 3\n";
 
         $this->expectOutputStringWitnMultipleOutput($instructions, $expectedString);
     }

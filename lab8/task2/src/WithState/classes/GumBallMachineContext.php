@@ -9,10 +9,10 @@ use WithState\states\SoldState;
 
 class GumBallMachineContext implements GumBallMachineContextInterface
 {
-    /* int */
-    private $ballsCount;
     /* QuarterRegulator */
     private $quarterRegulator;
+    /* int */
+    private $ballsCount;
     /* SoldState */
     private $soldState;
     /* SoldOutState */
@@ -23,6 +23,7 @@ class GumBallMachineContext implements GumBallMachineContextInterface
     private $hasQuarterState;
     /* StateInterface */
     private $state;
+
 
     public function __construct($numBalls)
     {
@@ -82,6 +83,30 @@ class GumBallMachineContext implements GumBallMachineContextInterface
         return $this->quarterRegulator;
     }
 
+    public function incrementQuarterCounter()
+    {
+        $this->quarterRegulator->incrementQuarterCounter();
+    }
+
+    public function decrementQuarterCounter()
+    {
+        $this->quarterRegulator->decrementQuarterCounter();
+    }
+
+    public function returnQuarter()
+    {
+        $this->quarterRegulator->returnQuarter();
+    }
+
+    public function fillMachine(int $num) : void
+    {
+        if ($num <= 0)
+        {
+            echo "You can not fill the machine with emptiness" . PHP_EOL;
+        }
+        $this->state->fillMachine($num);
+    }
+
     public function setSoldState()
     {
         $this->state = $this->soldState;
@@ -100,5 +125,10 @@ class GumBallMachineContext implements GumBallMachineContextInterface
     public function setSoldOutState()
     {
         $this->state = $this->soldOutState;
+    }
+
+    public function setNumBalls(int $num) : void
+    {
+        $this->ballsCount = $num + $this->ballsCount;
     }
 }

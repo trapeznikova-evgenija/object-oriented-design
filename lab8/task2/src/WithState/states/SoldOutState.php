@@ -7,12 +7,10 @@ use WithState\interfaces\GumBallMachineContextInterface;
 class SoldOutState implements StateInterface
 {
     private $gumBallMachine;
-    private $quarterRegulator;
 
     public function __construct(GumBallMachineContextInterface $gumBallMachine)
     {
         $this->gumBallMachine = $gumBallMachine;
-        $this->quarterRegulator = $this->gumBallMachine->getQuarterRegulator();
     }
 
     public function insertQuarter()
@@ -22,13 +20,13 @@ class SoldOutState implements StateInterface
 
     public function ejectQuarter()
     {
-        if ($this->quarterRegulator->getQuarterCounter() == 0)
+        if ($this->gumBallMachine->getQuarterRegulator()->getQuarterCounter() == 0)
         {
             echo "You can't eject, you haven't inserted a quarter yet\n";
         }
         else
         {
-            $this->quarterRegulator->returnQuarter();
+            $this->gumBallMachine->getQuarterRegulator()->returnQuarter();
         }
     }
 
@@ -45,5 +43,24 @@ class SoldOutState implements StateInterface
     public function toString() : string
     {
         return "sold out";
+    }
+
+    public function fillMachine(int $num): void
+    {
+        if ($num == 0)
+        {
+            return;
+        }
+
+        $this->gumBallMachine->setNumBalls($num);
+
+        if ($this->gumBallMachine->getQuarterRegulator()->getQuarterCounter() != 0)
+        {
+            $this->gumBallMachine->setHasQuarterState();
+        }
+        else
+        {
+            $this->gumBallMachine->setNoQuarterState();
+        }
     }
 }

@@ -3,7 +3,6 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use WithState\classes\GumBallMachine;
 use WithState\states\SoldState;
 
 class SoldStateTest extends TestCase
@@ -31,18 +30,18 @@ class SoldStateTest extends TestCase
         $currState->ejectQuarter();
     }
 
-    public function testDispenseWithEmptyGumBallMachine()
-    {
-        $currState = new SoldState($this->gumBallMachine);
-        $this->expectOutputString("Oops, out of gumballs\n");
-        $currState->dispense();
-    }
-
     public function testInsertQuarter()
     {
         $currState = new SoldState($this->gumBallMachine);
         $this->expectOutputString("Please wait, we're already giving you a gumball\n");
         $currState->insertQuarter();
+    }
+
+    public function testFillMachine()
+    {
+        $currState = new SoldState($this->gumBallMachine);
+        $currState->fillMachine(2);
+        $this->expectOutputString("Can not fill the machine gum balls\n");
     }
 
     protected function setUp() : void

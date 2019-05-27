@@ -18,7 +18,7 @@ class NoQuarterStateTest extends TestCase
     public function testInsertQuarter()
     {
         $currState = new NoQuarterState($this->gumBallMachine);
-        $this->expectOutputString("You inserted a quarter\nQuarter inserted. Quarter count 1\n");
+        $this->expectOutputString("You inserted a quarter\nQuarter inserted. Quarter count 1\nSet Has Quarter State\n");
         $currState->insertQuarter();
     }
 

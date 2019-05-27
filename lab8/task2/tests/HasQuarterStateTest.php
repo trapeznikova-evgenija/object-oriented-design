@@ -26,14 +26,14 @@ class HasQuarterStateTest extends TestCase
     public function testTurnCrank()
     {
         $currState = new HasQuarterState($this->gumBallMachine);
-        $this->expectOutputString("You turned...\nYou cannot return a quarter because you did not add it.\n");
+        $this->expectOutputString("You turned...\nYou cannot return a quarter because you did not add it.\nSet Sold State\n");
         $currState->turnCrank();
     }
 
     public function testEjectQuarter()
     {
         $currState = new HasQuarterState($this->gumBallMachine);
-        $this->expectOutputString("Returned 0 quarters\n");
+        $this->expectOutputString("Returned 0 quarters\nSet NoQuarter State\n");
         $currState->ejectQuarter();
     }
 

@@ -6,6 +6,7 @@ namespace tests;
 use PHPUnit\Framework\TestCase;
 use WithState\classes\GumBallMachine;
 use WithState\states\SoldOutState;
+use WithState\states\SoldState;
 
 class SoldOutStateTest extends TestCase
 {
@@ -22,7 +23,6 @@ class SoldOutStateTest extends TestCase
         $currState = new SoldOutState($this->gumBallMachine);
         $this->expectOutputString("You turned but there's no gumballs\n");
         $currState->turnCrank();
-
     }
 
     public function testEjectQuarter()

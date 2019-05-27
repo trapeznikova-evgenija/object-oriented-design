@@ -13,14 +13,12 @@ class SoldOutStateTest extends TestCase
 
     public function testCurrentState()
     {
-        $this->gumBallMachine = new GumBallMachine(12);
         $currState = new SoldOutState($this->gumBallMachine);
         $this->assertEquals("sold out", $currState->toString());
     }
 
     public function testTurnCrank()
     {
-        $this->gumBallMachine = new GumBallMachine(15);
         $currState = new SoldOutState($this->gumBallMachine);
         $this->expectOutputString("You turned but there's no gumballs\n");
         $currState->turnCrank();
@@ -29,7 +27,6 @@ class SoldOutStateTest extends TestCase
 
     public function testEjectQuarter()
     {
-        $this->gumBallMachine = new GumBallMachine(15);
         $currState = new SoldOutState($this->gumBallMachine);
         $this->expectOutputString("You can't eject, you haven't inserted a quarter yet\n");
         $currState->ejectQuarter();
@@ -37,7 +34,6 @@ class SoldOutStateTest extends TestCase
 
     public function testDispense()
     {
-        $this->gumBallMachine = new GumBallMachine(16);
         $currState = new SoldOutState($this->gumBallMachine);
         $this->expectOutputString("No gumball dispensed\n");
         $currState->dispense();
@@ -45,9 +41,14 @@ class SoldOutStateTest extends TestCase
 
     public function testInsertQuarter()
     {
-        $this->gumBallMachine = new GumBallMachine(16);
         $currState = new SoldOutState($this->gumBallMachine);
         $this->expectOutputString("You can't insert a quarter, the machine is sold out\n");
         $currState->insertQuarter();
+    }
+
+    protected function setUp() : void
+    {
+        parent::setUp();
+        $this->gumBallMachine = new GumBallMachineContextMock(0);
     }
 }

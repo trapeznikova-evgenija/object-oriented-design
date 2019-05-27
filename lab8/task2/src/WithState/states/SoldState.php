@@ -2,13 +2,13 @@
 
 namespace WithState\states;
 use WithState\interfaces\StateInterface;
-use WithState\interfaces\GumBallMachineInterface;
+use WithState\interfaces\GumBallMachineContextInterface;
 
 class SoldState implements StateInterface
 {
     private $gumballMachine;
 
-    public function __construct(GumBallMachineInterface $gumBallMachine)
+    public function __construct(GumBallMachineContextInterface $gumBallMachine)
     {
         $this->gumballMachine = $gumBallMachine;
     }

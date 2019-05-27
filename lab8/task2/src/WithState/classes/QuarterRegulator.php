@@ -19,31 +19,37 @@ class QuarterRegulator
 
     public function returnQuarter()
     {
-        if (self::getQuarterCounter() >= 0)
+        if ($this->getQuarterCounter() >= 0)
         {
-            $strTemplate = "Returned " . self::getQuarterCounter() . " quarter%s";
-            $suffix = (self::getQuarterCounter() != 1) ? "s" : "";
+            $strTemplate = "Returned " . $this->getQuarterCounter() . " quarter%s";
+            $suffix = ($this->getQuarterCounter() != 1) ? "s" : "";
             $strTemplate = sprintf($strTemplate, $suffix);
-            self::setToZeroQuarterCounter();
+            $this->setToZeroQuarterCounter();
             echo $strTemplate . PHP_EOL;
         }
     }
 
     public function incrementQuarterCounter()
     {
-        if ($this->getQuarterCounter() < 5) {
+        if ($this->getQuarterCounter() < 5)
+        {
             $this->quarterCounter++;
             echo "Quarter inserted. Quarter count " . $this->getQuarterCounter() . PHP_EOL;
-        } else {
+        }
+        else
+        {
             echo "GumBallMachine no longer accepting quarters" . PHP_EOL;
         }
     }
 
     public function decrementQuarterCounter()
     {
-        if ($this->quarterCounter > 0) {
+        if ($this->quarterCounter > 0)
+        {
             $this->quarterCounter--;
-        } else {
+        }
+        else
+        {
             echo "You cannot return a quarter because you did not add it." . PHP_EOL;
         }
     }

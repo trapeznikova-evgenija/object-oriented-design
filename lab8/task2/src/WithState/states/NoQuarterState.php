@@ -2,14 +2,14 @@
 
 namespace WithState\states;
 use WithState\interfaces\StateInterface;
-use WithState\interfaces\GumBallMachineInterface;
+use WithState\interfaces\GumBallMachineContextInterface;
 
 class NoQuarterState implements StateInterface
 {
     private $gumBallMachine;
     private $quarterRegulator;
 
-    public function __construct(GumBallMachineInterface $gumBallMachine)
+    public function __construct(GumBallMachineContextInterface $gumBallMachine)
     {
         $this->gumBallMachine = $gumBallMachine;
         $this->quarterRegulator = $this->gumBallMachine->getQuarterRegulator();

@@ -1,15 +1,42 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 02.06.19
- * Time: 21:35
- */
 
 namespace App\classes;
 
 
-class Style
-{
+use App\classes\common\RGBAColor;
+use App\interfaces\StyleInterface;
 
+class Style implements StyleInterface
+{
+    /** @var bool */
+    private $isEnabled;
+
+    /** @var RGBAColor */
+    private $color;
+
+    public function __construct(bool $isEnabled, RGBAColor $color)
+    {
+        $this->isEnabled = $isEnabled;
+        $this->color = $color;
+    }
+
+    public function setColor(RGBAColor $RGBAColor): void
+    {
+        $this->color = $RGBAColor;
+    }
+
+    public function getColor(): RGBAColor
+    {
+        return $this->color;
+    }
+
+    public function isEnabled(): bool
+    {
+        return $this->isEnabled;
+    }
+
+    public function enable(bool $enable)
+    {
+       $this->isEnabled = $enable;
+    }
 }

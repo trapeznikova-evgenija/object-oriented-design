@@ -17,4 +17,19 @@ class RectD
         $this->height = $height;
         $this->width = $width;
     }
+
+    public function getLeftTop() : Point
+    {
+        return new Point($this->left, $this->top);
+    }
+
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
 }

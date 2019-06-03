@@ -2,7 +2,9 @@
 
 namespace App\classes;
 
+use App\classes\common\Point;
 use App\classes\common\RectD;
+use App\classes\common\RGBAColor;
 use App\interfaces\CanvasInterface;
 use App\interfaces\GroupShapeInterface;
 use App\interfaces\StyleInterface;
@@ -24,19 +26,56 @@ class GroupShape implements GroupShapeInterface
      */
     private $shapes = [];
 
+    public function __construct()
+    {
+        $this->fillStyle = $this;
+        $this->outlineStyle = $this;
+    }
+
     public function draw(CanvasInterface $canvas)
     {
-
+        foreach ($this->shapes as $value)
+        {
+            $value->draw($canvas);
+        }
     }
 
     public function getFrame(): RectD
     {
-        // TODO: Implement getFrame() method.
+       if (empty($this->shapes))
+       {
+           return new RectD(0, 0, 0, 0);
+       }
+
+       $topY = PHP_FLOAT_MAX;
+       $leftX = PHP_FLOAT_MAX;
+       $rightX = PHP_FLOAT_MIN;
+       $bottomY = PHP_FLOAT_MIN;
+
+       foreach ($this->shapes as $value)
+       {
+           $frame = $value->getFrame();
+           $leftTop = $frame->getLeftTop();
+           $rightBottom = new Point($leftTop->getX() + $frame->getWidth(), $leftTop->getY() + $frame->getHeight());
+
+           $leftX = min($leftX, $leftTop->getX());
+           $topY = min($topY, $leftTop->getY());
+           $rightX = max($rightX, $rightBottom->getX());
+           $bottomY = max($bottomY, $rightBottom->getY());
+       }
+
+       $rect = new RectD($leftX, $topY,$rightX - $leftX, $bottomY - $topY);
+       return $rect;
     }
 
     public function setFrame(RectD $rect): void
     {
-        // TODO: Implement setFrame() method.
+        if (empty($this->shapes))
+        {
+            return;
+        }
+
+        $currFrame = $this->getFrame();
     }
 
     public function getOutlineStyle(): StyleInterface

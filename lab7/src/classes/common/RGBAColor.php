@@ -17,7 +17,7 @@ class RGBAColor
      * @param $b
      * @param $a
      */
-    public function __construct($r, $g, $b, $a)
+    public function __construct($r, $g, $b, $a = 1)
     {
         $this->a = $a;
         $this->b = $b;

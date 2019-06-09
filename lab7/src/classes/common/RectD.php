@@ -5,10 +5,10 @@ namespace App\classes\common;
 
 class RectD
 {
-    private $left;
-    private $top;
-    private $width;
-    private $height;
+    public $left;
+    public $top;
+    public $width;
+    public $height;
 
     public function __construct($left, $top, $width, $height)
     {

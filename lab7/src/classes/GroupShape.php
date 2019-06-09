@@ -7,12 +7,13 @@ use App\classes\common\RectD;
 use App\classes\common\RGBAColor;
 use App\interfaces\CanvasInterface;
 use App\interfaces\GroupShapeInterface;
+use App\interfaces\OutlineStyleInterface;
 use App\interfaces\StyleInterface;
 
 class GroupShape implements GroupShapeInterface
 {
     /**
-     * @var Style
+     * @var OutlineStyleInterface
      */
     private $outlineStyle;
 
@@ -76,40 +77,98 @@ class GroupShape implements GroupShapeInterface
         }
 
         $currFrame = $this->getFrame();
+
+        $newFrameLeftTop = $rect->getLeftTop();
+        $currFrameLeftTop = $currFrame->getLeftTop();
+
+        $frameScaleX = $rect->getWidth() / $currFrame->getWidth();
+        $frameScaleY = $rect->getHeight() / $currFrame->getHeight();
+
+        $frameOffsetX = $newFrameLeftTop->getX() - $currFrameLeftTop->getX();
+        $frameOffsetY = $newFrameLeftTop->getY() - $currFrameLeftTop->getY();
+
+        foreach ($this->shapes as $value)
+        {
+            $frame = $value->getFrame();
+
+            $frame->left = $frame->left + $frameOffsetX;
+            $frame->top = $frame->top + $frameOffsetY;
+
+            $shapeFrameOffsetX = $frame->left - $newFrameLeftTop->getX();
+            $shapeFrameOffsetY = $frame->top - $newFrameLeftTop->getY();
+
+            $frame->left = $newFrameLeftTop->getX() + ($shapeFrameOffsetX * $frameScaleX);
+            $frame->top = $newFrameLeftTop->getY() + ($shapeFrameOffsetY * $frameScaleY);
+            $frame->width = $frameScaleX * $frame->width;
+            $frame->height = $frameScaleY * $frame->height;
+
+            $value->setFrame($frame);
+        }
     }
 
-    public function getOutlineStyle(): StyleInterface
+    public function getOutlineStyle(): OutlineStyleInterface
     {
-        // TODO: Implement getOutlineStyle() method.
+        return $this->outlineStyle;
     }
 
     public function getFillStyle(): StyleInterface
     {
-        // TODO: Implement getFillStyle() method.
+       return $this->fillStyle;
     }
 
     public function getGroup(): GroupShapeInterface
     {
-        // TODO: Implement getGroup() method.
+        return $this;
     }
 
     public function getShapesCount()
     {
-        // TODO: Implement getShapesCount() method.
+        return count($this->shapes);
     }
 
     public function getShapeAtIndex(int $index): \ShapeInterface
     {
-        // TODO: Implement getShapeAtIndex() method.
+        if (array_key_exists($index, $this->shapes))
+        {
+            return $this->shapes[$index];
+        }
+
+        echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
     }
 
     public function insertShape(\ShapeInterface $shape, int $position)
     {
-        // TODO: Implement insertShape() method.
+        if (!$this->shapes[$position] = $shape)
+        {
+            echo "Не удалось выполнить insertShape" . PHP_EOL;
+        }
     }
 
     public function removeShapeAtIndex(int $index): void
     {
-        // TODO: Implement removeShapeAtIndex() method.
+        if (array_key_exists($index, $this->shapes))
+        {
+            unset($this->shapes[$index]);
+        }
+        else
+        {
+            echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
+        }
+    }
+
+    private function enumerateOutlineStyles()
+    {
+        foreach ($this->shapes as $shape)
+        {
+            if (!$shape->getFillStyle())
+            {
+                break;
+            }
+        }
+    }
+
+    private function enumerateFillStyles()
+    {
+
     }
 }

@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="261">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#43#60#0#PHP" expanded="true" />
               </folding>
@@ -44,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Shape.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Shape.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/shapes/Shape.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="22" column="84" lean-forward="false" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="84" />
+            <state relative-caret-position="124">
+              <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
               <folding>
                 <element signature="e#26#55#0#PHP" expanded="true" />
               </folding>
@@ -83,12 +83,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ellipse.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/shapes/Ellipse.php">
+      <file leaf-file-name="CanvasInterface.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="17" column="21" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="17" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="162">
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+              <folding>
+                <element signature="e#28#45#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,8 +98,8 @@
       <file leaf-file-name="Canvas.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/drawable/Canvas.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="286">
+              <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
               <folding>
                 <element signature="e#29#46#0#PHP" expanded="true" />
                 <marker date="1560150237706" expanded="true" signature="1138:1186" ph="..." />
@@ -132,6 +134,8 @@
       <find>28</find>
       <find>PHP_FLOAT_MAX</find>
       <find>draw</find>
+      <find>$this-&gt;outlineStyle</find>
+      <find>polyline</find>
     </findStrings>
     <replaceStrings>
       <replace>float</replace>
@@ -189,8 +193,8 @@
         <option value="$PROJECT_DIR$/src/classes/shapes/GroupShape.php" />
         <option value="$PROJECT_DIR$/src/classes/common/RGBAColor.php" />
         <option value="$PROJECT_DIR$/src/classes/drawable/Canvas.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/src/classes/shapes/Shape.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -370,12 +374,12 @@
       <workItem from="1560087480164" duration="10863000" />
       <workItem from="1560131069401" duration="8858000" />
       <workItem from="1560144165044" duration="3373000" />
-      <workItem from="1560147630718" duration="3819000" />
+      <workItem from="1560147630718" duration="5019000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55549000" />
+    <option name="totallyTimeSpent" value="56749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1600" height="904" extended-state="6" />
@@ -412,13 +416,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/shapes/ShapeInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -563,16 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <element signature="e#28#45#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -684,30 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/drawable/Canvas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding>
-            <element signature="e#29#46#0#PHP" expanded="true" />
-            <marker date="1560150237706" expanded="true" signature="1138:1186" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1259" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1330" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1348" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1399" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1401" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1501" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1503" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1653" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1614:1653" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2436" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2590" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2593" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2640" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slide_svg_10:03:59.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -762,16 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="e#43#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slide_svg_10:23:31.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -779,10 +732,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/shapes/Shape.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="22" column="84" lean-forward="false" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="84" />
+        <state relative-caret-position="124">
+          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
           <folding>
             <element signature="e#26#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding>
+            <element signature="e#28#45#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/drawable/Canvas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+          <folding>
+            <element signature="e#29#46#0#PHP" expanded="true" />
+            <marker date="1560150237706" expanded="true" signature="1138:1186" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1259" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1330" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1348" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1399" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1401" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1501" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1503" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1138:1653" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="1614:1653" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="2140:2436" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="2140:2590" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="2140:2593" ph="..." />
+            <marker date="1560150237706" expanded="true" signature="2140:2640" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:43:18.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#43#60#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

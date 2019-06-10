@@ -27,8 +27,6 @@ class Shape implements ShapeInterface
     public function draw(CanvasInterface $canvas)
     {
         $outlineColor = ($this->outlineStyle->isEnabled()) ? $this->outlineStyle->getColor() : new RGBAColor(255, 255, 255);
-        var_dump('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        var_dump($outlineColor->convertColorToString());
 
         $canvas->setLineColor($outlineColor);
         $canvas->setLineWidth($this->outlineStyle->getStrokeWidth());

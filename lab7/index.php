@@ -9,6 +9,8 @@ use common\RGBAColor;
 use shapes\GroupShape;
 use drawable\Canvas;
 
+$triangle = new Triangle(new Point(0, 100), new Point(100, 0), new Point(200, 100));
+
 $wall = new Rectangle(new Point(0, 120), 300, 300);
 $wall->getOutlineStyle()->setColor(new RGBAColor(12, 12, 12));
 $wall->getFillStyle()->enable(true);
@@ -24,6 +26,7 @@ $window->getFillStyle()->setColor(new RGBAColor(217, 22, 22));
 $group = new GroupShape();
 $group->insertShape($wall, 0);
 $group->insertShape($window, 1);
+$group->insertShape($triangle, 2);
 
 
 $group->getFrame();

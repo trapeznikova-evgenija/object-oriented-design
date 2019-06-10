@@ -1,0 +1,13 @@
+<svg><polyline points="0, 120 300, 120 300, 420 0, 420 0, 120 " fill="#282828" 
+                                        stroke="#282828"
+                                        stroke-width="1"
+                                        />
+<polyline points="12, 130 22, 130 22, 140 12, 140 12, 130 " fill="#d91616" 
+                                        stroke="#d91616"
+                                        stroke-width="3"
+                                        />
+<polyline points="0, 100 100, 0 200, 100 0, 100 " fill="#ffffff" 
+                                        stroke="#ffffff"
+                                        stroke-width="1"
+                                        />
+</svg>

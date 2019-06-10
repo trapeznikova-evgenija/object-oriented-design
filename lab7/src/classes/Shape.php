@@ -7,19 +7,32 @@ use App\interfaces\StyleInterface;
 use App\classes\OutlineStyle;
 use App\classes\common\RGBAColor;
 use App\classes\Style;
+use App\interfaces\OutlineStyleInterface;
 
 class Shape implements ShapeInterface
 {
-    /** @var OutlineStyle */
+    /** @var OutlineStyleInterface */
     private $outlineStyle;
 
     /** @var StyleInterface */
     private $fillStyle;
 
-    public function draw(CanvasInterface $canvas)
+    public function __construct()
     {
         $this->outlineStyle = new OutlineStyle(1, new RGBAColor(255, 255, 255), true);
         $this->fillStyle = new Style(false, new RGBAColor(56, 56, 56));
+    }
+
+    public function draw(CanvasInterface $canvas)
+    {
+        $outlineColor = ($this->outlineStyle->isEnabled()) ? $this->outlineStyle->getColor() : new RGBAColor(255, 255, 255);
+        $canvas->setLineColor($outlineColor);
+        $canvas->setLineWidth($this->outlineStyle->getStrokeWidth());
+
+        $fillColor = ($this->fillStyle->isEnabled() ? $this->fillStyle->getColor() :  new RGBAColor(255, 255, 255));
+        $canvas->beginFill($fillColor);
+        $this->drawShape($canvas);
+        $canvas->endFill();
     }
 
     public function setFrame(RectD $rect): void
@@ -42,8 +55,13 @@ class Shape implements ShapeInterface
         return $this->fillStyle;
     }
 
-    public function getOutlineStyle(): StyleInterface
+    public function getOutlineStyle(): OutlineStyleInterface
     {
         return $this->outlineStyle;
+    }
+
+    protected function drawShape(CanvasInterface $canvas)
+    {
+
     }
 }

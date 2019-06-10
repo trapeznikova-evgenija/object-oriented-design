@@ -5,10 +5,14 @@ namespace App\classes;
 use App\classes\common\Point;
 use App\classes\common\RectD;
 use App\classes\common\RGBAColor;
+use App\FillStylesEnumerator;
+use App\GroupOutlineStyle;
+use App\GroupStyle;
 use App\interfaces\CanvasInterface;
 use App\interfaces\GroupShapeInterface;
 use App\interfaces\OutlineStyleInterface;
 use App\interfaces\StyleInterface;
+use App\OutlineStylesEnumerator;
 
 class GroupShape implements GroupShapeInterface
 {
@@ -29,8 +33,8 @@ class GroupShape implements GroupShapeInterface
 
     public function __construct()
     {
-        $this->fillStyle = $this;
-        $this->outlineStyle = $this;
+        $this->fillStyle = new GroupStyle(new FillStylesEnumerator($this->shapes));
+        $this->outlineStyle = new GroupOutlineStyle(new OutlineStylesEnumerator($this->shapes));
     }
 
     public function draw(CanvasInterface $canvas)

@@ -1,10 +1,9 @@
 <?php
 
-namespace App\classes;
+namespace style;
 
 
-use App\classes\common\RGBAColor;
-use App\interfaces\StyleInterface;
+use common\RGBAColor;
 
 class Style implements StyleInterface
 {

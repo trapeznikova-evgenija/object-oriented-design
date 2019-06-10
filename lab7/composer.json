@@ -1,8 +1,10 @@
 {
   "autoload" : {
     "psr-4" : {
-      "App\\" : "src/classes",
-      "tests\\" : "tests"
+      "drawable\\" : "src/classes/drawable",
+      "shapes\\" : "src/classes/shapes",
+      "style\\" : "src/classes/style",
+      "common\\" : "src/classes/common"
     }
   },
   "require-dev": {

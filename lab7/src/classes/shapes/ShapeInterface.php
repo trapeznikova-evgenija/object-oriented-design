@@ -1,9 +1,10 @@
 <?php
 
-use App\classes\common\RectD;
-use App\interfaces\StyleInterface;
-use App\interfaces\GroupShapeInterface;
-use App\interfaces\OutlineStyleInterface;
+namespace shapes;
+
+use common\RectD;
+use style\StyleInterface;
+use style\OutlineStyleInterface;
 
 
 interface ShapeInterface

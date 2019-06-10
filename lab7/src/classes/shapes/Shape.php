@@ -1,13 +1,14 @@
 <?php
 
-use App\interfaces\CanvasInterface;
-use App\classes\common\RectD;
-use App\interfaces\GroupShapeInterface;
-use App\interfaces\StyleInterface;
-use App\classes\OutlineStyle;
-use App\classes\common\RGBAColor;
-use App\classes\Style;
-use App\interfaces\OutlineStyleInterface;
+namespace shapes;
+
+use drawable\CanvasInterface;
+use common\RectD;
+use style\StyleInterface;
+use style\OutlineStyle;
+use common\RGBAColor;
+use style\Style;
+use style\OutlineStyleInterface;
 
 class Shape implements ShapeInterface
 {
@@ -20,12 +21,15 @@ class Shape implements ShapeInterface
     public function __construct()
     {
         $this->outlineStyle = new OutlineStyle(1, new RGBAColor(255, 255, 255), true);
-        $this->fillStyle = new Style(false, new RGBAColor(56, 56, 56));
+        $this->fillStyle = new Style(false, new RGBAColor(255, 255, 255));
     }
 
     public function draw(CanvasInterface $canvas)
     {
         $outlineColor = ($this->outlineStyle->isEnabled()) ? $this->outlineStyle->getColor() : new RGBAColor(255, 255, 255);
+        var_dump('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        var_dump($outlineColor->convertColorToString());
+
         $canvas->setLineColor($outlineColor);
         $canvas->setLineWidth($this->outlineStyle->getStrokeWidth());
 

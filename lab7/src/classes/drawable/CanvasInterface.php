@@ -1,19 +1,18 @@
 <?php
 
-namespace App\interfaces;
+namespace drawable;
 
-
-use App\classes\common\Point;
-use App\classes\common\RGBAColor;
+use common\Point;
+use common\RGBAColor;
 
 interface CanvasInterface
 {
     public function setLineColor(RGBAColor $color);
-    public function setLineWidth(double $width);
+    public function setLineWidth(float $width);
     public function beginFill(RGBAColor $color);
     public function endFill();
     public function moveTo(Point $point);
     public function lineTo(Point $point);
-    public function drawEllipse(Point $center, double $horizontalR, double $verticalR);
+    public function drawEllipse(Point $center, float $horizontalR, float $verticalR);
     public function fillPolygon();
 }

@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 10.06.19
- * Time: 6:22
- */
 
-namespace App;
+namespace style;
 
 
-use App\classes\common\RGBAColor;
-use App\interfaces\OutlineStyleInterface;
+use common\RGBAColor;
 
 class GroupOutlineStyle implements OutlineStyleInterface
 {
@@ -34,7 +27,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
         return $color;
     }
 
-    public function getStrokeWidth(): double
+    public function getStrokeWidth(): float
     {
         $strokeWidth = null;
 
@@ -54,7 +47,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
         });
     }
 
-    public function setStrokeWidth(double $width)
+    public function setStrokeWidth(float $width)
     {
         $this->enumerator->enumerate(function (OutlineStyleInterface $style) use ($width)
         {

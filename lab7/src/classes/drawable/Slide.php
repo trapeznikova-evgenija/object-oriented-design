@@ -1,36 +1,33 @@
 <?php
 
-namespace App\classes;
+namespace drawable;
 
-
-use App\classes\common\RectD;
-use App\interfaces\CanvasInterface;
-use App\interfaces\ShapesInterface;
-use App\interfaces\SlideInterface;
+use shapes\GroupShape;
+use shapes\ShapesInterface;
 
 class Slide implements SlideInterface
 {
     /** @var GroupShape */
     private $shapeGroup;
 
-    /** @var double*/
+    /** @var float*/
     private $width;
 
-    /** @var double*/
+    /** @var float*/
     private $height;
 
-    public function __construct(double $slideWidth, double $slideHeight)
+    public function __construct(float $slideWidth, float $slideHeight)
     {
         $this->width = $slideWidth;
         $this->height = $slideHeight;
     }
 
-    public function getHeight(): double
+    public function getHeight(): float
     {
         return $this->height;
     }
 
-    public function getWidth(): double
+    public function getWidth(): float
     {
         return $this->width;
     }

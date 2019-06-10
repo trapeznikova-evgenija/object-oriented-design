@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 10.06.19
- * Time: 6:36
- */
 
-namespace App;
+namespace style;
 
+use shapes\ShapeInterface;
 
-class OutlineStylesEnumerator
+class FillStylesEnumerator
 {
-    /** @var \ShapeInterface */
+    /** @var ShapeInterface */
     private $shapes;
 
     public function __construct(array $shapes)
@@ -23,7 +18,7 @@ class OutlineStylesEnumerator
     {
         foreach ($this->shapes as $shape)
         {
-            $style = $shape->getOutlineStyle();
+            $style = $shape->getFillStyle();
             call_user_func($func, $style);
         }
     }

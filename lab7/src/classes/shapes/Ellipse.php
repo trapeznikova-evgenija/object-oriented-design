@@ -1,25 +1,25 @@
 <?php
 
-namespace App\classes;
+namespace shapes;
 
 
-use App\classes\common\Point;
-use App\classes\common\RectD;
-use App\interfaces\CanvasInterface;
+use common\Point;
+use common\RectD;
+use drawable\CanvasInterface;
 
-class Ellipse extends \Shape
+class Ellipse extends Shape
 {
     /** @var Point */
     private $center;
 
-    /** @var double */
+    /** @var float */
     private $vertRadius;
 
-    /** @var double */
+    /** @var float */
     private $horRadius;
 
 
-    public function __construct(Point $center, double $hR, double $vR)
+    public function __construct(Point $center, float $hR, float $vR)
     {
         parent::__construct();
 

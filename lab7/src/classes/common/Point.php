@@ -1,38 +1,38 @@
 <?php
 
-namespace App\classes\common;
+namespace common;
 
 
 class Point
 {
-    /** @var double  */
+    /** @var float  */
     private $x;
 
-    /** @var double  */
+    /** @var float  */
     private $y;
 
-    public function __construct(double $x, double $y)
+    public function __construct(float $x, float $y)
     {
         $this->x = $x;
         $this->y = $y;
     }
 
-    public function getX() : double
+    public function getX() : float
     {
         return $this->x;
     }
 
-    public function getY() : double
+    public function getY() : float
     {
         return $this->y;
     }
 
-    public function setX(double $x)
+    public function setX(float $x)
     {
         $this->x = $x;
     }
 
-    public function setY(double $y)
+    public function setY(float $y)
     {
         $this->y = $y;
     }

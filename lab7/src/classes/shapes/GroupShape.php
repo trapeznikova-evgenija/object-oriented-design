@@ -1,18 +1,17 @@
 <?php
 
-namespace App\classes;
+namespace shapes;
 
-use App\classes\common\Point;
-use App\classes\common\RectD;
-use App\classes\common\RGBAColor;
-use App\FillStylesEnumerator;
-use App\GroupOutlineStyle;
-use App\GroupStyle;
-use App\interfaces\CanvasInterface;
-use App\interfaces\GroupShapeInterface;
-use App\interfaces\OutlineStyleInterface;
-use App\interfaces\StyleInterface;
-use App\OutlineStylesEnumerator;
+use common\Point;
+use common\RectD;
+use style\FillStylesEnumerator;
+use style\GroupOutlineStyle;
+use style\GroupStyle;
+use drawable\CanvasInterface;
+use style\OutlineStyleInterface;
+use style\StyleInterface;
+use style\OutlineStylesEnumerator;
+use style\Style;
 
 class GroupShape implements GroupShapeInterface
 {
@@ -27,7 +26,7 @@ class GroupShape implements GroupShapeInterface
     private $fillStyle;
 
     /**
-     * @var \Shape[]
+     * @var Shape[]
      */
     private $shapes = [];
 
@@ -52,10 +51,10 @@ class GroupShape implements GroupShapeInterface
            return new RectD(0, 0, 0, 0);
        }
 
-       $topY = PHP_FLOAT_MAX;
-       $leftX = PHP_FLOAT_MAX;
-       $rightX = PHP_FLOAT_MIN;
-       $bottomY = PHP_FLOAT_MIN;
+       $topY = (float)PHP_FLOAT_MAX;
+       $leftX = (float)PHP_FLOAT_MAX;
+       $rightX = (float)PHP_FLOAT_MIN;
+       $bottomY = (float)PHP_FLOAT_MIN;
 
        foreach ($this->shapes as $value)
        {
@@ -130,7 +129,7 @@ class GroupShape implements GroupShapeInterface
         return count($this->shapes);
     }
 
-    public function getShapeAtIndex(int $index): \ShapeInterface
+    public function getShapeAtIndex(int $index): ShapeInterface
     {
         if (array_key_exists($index, $this->shapes))
         {
@@ -140,7 +139,7 @@ class GroupShape implements GroupShapeInterface
         echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
     }
 
-    public function insertShape(\ShapeInterface $shape, int $position)
+    public function insertShape(ShapeInterface $shape, int $position)
     {
         if (!$this->shapes[$position] = $shape)
         {
@@ -158,21 +157,5 @@ class GroupShape implements GroupShapeInterface
         {
             echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
         }
-    }
-
-    private function enumerateOutlineStyles()
-    {
-        foreach ($this->shapes as $shape)
-        {
-            if (!$shape->getFillStyle())
-            {
-                break;
-            }
-        }
-    }
-
-    private function enumerateFillStyles()
-    {
-
     }
 }

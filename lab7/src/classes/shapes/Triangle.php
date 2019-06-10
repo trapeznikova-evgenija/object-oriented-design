@@ -1,21 +1,21 @@
 <?php
 
-namespace App;
+namespace shapes;
 
 
-use App\classes\common\Point;
-use App\classes\common\RectD;
-use App\interfaces\CanvasInterface;
+use common\Point;
+use common\RectD;
+use drawable\CanvasInterface;
 
-class Triangle extends \Shape
+class Triangle extends Shape
 {
-    /** @var double */
+    /** @var float */
     private $vertex1;
 
-    /** @var double */
+    /** @var float */
     private $vertex2;
 
-    /** @var double */
+    /** @var float */
     private $vertex3;
 
     public function __construct(Point $v1, Point $v2, Point $v3)

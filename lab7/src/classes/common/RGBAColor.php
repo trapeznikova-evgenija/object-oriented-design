@@ -1,6 +1,6 @@
 <?php
 
-namespace App\classes\common;
+namespace common;
 
 
 class RGBAColor
@@ -28,5 +28,16 @@ class RGBAColor
     public function setR($r)
     {
         $this->r = $r;
+    }
+
+    public function convertColorToString() : string
+    {
+        $r = dechex($this->r);
+        $g = dechex($this->g);
+        $b = dechex($this->b);
+
+        $hec = "#" . $r . $g . $b;
+
+        return $hec;
     }
 }

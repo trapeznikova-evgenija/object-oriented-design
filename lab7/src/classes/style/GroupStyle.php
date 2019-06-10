@@ -1,10 +1,9 @@
 <?php
 
-namespace App;
+namespace style;
 
 
-use App\classes\common\RGBAColor;
-use App\interfaces\StyleInterface;
+use common\RGBAColor;
 
 class GroupStyle implements StyleInterface
 {

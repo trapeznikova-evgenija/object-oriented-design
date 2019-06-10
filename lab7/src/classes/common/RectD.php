@@ -1,6 +1,6 @@
 <?php
 
-namespace App\classes\common;
+namespace common;
 
 
 class RectD

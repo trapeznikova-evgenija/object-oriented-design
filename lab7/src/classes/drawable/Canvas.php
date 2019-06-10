@@ -1,18 +1,17 @@
 <?php
 
-namespace App\classes;
+namespace drawable;
 
 
-use App\classes\common\Point;
-use App\classes\common\RGBAColor;
-use App\interfaces\CanvasInterface;
+use common\Point;
+use common\RGBAColor;
 
 class Canvas implements CanvasInterface
 {
     /*** @var bool */
     private $fillEnabled;
 
-    /*** @var double */
+    /*** @var float */
     private $lineWidth = 0;
 
     /** @var Point */
@@ -33,7 +32,7 @@ class Canvas implements CanvasInterface
     {
         $this->currPoint = new Point(0, 0);
 
-        $fileName = "slide_svg_" . date("H:i:s") . ".txt";
+        $fileName = "slide_svg_" . date("H:i:s") . ".svg";
         $this->svgFile = fopen($fileName, 'w');
         $this->writeInFile("<svg>");
     }
@@ -43,7 +42,7 @@ class Canvas implements CanvasInterface
        $this->currOutlineColor = $color;
     }
 
-    public function setLineWidth(double $width)
+    public function setLineWidth(float $width)
     {
         $this->lineWidth = $width;
     }
@@ -57,8 +56,8 @@ class Canvas implements CanvasInterface
                                            y1=\"{$this->currPoint->getY()}\"
                                            x2=\"{$point->getX()}\"
                                            y2=\"{$point->getY()}\"
-                                           stroke=\"{$this->currOutlineColor}\"
-                                           fill=\"{$this->currFillColor}\"
+                                           stroke=\"{$this->currOutlineColor->convertColorToString()}\"
+                                           fill=\"{$this->currFillColor->convertColorToString()}\"
                                            stroke-width=\"1\"
                                      />" . PHP_EOL);
         }
@@ -78,14 +77,14 @@ class Canvas implements CanvasInterface
         }
     }
 
-    public function drawEllipse(Point $center, double $horizontalR, double $verticalR)
+    public function drawEllipse(Point $center, float $horizontalR, float $verticalR)
     {
         $this->writeInFile("<ellipse cx=\"{$center->getX()}\" 
                                           cy=\"{$center->getY()}\"
                                           rx=\"{$horizontalR}\"
                                           ry=\"{$verticalR}\"
-                                          stroke=\"{$this->currOutlineColor}\"
-                                          fill=\"{$this->currFillColor}\"
+                                          stroke=\"{$this->currOutlineColor->convertColorToString()}\"
+                                          fill=\"{$this->currFillColor->convertColorToString()}\"
                                           stroke-width=\"1\"
                                           />" . PHP_EOL);
     }
@@ -103,8 +102,8 @@ class Canvas implements CanvasInterface
             }
 
             $this->writeInFile($pointsStr);
-            $this->writeInFile("\" fill=\"{$this->currFillColor}\" 
-                                        stroke=\"{$this->currFillColor}\"
+            $this->writeInFile("\" fill=\"{$this->currFillColor->convertColorToString()}\" 
+                                        stroke=\"{$this->currFillColor->convertColorToString()}\"
                                         stroke-width=\"{$this->lineWidth}\"
                                         />" . PHP_EOL);
         }

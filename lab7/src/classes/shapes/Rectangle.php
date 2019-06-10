@@ -1,27 +1,26 @@
 <?php
 
-namespace App;
+namespace shapes;
 
+use common\Point;
+use common\RectD;
+use drawable\CanvasInterface;
 
-use App\classes\common\Point;
-use App\classes\common\RectD;
-use App\interfaces\CanvasInterface;
-
-class Rectangle extends \Shape
+class Rectangle extends Shape
 {
-    /** @var double */
+    /** @var float */
     private $left;
 
-    /** @var double */
+    /** @var float */
     private $top;
 
-    /** @var double */
+    /** @var float */
     private $width;
 
-    /** @var double */
+    /** @var float */
     private $height;
 
-    public function __construct(Point $leftTop, double $width, double $height)
+    public function __construct(Point $leftTop, float $width, float $height)
     {
         parent::__construct();
 

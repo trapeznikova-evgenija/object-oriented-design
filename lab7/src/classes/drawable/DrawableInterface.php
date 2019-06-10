@@ -1,6 +1,7 @@
 <?php
 
-use App\interfaces\CanvasInterface;
+namespace drawable;
+
 
 interface DrawableInterface
 {

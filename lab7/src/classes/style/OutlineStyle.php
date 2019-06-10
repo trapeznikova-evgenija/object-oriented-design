@@ -1,29 +1,27 @@
 <?php
 
-namespace App\classes;
+namespace style;
 
-
-use App\classes\common\RGBAColor;
-use App\interfaces\OutlineStyleInterface;
+use common\RGBAColor;
 
 class OutlineStyle extends Style implements OutlineStyleInterface
 {
-    /** @var double */
+    /** @var float */
     private $strokeWidth;
 
-    public function __construct(double $strokeWidth, RGBAColor $color, bool $isEnabled)
+    public function __construct(float $strokeWidth, RGBAColor $color, bool $isEnabled)
     {
         $this->strokeWidth = $strokeWidth;
 
         parent::__construct($isEnabled, $color);
     }
 
-    public function setStrokeWidth(double $width)
+    public function setStrokeWidth(float $width)
     {
         $this->strokeWidth = $width;
     }
 
-    public function getStrokeWidth(): double
+    public function getStrokeWidth(): float
     {
         return $this->strokeWidth;
     }

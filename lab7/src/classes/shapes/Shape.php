@@ -20,18 +20,18 @@ class Shape implements ShapeInterface
 
     public function __construct()
     {
-        $this->outlineStyle = new OutlineStyle(1, new RGBAColor(255, 255, 255), true);
-        $this->fillStyle = new Style(false, new RGBAColor(255, 255, 255));
+        $this->outlineStyle = new OutlineStyle(3, new RGBAColor(255, 255, 255), true);
+        $this->fillStyle = new Style(false, new RGBAColor(0, 0, 0, 0));
     }
 
     public function draw(CanvasInterface $canvas)
     {
-        $outlineColor = ($this->outlineStyle->isEnabled()) ? $this->outlineStyle->getColor() : new RGBAColor(255, 255, 255);
+        $outlineColor = ($this->outlineStyle->isEnabled()) ? $this->outlineStyle->getColor() :  new RGBAColor(0, 0, 0, 0);
 
         $canvas->setLineColor($outlineColor);
         $canvas->setLineWidth($this->outlineStyle->getStrokeWidth());
 
-        $fillColor = ($this->fillStyle->isEnabled() ? $this->fillStyle->getColor() :  new RGBAColor(255, 255, 255));
+        $fillColor = ($this->fillStyle->isEnabled() ? $this->fillStyle->getColor() : new RGBAColor(0, 0, 0, 0));
         $canvas->beginFill($fillColor);
         $this->drawShape($canvas);
         $canvas->endFill();

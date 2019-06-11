@@ -3,6 +3,7 @@
 namespace drawable;
 
 use shapes\ShapesInterface;
+use shapes\GroupShape;
 
 interface SlideInterface extends DrawableInterface
 {
@@ -10,4 +11,5 @@ interface SlideInterface extends DrawableInterface
     public function getHeight() : float;
 
     public function getShapes() : ShapesInterface;
+    public function addShape(GroupShape $shape) : void;
 }

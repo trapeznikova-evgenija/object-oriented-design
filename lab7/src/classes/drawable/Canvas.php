@@ -28,13 +28,19 @@ class Canvas implements CanvasInterface
 
     private $svgFile;
 
+    /** @var float */
+    private $canvasWidth = 700;
+
+    /** @var float */
+    private $canvasHeight = 700;
+
     public function __construct()
     {
         $this->currPoint = new Point(0, 0);
 
         $fileName = "slide_svg_" . date("H:i:s") . ".svg";
         $this->svgFile = fopen($fileName, 'w');
-        $this->writeInFile("<svg>");
+        $this->writeInFile("<svg  width=\"{$this->canvasWidth}\" height=\"{$this->canvasHeight}\">");
     }
 
     public function setLineColor(RGBAColor $color)
@@ -103,7 +109,7 @@ class Canvas implements CanvasInterface
 
             $this->writeInFile($pointsStr);
             $this->writeInFile("\" fill=\"{$this->currFillColor->convertColorToString()}\" 
-                                        stroke=\"{$this->currFillColor->convertColorToString()}\"
+                                        stroke=\"{$this->currOutlineColor->convertColorToString()}\"
                                         stroke-width=\"{$this->lineWidth}\"
                                         />" . PHP_EOL);
         }
@@ -123,7 +129,6 @@ class Canvas implements CanvasInterface
             echo "Drawing already begin" . PHP_EOL;
         }
 
-
         $this->fillEnabled = true;
         $this->currFillColor = $color;
         $this->polygonPoints = [];
@@ -139,6 +144,12 @@ class Canvas implements CanvasInterface
         $this->fillPolygon();
         $this->polygonPoints = [];
         $this->fillEnabled = false;
+    }
+
+    public function setCanvasSize(float $width, float $height)
+    {
+        $this->canvasWidth = $width;
+        $this->canvasHeight = $height;
     }
 
     private function writeInFile(string $text)

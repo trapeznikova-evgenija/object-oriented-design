@@ -15,4 +15,5 @@ interface CanvasInterface
     public function lineTo(Point $point);
     public function drawEllipse(Point $center, float $horizontalR, float $verticalR);
     public function fillPolygon();
+    public function setCanvasSize(float $width, float $height);
 }

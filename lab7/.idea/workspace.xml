@@ -14,114 +14,7 @@
     <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <element signature="e#43#60#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="slide_svg_10:19:17.svg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/slide_svg_10:19:17.svg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rectangle.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/shapes/Rectangle.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-324">
-              <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Shape.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/shapes/Shape.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-              <folding>
-                <element signature="e#26#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShapeInterface.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/shapes/ShapeInterface.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="slide_svg_10:11:00.svg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/slide_svg_10:11:00.svg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupShape.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/shapes/GroupShape.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CanvasInterface.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-              <folding>
-                <element signature="e#28#45#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Canvas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/drawable/Canvas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-              <folding>
-                <element signature="e#29#46#0#PHP" expanded="true" />
-                <marker date="1560150237706" expanded="true" signature="1138:1186" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1259" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1330" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1348" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1399" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1401" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1501" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1503" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1138:1653" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="1614:1653" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="2140:2436" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="2140:2590" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="2140:2593" ph="..." />
-                <marker date="1560150237706" expanded="true" signature="2140:2640" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -136,6 +29,7 @@
       <find>draw</find>
       <find>$this-&gt;outlineStyle</find>
       <find>polyline</find>
+      <find>0xFFFFFF00</find>
     </findStrings>
     <replaceStrings>
       <replace>float</replace>
@@ -144,7 +38,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/interfaces/ShapesInterface.php" />
         <option value="$PROJECT_DIR$/src/interfaces/GroupShapeInterface.php" />
         <option value="$PROJECT_DIR$/src/interfaces/SlideInterface.php" />
         <option value="$PROJECT_DIR$/src/interfaces/StyleInterface.php" />
@@ -171,10 +64,7 @@
         <option value="$PROJECT_DIR$/src/classes/common/Point.php" />
         <option value="$PROJECT_DIR$/src/classes/common/RectD.php" />
         <option value="$PROJECT_DIR$/src/classes/style/OutlineStyleInterface.php" />
-        <option value="$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php" />
         <option value="$PROJECT_DIR$/src/classes/drawable/DrawableInterface.php" />
-        <option value="$PROJECT_DIR$/src/classes/drawable/Slide.php" />
-        <option value="$PROJECT_DIR$/src/classes/drawable/SlideInterface.php" />
         <option value="$PROJECT_DIR$/src/classes/shapes/GroupShapeInterface.php" />
         <option value="$PROJECT_DIR$/src/classes/shapes/Rectangle.php" />
         <option value="$PROJECT_DIR$/src/classes/shapes/ShapeInterface.php" />
@@ -191,10 +81,14 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/classes/shapes/Ellipse.php" />
         <option value="$PROJECT_DIR$/src/classes/shapes/GroupShape.php" />
-        <option value="$PROJECT_DIR$/src/classes/common/RGBAColor.php" />
-        <option value="$PROJECT_DIR$/src/classes/drawable/Canvas.php" />
+        <option value="$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php" />
         <option value="$PROJECT_DIR$/src/classes/shapes/Shape.php" />
+        <option value="$PROJECT_DIR$/src/classes/common/RGBAColor.php" />
+        <option value="$PROJECT_DIR$/src/classes/drawable/SlideInterface.php" />
+        <option value="$PROJECT_DIR$/src/classes/drawable/Slide.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/slide_svg_07:55:48.svg" />
+        <option value="$PROJECT_DIR$/src/classes/drawable/Canvas.php" />
       </list>
     </option>
   </component>
@@ -240,7 +134,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="50" />
     <option name="y" value="47" />
     <option name="width" value="1396" />
@@ -277,7 +171,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -321,6 +214,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -330,7 +224,7 @@
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../oodpuzatkin/lw7" />
     <property name="node.js.detected.package.stylelint" value="true" />
   </component>
   <component name="RecentsManager">
@@ -374,34 +268,35 @@
       <workItem from="1560087480164" duration="10863000" />
       <workItem from="1560131069401" duration="8858000" />
       <workItem from="1560144165044" duration="3373000" />
-      <workItem from="1560147630718" duration="5019000" />
+      <workItem from="1560147630718" duration="5118000" />
+      <workItem from="1560195554534" duration="1493000" />
+      <workItem from="1560223467906" duration="5712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56749000" />
+    <option name="totallyTimeSpent" value="64053000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1600" height="904" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-4" width="1600" height="904" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21364221" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21879022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39228722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.375" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -412,40 +307,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/classes/shapes/ShapeInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#26#43#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/shapes/Shape.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/Drawable.php" />
-    <entry file="file://$PROJECT_DIR$/src/classes/drawable/DrawableInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/Drawable.php" />
-    <entry file="file://$PROJECT_DIR$/src/interfaces/OutlineStyleEnumeratorInterface.php" />
-    <entry file="file://$PROJECT_DIR$/src/interfaces/FillStyleEnumeratorInterface.php" />
     <entry file="file://$PROJECT_DIR$/src/interfaces/GroupStyleInterface.php" />
     <entry file="file://$PROJECT_DIR$/src/classes/style/StyleInterface.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -459,7 +326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -467,7 +333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,7 +348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -491,7 +355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-234">
           <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -499,7 +362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-54">
           <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -507,7 +369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -521,34 +382,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/shapes/ShapesInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/shapes/GroupShapeInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/drawable/SlideInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/drawable/Slide.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -564,7 +401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -587,7 +423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -595,7 +430,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#43#60#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -603,7 +440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -611,7 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="360" column="8" lean-forward="false" selection-start-line="360" selection-start-column="8" selection-end-line="360" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -623,95 +458,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_09:35:30.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_09:42:24.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="62" lean-forward="true" selection-start-line="0" selection-start-column="62" selection-end-line="0" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/common/RGBAColor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:02:09.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_09:53:08.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/shapes/Ellipse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="17" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:03:59.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:07:48.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:06:46.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:09:19.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:11:00.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:19:17.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/shapes/GroupShape.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_09:35:30.txt" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_09:42:24.txt" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:02:09.txt" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_09:53:08.txt" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:03:59.svg" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:07:48.svg" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:06:46.svg" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:09:19.svg" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:11:00.svg" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:19:17.svg" />
     <entry file="file://$PROJECT_DIR$/src/classes/shapes/Rectangle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
+        <state relative-caret-position="108">
           <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="8" />
           <folding />
         </state>
@@ -725,64 +484,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:23:31.svg">
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:23:31.svg" />
+    <entry file="file://$PROJECT_DIR$/slide_svg_10:43:18.svg" />
+    <entry file="file://$PROJECT_DIR$/src/classes/shapes/GroupShape.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_22:58:20.svg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/shapes/Shape.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding>
-            <element signature="e#26#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/slide_svg_22:59:02.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/drawable/CanvasInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="306">
+          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
             <element signature="e#28#45#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/common/RGBAColor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/shapes/ShapesInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_07:35:17.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_06:52:07.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_07:18:32.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_07:47:15.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/shapes/Ellipse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="51" column="17" lean-forward="false" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/drawable/Canvas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+        <state relative-caret-position="-86">
+          <caret line="108" column="0" lean-forward="true" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding>
             <element signature="e#29#46#0#PHP" expanded="true" />
-            <marker date="1560150237706" expanded="true" signature="1138:1186" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1259" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1330" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1348" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1399" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1401" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1501" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1503" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1138:1653" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="1614:1653" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2436" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2590" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2593" ph="..." />
-            <marker date="1560150237706" expanded="true" signature="2140:2640" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1362" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1435" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1506" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1524" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1575" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1577" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1677" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1679" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1314:1829" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="1790:1829" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="2316:2612" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="2316:2766" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="2316:2769" ph="..." />
+            <marker date="1560229144734" expanded="true" signature="2316:2816" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slide_svg_10:43:18.svg">
+    <entry file="file://$PROJECT_DIR$/src/classes/shapes/Shape.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <folding>
+            <element signature="e#26#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/drawable/SlideInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding>
+            <element signature="e#28#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/drawable/Slide.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slide_svg_07:55:48.svg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="130">
+          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
           <folding>
             <element signature="e#43#60#0#PHP" expanded="true" />
           </folding>

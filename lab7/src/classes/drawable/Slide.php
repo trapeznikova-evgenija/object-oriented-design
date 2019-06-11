@@ -18,6 +18,7 @@ class Slide implements SlideInterface
 
     public function __construct(float $slideWidth, float $slideHeight)
     {
+        $this->shapeGroup = [];
         $this->width = $slideWidth;
         $this->height = $slideHeight;
     }
@@ -39,6 +40,15 @@ class Slide implements SlideInterface
 
     public function draw(CanvasInterface $canvas)
     {
-        $this->shapeGroup->draw($canvas);
+        $canvas->setCanvasSize($this->width, $this->height);
+        foreach ($this->shapeGroup as $shapeGroup)
+        {
+            $shapeGroup->draw($canvas);
+        }
+    }
+
+    public function addShape(GroupShape $shape) : void
+    {
+        $this->shapeGroup[] = $shape;
     }
 }

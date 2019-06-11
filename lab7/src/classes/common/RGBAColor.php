@@ -38,6 +38,11 @@ class RGBAColor
 
         $hec = "#" . $r . $g . $b;
 
+        if ($this->a == 0)
+        {
+            return "#0xFFFFFF00";
+        }
+
         return $hec;
     }
 }

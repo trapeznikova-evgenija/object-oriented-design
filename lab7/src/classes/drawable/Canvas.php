@@ -75,8 +75,6 @@ class Canvas implements CanvasInterface
     {
         $this->currPoint = $point;
 
-        echo "Move to (" . $point->getX() . ", " . $point->getY() . ")" . PHP_EOL;
-
         if ($this->fillEnabled)
         {
             $this->polygonPoints[] = $point;

@@ -4,7 +4,8 @@
       "drawable\\" : "src/classes/drawable",
       "shapes\\" : "src/classes/shapes",
       "style\\" : "src/classes/style",
-      "common\\" : "src/classes/common"
+      "common\\" : "src/classes/common",
+      "tests\\" : "src/tests"
     }
   },
   "require-dev": {

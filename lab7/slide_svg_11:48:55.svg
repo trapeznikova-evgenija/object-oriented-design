@@ -6,10 +6,6 @@
                                         stroke="#ccc"
                                         stroke-width="3"
                                         />
-<polyline points="30, 180 80, 180 80, 230 30, 230 30, 180 " fill="#d91616" 
-                                        stroke="#d9cf16"
-                                        stroke-width="3"
-                                        />
 <polyline points="20, 120 120, 0 220, 120 20, 120 " fill="#4d3131" 
                                         stroke="#4d3131"
                                         stroke-width="3"

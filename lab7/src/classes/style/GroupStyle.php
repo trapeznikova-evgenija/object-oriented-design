@@ -2,7 +2,6 @@
 
 namespace style;
 
-
 use common\RGBAColor;
 
 class GroupStyle implements StyleInterface
@@ -49,9 +48,9 @@ class GroupStyle implements StyleInterface
 
     public function enable(bool $enable)
     {
-        $this->enumerator->enumerate(function (StyleInterface $style) use (&$enable)
+        $this->enumerator->enumerate(function (StyleInterface $style) use ($enable)
         {
-            $enable = $style->enable($enable);
+            $style->enable($enable);
         });
     }
 }

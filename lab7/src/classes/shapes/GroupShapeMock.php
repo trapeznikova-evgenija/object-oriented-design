@@ -14,7 +14,7 @@ use style\StyleInterface;
 use style\OutlineStylesEnumerator;
 use style\Style;
 
-class GroupShape implements GroupShapeInterface
+class GroupShapeMock
 {
     /**
      * @var OutlineStyleInterface
@@ -45,32 +45,37 @@ class GroupShape implements GroupShapeInterface
         }
     }
 
+    public function getShapes() : array
+    {
+        return $this->shapes;
+    }
+
     public function getFrame(): RectD
     {
-       if (empty($this->shapes))
-       {
-           return new RectD(0, 0, 0, 0);
-       }
+        if (empty($this->shapes))
+        {
+            return new RectD(0, 0, 0, 0);
+        }
 
-       $topY = (float)PHP_FLOAT_MAX;
-       $leftX = (float)PHP_FLOAT_MAX;
-       $rightX = (float)PHP_FLOAT_MIN;
-       $bottomY = (float)PHP_FLOAT_MIN;
+        $topY = (float)PHP_FLOAT_MAX;
+        $leftX = (float)PHP_FLOAT_MAX;
+        $rightX = (float)PHP_FLOAT_MIN;
+        $bottomY = (float)PHP_FLOAT_MIN;
 
-       foreach ($this->shapes as $value)
-       {
-           $frame = $value->getFrame();
-           $leftTop = $frame->getLeftTop();
-           $rightBottom = new Point($leftTop->getX() + $frame->getWidth(), $leftTop->getY() + $frame->getHeight());
+        foreach ($this->shapes as $value)
+        {
+            $frame = $value->getFrame();
+            $leftTop = $frame->getLeftTop();
+            $rightBottom = new Point($leftTop->getX() + $frame->getWidth(), $leftTop->getY() + $frame->getHeight());
 
-           $leftX = min($leftX, $leftTop->getX());
-           $topY = min($topY, $leftTop->getY());
-           $rightX = max($rightX, $rightBottom->getX());
-           $bottomY = max($bottomY, $rightBottom->getY());
-       }
+            $leftX = min($leftX, $leftTop->getX());
+            $topY = min($topY, $leftTop->getY());
+            $rightX = max($rightX, $rightBottom->getX());
+            $bottomY = max($bottomY, $rightBottom->getY());
+        }
 
-       $rect = new RectD($leftX, $topY,$rightX - $leftX, $bottomY - $topY);
-       return $rect;
+        $rect = new RectD($leftX, $topY,$rightX - $leftX, $bottomY - $topY);
+        return $rect;
     }
 
     public function setFrame(RectD $rect): void
@@ -117,7 +122,7 @@ class GroupShape implements GroupShapeInterface
 
     public function getFillStyle(): StyleInterface
     {
-       return $this->fillStyle;
+        return $this->fillStyle;
     }
 
     public function getGroup(): GroupShapeInterface
@@ -130,14 +135,14 @@ class GroupShape implements GroupShapeInterface
         return count($this->shapes);
     }
 
-    public function getShapeAtIndex(int $index): ShapeInterface
+    public function getShapeAtIndex(int $index): string
     {
         if (array_key_exists($index, $this->shapes))
         {
-            return $this->shapes[$index];
+            return "Вы получили фигуру по индексу " . $index . PHP_EOL;
         }
 
-        echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
+        return "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
     }
 
     public function insertShape(ShapeInterface $shape, int $position = null)
@@ -166,6 +171,7 @@ class GroupShape implements GroupShapeInterface
         {
             unset($this->shapes[$index]);
             $this->shapes = array_values($this->shapes);
+            echo "Из группы удалена фигура с индексом " . $index . PHP_EOL;
         }
         else
         {

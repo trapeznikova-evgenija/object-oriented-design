@@ -3,32 +3,54 @@
 namespace style;
 
 use common\RGBAColor;
+use shapes\GroupShapeInterface;
 
 class GroupStyle implements StyleInterface
 {
-    /** @var FillStylesEnumerator */
-    private $enumerator;
+    /** @var GroupShapeInterface */
+    private $groupShape;
 
-    public function __construct(FillStylesEnumerator $enumerator)
+    public function __construct(GroupShapeInterface $groupShape)
     {
-        $this->enumerator = $enumerator;
+        $this->groupShape = $groupShape;
     }
 
-    public function getColor(): RGBAColor
+    public function getColor(): ?RGBAColor
     {
         $color = null;
 
-        $this->enumerator->enumerate(function (StyleInterface $style) use (&$color)
+        if (empty($this->groupShape))
+        {
+            return $color;
+        }
+
+        $colorsArray = [];
+
+        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$color, &$colorsArray)
         {
             $color = $style->getColor();
+            print_r($color);
+            $colorsArray[] = $color;
         });
+
+        for ($i = 0; $i < count($colorsArray); $i++)
+        {
+            if (!($colorsArray[$i] == $colorsArray[$i + 1]))
+            {
+                $color = null;
+                break;
+            }
+        }
+
+        var_dump('***');
+        print_r($colorsArray);
 
         return $color;
     }
 
     public function setColor(RGBAColor $RGBAColor): void
     {
-        $this->enumerator->enumerate(function (StyleInterface $style) use ($RGBAColor)
+        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use ($RGBAColor)
         {
             $style->setColor($RGBAColor);
         });
@@ -38,7 +60,7 @@ class GroupStyle implements StyleInterface
     {
         $enable = true;
 
-        $this->enumerator->enumerate(function (StyleInterface $style) use (&$enable)
+        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$enable)
         {
             $enable = $style->isEnabled();
         });
@@ -48,7 +70,7 @@ class GroupStyle implements StyleInterface
 
     public function enable(bool $enable)
     {
-        $this->enumerator->enumerate(function (StyleInterface $style) use ($enable)
+        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use ($enable)
         {
             $style->enable($enable);
         });

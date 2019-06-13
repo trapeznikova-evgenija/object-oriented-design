@@ -23,17 +23,17 @@ function createHome() : GroupShape
     $wall->getFillStyle()->enable(true);
     $wall->getFillStyle()->setColor(new RGBAColor(40, 40, 40));
 
-//    $window = new Rectangle(new Point(30, 180), 50, 50);
-//    $window->getOutlineStyle()->enable(true);
-//    $window->getOutlineStyle()->setColor(new RGBAColor(217, 207, 22));
-//    $window->getOutlineStyle()->setStrokeWidth(3);
-//    $window->getFillStyle()->enable(true);
-//    $window->getFillStyle()->setColor(new RGBAColor(217, 22, 22));
+    $window = new Rectangle(new Point(30, 180), 50, 50);
+    $window->getOutlineStyle()->enable(true);
+    $window->getOutlineStyle()->setColor(new RGBAColor(217, 207, 22));
+    $window->getOutlineStyle()->setStrokeWidth(3);
+    $window->getFillStyle()->enable(true);
+    $window->getFillStyle()->setColor(new RGBAColor(217, 22, 22));
 
     $group = new GroupShape();
     $group->insertShape($wall, 0);
-    $group->insertShape($roof, 5);
-    $group->insertShape($roof, 6);
+    $group->insertShape($window, 5);
+    $group->insertShape($roof);
 
     return $group;
 }
@@ -56,13 +56,21 @@ function changeGroupFillStyle(GroupShape $groupShape)
     $groupShape->getFillStyle()->setColor(new RGBAColor(255, 255, 255));
 }
 
+function changeGroupOutlineStyle(GroupShape $groupShape)
+{
+    $groupShape->getOutlineStyle()->setColor(new RGBAColor(199, 16, 81));
+    $groupShape->getOutlineStyle()->setStrokeWidth(4);
+}
+
 function createSlide()
 {
     $slide = new Slide(800, 800);
     $house = createHome();
     $sky = createSky();
 
-    $house->removeShapeAtIndex(1);
+    changeGroupFillStyle($house);
+    changeGroupOutlineStyle($house);
+//    $house->setFrame(new RectD(0, 0, 60, 60));
 
     $slide->addShape($house);
     $svgCanvas = new Canvas();

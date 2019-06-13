@@ -44,12 +44,12 @@ class Triangle extends Shape
 
     public function setFrame(RectD $newFrame): void
     {
+
         $oldFrame = $this->getFrame();
 
         $this->vertex1 = $this->updatePosition($this->vertex1, $newFrame, $oldFrame);
         $this->vertex2 = $this->updatePosition($this->vertex2, $newFrame, $oldFrame);
         $this->vertex3 = $this->updatePosition($this->vertex3, $newFrame, $oldFrame);
-
     }
 
     protected function drawShape(CanvasInterface $canvas)
@@ -62,8 +62,8 @@ class Triangle extends Shape
 
     private function updatePosition(Point $point, RectD $newFrame, RectD $oldFrame) : Point
     {
-        $scaleX = $point->getX() - $oldFrame->left / $oldFrame->getWidth();
-        $scaleY = $point->getY() - $oldFrame->top / $oldFrame->getHeight();
+        $scaleX = ($point->getX() - $oldFrame->left) / $oldFrame->getWidth();
+        $scaleY = ($point->getY() - $oldFrame->top) / $oldFrame->getHeight();
 
         $newX = $newFrame->left + $newFrame->getWidth() * $scaleX;
         $newY = $newFrame->top + $newFrame->getHeight() * $scaleY;

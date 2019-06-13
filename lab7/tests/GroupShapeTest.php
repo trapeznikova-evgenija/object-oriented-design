@@ -3,6 +3,7 @@
 namespace tests;
 
 use common\Point;
+use common\RGBAColor;
 use PHPUnit\Framework\TestCase;
 use shapes\GroupShape;
 use shapes\GroupShapeMock;
@@ -56,5 +57,62 @@ class GroupShapeTest extends TestCase
         $shapes = $groupShape->getShapes();
 
         $this->assertEquals($shapes[1], $triangle2);
+    }
+
+    public function testGetColorGroupShapeWithDiffColor()
+    {
+        $rectangle = new Rectangle(new Point(0, 0), 0, 12);
+        $rectangle->getFillStyle()->enable(true);
+        $rectangle->getFillStyle()->setColor(new RGBAColor(3, 4, 5));
+
+        $triangle1 = new Triangle(new Point(0, 0), new Point(3, 5), new Point(8, 5));
+        $triangle1->getFillStyle()->enable(true);
+        $triangle1->getFillStyle()->setColor(new RGBAColor(12, 15, 16));
+
+        $triangle2 = new Triangle(new Point(12, 5), new Point(56, 56), new Point(45, 45));
+        $triangle2->getFillStyle()->enable(true);
+        $triangle2->getFillStyle()->setColor(new RGBAColor(45, 45, 45));
+
+        $group = new GroupShapeMock();
+        $group->insertShape($rectangle);
+        $group->insertShape($triangle1);
+        $group->insertShape($triangle2);
+
+        $color = $group->getFillStyle()->getColor();
+
+        $this->assertEquals($color, null);
+    }
+
+    public function testGetColorGroupShapeWithEqualsColor()
+    {
+        $rectangle = new Rectangle(new Point(0, 0), 0, 12);
+        $rectangle->getFillStyle()->enable(true);
+        $rectangle->getFillStyle()->setColor(new RGBAColor(3, 4, 5));
+
+        $triangle1 = new Triangle(new Point(0, 0), new Point(3, 5), new Point(8, 5));
+        $triangle1->getFillStyle()->enable(true);
+        $triangle1->getFillStyle()->setColor(new RGBAColor(12, 15, 16));
+
+        $triangle2 = new Triangle(new Point(12, 5), new Point(56, 56), new Point(45, 45));
+        $triangle2->getFillStyle()->enable(true);
+        $triangle2->getFillStyle()->setColor(new RGBAColor(45, 45, 45));
+
+        $group = new GroupShapeMock();
+        $group->insertShape($rectangle);
+        $group->insertShape($triangle1);
+        $group->insertShape($triangle2);
+
+        $rectangle->getFillStyle()->setColor(new RGBAColor(0, 0, 0));
+        $triangle1->getFillStyle()->setColor(new RGBAColor(0, 0, 0));
+        $triangle2->getFillStyle()->setColor(new RGBAColor(0, 0, 0));
+
+        $color = $group->getFillStyle()->getColor();
+        if ($color == null)
+        {
+            echo "!!!!!!!!!!!!!!!";
+        }
+        var_dump($color);
+
+        $this->assertEquals($color, new RGBAColor(0, 0, 0));
     }
 }

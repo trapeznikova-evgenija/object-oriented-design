@@ -41,7 +41,7 @@ class OutlineStyle extends Style implements OutlineStyleInterface
         return parent::isEnabled();
     }
 
-    public function getColor(): RGBAColor
+    public function getColor(): ?RGBAColor
     {
         return parent::getColor();
     }

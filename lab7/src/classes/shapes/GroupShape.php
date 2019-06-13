@@ -5,16 +5,18 @@ namespace shapes;
 use common\Point;
 use common\RectD;
 use common\RGBAColor;
+use style\FillStyleEnumeratorInterface;
 use style\FillStylesEnumerator;
 use style\GroupOutlineStyle;
 use style\GroupStyle;
 use drawable\CanvasInterface;
+use style\OutlineStyleEnumeratorInterface;
 use style\OutlineStyleInterface;
 use style\StyleInterface;
 use style\OutlineStylesEnumerator;
 use style\Style;
 
-class GroupShape implements GroupShapeInterface
+class GroupShape implements GroupShapeInterface, FillStyleEnumeratorInterface, OutlineStyleEnumeratorInterface
 {
     /**
      * @var OutlineStyleInterface
@@ -33,8 +35,8 @@ class GroupShape implements GroupShapeInterface
 
     public function __construct()
     {
-        $this->fillStyle = new GroupStyle(new FillStylesEnumerator($this->shapes));
-        $this->outlineStyle = new GroupOutlineStyle(new OutlineStylesEnumerator($this->shapes));
+        $this->fillStyle = new GroupStyle($this);
+        $this->outlineStyle = new GroupOutlineStyle($this);
     }
 
     public function draw(CanvasInterface $canvas)
@@ -49,7 +51,7 @@ class GroupShape implements GroupShapeInterface
     {
        if (empty($this->shapes))
        {
-           return new RectD(0, 0, 0, 0);
+           return null;
        }
 
        $topY = (float)PHP_FLOAT_MAX;
@@ -170,6 +172,24 @@ class GroupShape implements GroupShapeInterface
         else
         {
             echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
+        }
+    }
+
+    public function enumerateFillStyles(callable $func)
+    {
+        foreach ($this->shapes as $shape)
+        {
+            $style = $shape->getFillStyle();
+            call_user_func($func, $style);
+        }
+    }
+
+    public function enumerateOutlineStyles(callable $func)
+    {
+        foreach ($this->shapes as $shape)
+        {
+            $style = $shape->getOutlineStyle();
+            call_user_func($func, $style);
         }
     }
 }

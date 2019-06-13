@@ -4,25 +4,43 @@ namespace style;
 
 
 use common\RGBAColor;
+use shapes\GroupShapeInterface;
 
 class GroupOutlineStyle implements OutlineStyleInterface
 {
-    /** @var OutlineStylesEnumerator */
-    private $enumerator;
+    /** @var GroupShapeInterface */
+    private $groupShape;
 
-    public function __construct(OutlineStylesEnumerator $enumerator)
+    public function __construct(GroupShapeInterface $groupShape)
     {
-        $this->enumerator = $enumerator;
+        $this->groupShape = $groupShape;
     }
 
-    public function getColor(): RGBAColor
+    public function getColor(): ?RGBAColor
     {
         $color = null;
 
-        $this->enumerator->enumerate(function (OutlineStyleInterface $style) use (&$color)
+        if (empty($this->groupShape))
+        {
+            return $color;
+        }
+
+        $colorsArray = [];
+
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$color,  &$colorsArray)
         {
             $color = $style->getColor();
+            $colorsArray[] = $color;
         });
+
+        for ($i = 0; $i < count($colorsArray); $i++)
+        {
+            if (!($colorsArray[$i] == $colorsArray[$i + 1]))
+            {
+                $color = null;
+                break;
+            }
+        }
 
         return $color;
     }
@@ -31,7 +49,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
     {
         $strokeWidth = null;
 
-        $this->enumerator->enumerate(function (OutlineStyleInterface $style) use (&$strokeWidth)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$strokeWidth)
         {
            $strokeWidth = $style->getStrokeWidth();
         });
@@ -41,7 +59,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
 
     public function setColor(RGBAColor $RGBAColor): void
     {
-        $this->enumerator->enumerate(function (OutlineStyleInterface $style) use ($RGBAColor)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use ($RGBAColor)
         {
             $style->setColor($RGBAColor);
         });
@@ -49,7 +67,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
 
     public function setStrokeWidth(float $width)
     {
-        $this->enumerator->enumerate(function (OutlineStyleInterface $style) use ($width)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use ($width)
         {
             $style->setStrokeWidth($width);
         });
@@ -59,7 +77,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
     {
         $enable = true;
 
-        $this->enumerator->enumerate(function (OutlineStyleInterface $style) use (&$enable)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$enable)
         {
             $enable = $style->isEnabled();
         });
@@ -69,7 +87,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
 
     public function enable(bool $enable)
     {
-        $this->enumerator->enumerate(function (OutlineStyleInterface $style) use (&$enable)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$enable)
         {
             $enable = $style->enable($enable);
         });

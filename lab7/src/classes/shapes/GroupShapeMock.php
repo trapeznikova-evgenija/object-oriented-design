@@ -31,10 +31,16 @@ class GroupShapeMock
      */
     private $shapes = [];
 
+    /**
+     * @var GroupShape
+     */
+    private $group;
+
     public function __construct()
     {
-        $this->fillStyle = new GroupStyle(new FillStylesEnumerator($this->shapes));
-        $this->outlineStyle = new GroupOutlineStyle(new OutlineStylesEnumerator($this->shapes));
+        $this->group = new GroupShape();
+        $this->fillStyle = new GroupStyle($this->group);
+        $this->outlineStyle = new GroupOutlineStyle($this->group);
     }
 
     public function draw(CanvasInterface $canvas)
@@ -125,7 +131,7 @@ class GroupShapeMock
         return $this->fillStyle;
     }
 
-    public function getGroup(): GroupShapeInterface
+    public function getGroup(): GroupShapeMock
     {
         return $this;
     }

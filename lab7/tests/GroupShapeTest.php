@@ -97,7 +97,7 @@ class GroupShapeTest extends TestCase
         $triangle2->getFillStyle()->enable(true);
         $triangle2->getFillStyle()->setColor(new RGBAColor(45, 45, 45));
 
-        $group = new GroupShapeMock();
+        $group = new GroupShape();
         $group->insertShape($rectangle);
         $group->insertShape($triangle1);
         $group->insertShape($triangle2);
@@ -107,11 +107,6 @@ class GroupShapeTest extends TestCase
         $triangle2->getFillStyle()->setColor(new RGBAColor(0, 0, 0));
 
         $color = $group->getFillStyle()->getColor();
-        if ($color == null)
-        {
-            echo "!!!!!!!!!!!!!!!";
-        }
-        var_dump($color);
 
         $this->assertEquals($color, new RGBAColor(0, 0, 0));
     }

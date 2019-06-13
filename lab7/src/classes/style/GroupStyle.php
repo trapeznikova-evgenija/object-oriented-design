@@ -29,21 +29,17 @@ class GroupStyle implements StyleInterface
         $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$color, &$colorsArray)
         {
             $color = $style->getColor();
-            print_r($color);
             $colorsArray[] = $color;
         });
 
-        for ($i = 0; $i < count($colorsArray); $i++)
+        for ($i = 1; $i < count($colorsArray); $i++)
         {
-            if (!($colorsArray[$i] == $colorsArray[$i + 1]))
+            if (!($colorsArray[$i] == $colorsArray[$i - 1]))
             {
                 $color = null;
                 break;
             }
         }
-
-        var_dump('***');
-        print_r($colorsArray);
 
         return $color;
     }

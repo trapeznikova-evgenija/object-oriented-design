@@ -3,12 +3,13 @@
 namespace drawable;
 
 use shapes\GroupShape;
+use shapes\ShapeInterface;
 use shapes\ShapesInterface;
 
 class Slide implements SlideInterface
 {
-    /** @var GroupShape */
-    private $shapeGroup;
+    /** @var ShapeInterface[] */
+    private $shapes;
 
     /** @var float*/
     private $width;
@@ -18,7 +19,7 @@ class Slide implements SlideInterface
 
     public function __construct(float $slideWidth, float $slideHeight)
     {
-        $this->shapeGroup = [];
+        $this->shapes = [];
         $this->width = $slideWidth;
         $this->height = $slideHeight;
     }
@@ -33,22 +34,23 @@ class Slide implements SlideInterface
         return $this->width;
     }
 
-    public function getShapes(): ShapesInterface
+    public function getShapes(): array
     {
-        return $this->shapeGroup;
+        return $this->shapes;
     }
 
     public function draw(CanvasInterface $canvas)
     {
         $canvas->setCanvasSize($this->width, $this->height);
-        foreach ($this->shapeGroup as $shapeGroup)
+
+        foreach ($this->shapes as $shapeGroup)
         {
             $shapeGroup->draw($canvas);
         }
     }
 
-    public function addShape(GroupShape $shape) : void
+    public function addShape(ShapeInterface $shape) : void
     {
-        $this->shapeGroup[] = $shape;
+        $this->shapes[] = $shape;
     }
 }

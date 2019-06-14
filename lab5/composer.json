@@ -1,0 +1,14 @@
+{
+  "autoload" : {
+    "psr-4" : {
+      "command\\" : "app/classes/command",
+      "document\\" : "app/classes/document",
+      "editor\\" : "app/classes/editor",
+      "history\\" : "app/classes/history",
+      "application\\" : "app/classes/application"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5"
+  }
+}

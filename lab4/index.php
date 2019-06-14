@@ -10,4 +10,8 @@
 
     $client->getPictureDraft($designer);
     $client->drawPictureOnCanvas($painter);
+
+    $canvas->getSvgFile();
+
+
     

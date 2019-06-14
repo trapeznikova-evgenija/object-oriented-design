@@ -32,8 +32,27 @@ class RegularPolygon extends Shape
         return $this->radius;
     }
 
-    public function draw(CanvasInterface $canvas)
+    protected function drawShape(CanvasInterface $canvas)
     {
-        echo "I draw polygon";
+        $stepAngle = M_PI / $this->vertexNumber * 2;
+        $currAngle = (M_PI / 2) + $stepAngle;
+
+        $topPointYCoord = $this->center->getYCoord() - $this->radius;
+        $topPoint = new Point($this->center->getXCoord(), $topPointYCoord);
+        $prevPoint = $topPoint;
+
+        for ($i = 0; $i < $this->vertexNumber - 1; ++$i)
+        {
+            $x = $this->center->getXCoord() + ceil($this->radius * cos($currAngle));
+            $y = $this->center->getYCoord() + ceil($this->radius * sin($currAngle));
+
+            $point = new Point($x, $y);
+            $canvas->drawLine($prevPoint, $point);
+
+            $prevPoint = $point;
+            $currAngle = $currAngle +$stepAngle;
+        }
+
+        $canvas->drawLine($prevPoint, $topPoint);
     }
 }

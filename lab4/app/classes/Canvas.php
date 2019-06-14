@@ -7,24 +7,44 @@ class Canvas implements CanvasInterface
 {
     private $color;
 
+    private $svgFile;
+
+    public function __construct()
+    {
+        $fileName = "shapes_svg_" . date("H:i:s") . ".svg";
+        $this->svgFile = fopen($fileName, 'w');
+        $this->writeInFile("<svg  width=\"800\" height=\"800\">");
+    }
+
     public function setColor(string $color)
     {
         $this->color = $color;
     }
 
-    public function drawEllipse(float $left, float $top, float $width, float $height)
+    public function drawEllipse(Point $center, float $hR, float $vR)
     {
-        echo "--draw ellipse on canvas--" . PHP_EOL;
-        echo "left " . $left . PHP_EOL;
-        echo "top " . $top . PHP_EOL;
-        echo "width " . $width . PHP_EOL;
-        echo "height " . $height . PHP_EOL;
+        $this->writeInFile("<ellipse cx=\"{$center->getXCoord()}\" cy=\"{$center->getYCoord()}\" rx=\"{$hR}\" ry=\"{$vR}\" fill=\"{$this->color}\"/>");
     }
 
     public function drawLine(Point $from, Point $to)
     {
-        echo "--draw line--" . PHP_EOL;
-        echo "from " . "<x>=" . $from->getXCoord() . " <y>=" . $from->getYCoord()
-              . " to " . "<x>=" . $to->getXCoord() . " <y>=" . $to->getYCoord();
+        $this->writeInFile("<line stroke=\"{$this->color}\" x1=\"{$from->getXCoord()}\" y1=\"{$from->getYCoord()}\" x2=\"{$to->getXCoord()}\" y2=\"{$to->getYCoord()}\" stroke-width='3' />");
+    }
+
+    public function getSvgFile()
+    {
+        $this->writeInFile("</svg>");
+        fclose($this->svgFile);
+        return $this->svgFile;
+    }
+
+    private function writeInFile(string $text)
+    {
+        $writingResult = fwrite($this->svgFile, $text);
+
+        if (!$writingResult)
+        {
+            echo "Произошла ошибка при записи в файл." . PHP_EOL;
+        }
     }
 }

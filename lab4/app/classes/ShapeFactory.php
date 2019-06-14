@@ -81,7 +81,7 @@ class ShapeFactory implements ShapeFactoryInterface
 
     private function createRectangle($parsedArray) : Shape
     {
-        if (count($parsedArray) != 8)
+        if (count($parsedArray) != 6)
         {
             throw new ShapeException("Incorrect argument numbers");
         }

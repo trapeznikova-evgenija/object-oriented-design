@@ -25,8 +25,14 @@ class Rectangle extends Shape
         return $this->topLeft;
     }
 
-    public function draw(CanvasInterface $canvas)
+    protected function drawShape(CanvasInterface $canvas)
     {
-        echo "I draw rectangle" . PHP_EOL;
+        $leftBottom = new Point($this->getLeftTop()->getXCoord(), $this->getRightBottom()->getYCoord());
+        $rightTop = new Point($this->getRightBottom()->getXCoord(), $this->getLeftTop()->getYCoord());
+
+        $canvas->drawLine($this->topLeft, $rightTop);
+        $canvas->drawLine($rightTop, $this->rightBottom);
+        $canvas->drawLine($this->rightBottom, $leftBottom);
+        $canvas->drawLine($leftBottom, $this->topLeft);
     }
 }

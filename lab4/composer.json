@@ -4,5 +4,8 @@
       "App\\" : "app/classes",
       "shapeException\\" : "app/classes/exception"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5"
   }
 }

@@ -32,8 +32,10 @@ class Triangle extends Shape
         return $this->vertex3;
     }
 
-    public function draw(CanvasInterface $canvas)
+    protected function drawShape(CanvasInterface $canvas)
     {
-        echo "I draw triangle" . PHP_EOL;
+        $canvas->drawLine($this->vertex1, $this->vertex2);
+        $canvas->drawLine($this->vertex2, $this->vertex3);
+        $canvas->drawLine($this->vertex3, $this->vertex1);
     }
 }

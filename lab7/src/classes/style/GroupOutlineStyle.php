@@ -33,26 +33,23 @@ class GroupOutlineStyle implements OutlineStyleInterface
             $colorsArray[] = $color;
         });
 
-        for ($i = 0; $i < count($colorsArray); $i++)
-        {
-            if (!($colorsArray[$i] == $colorsArray[$i + 1]))
-            {
-                $color = null;
-                break;
-            }
-        }
+        $color = $this->findGroupPropertyIfEquals($colorsArray);
 
         return $color;
     }
 
-    public function getStrokeWidth(): float
+    public function getStrokeWidth(): ?float
     {
         $strokeWidth = null;
+        $strokeWidthArray = [];
 
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$strokeWidth)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$strokeWidth, &$strokeWidthArray)
         {
            $strokeWidth = $style->getStrokeWidth();
+           $strokeWidthArray[] = $strokeWidth;
         });
+
+        $strokeWidth = $this->findGroupPropertyIfEquals($strokeWidthArray);
 
         return $strokeWidth;
     }
@@ -76,11 +73,15 @@ class GroupOutlineStyle implements OutlineStyleInterface
     public function isEnabled(): bool
     {
         $enable = true;
+        $enablesArray = [];
 
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$enable)
+        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$enable, &$enablesArray)
         {
             $enable = $style->isEnabled();
+            $enablesArray[] = $enable;
         });
+
+        $enable = $this->findGroupPropertyIfEquals($enablesArray);
 
         return $enable;
     }
@@ -91,5 +92,20 @@ class GroupOutlineStyle implements OutlineStyleInterface
         {
             $enable = $style->enable($enable);
         });
+    }
+
+    private function findGroupPropertyIfEquals(array $colorsArray)
+    {
+        $color = null;
+
+        for ($i = 1; $i < count($colorsArray); $i++)
+        {
+            if (!($colorsArray[$i] == $colorsArray[$i - 1]))
+            {
+                return null;
+            }
+        }
+
+        return $colorsArray[0];
     }
 }

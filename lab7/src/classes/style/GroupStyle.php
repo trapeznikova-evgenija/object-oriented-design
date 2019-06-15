@@ -32,14 +32,7 @@ class GroupStyle implements StyleInterface
             $colorsArray[] = $color;
         });
 
-        for ($i = 1; $i < count($colorsArray); $i++)
-        {
-            if (!($colorsArray[$i] == $colorsArray[$i - 1]))
-            {
-                $color = null;
-                break;
-            }
-        }
+        $color = $this->findGroupPropertyIfEquals($colorsArray);
 
         return $color;
     }
@@ -55,11 +48,15 @@ class GroupStyle implements StyleInterface
     public function isEnabled(): bool
     {
         $enable = true;
+        $enablesArray = [];
 
-        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$enable)
+        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$enable, $enablesArray)
         {
             $enable = $style->isEnabled();
+            $enablesArray[] = $enable;
         });
+
+        $enable = $this->findGroupPropertyIfEquals($enablesArray);
 
         return $enable;
     }
@@ -70,5 +67,20 @@ class GroupStyle implements StyleInterface
         {
             $style->enable($enable);
         });
+    }
+
+    private function findGroupPropertyIfEquals(array $colorsArray)
+    {
+        $color = null;
+
+        for ($i = 1; $i < count($colorsArray); $i++)
+        {
+            if (!($colorsArray[$i] == $colorsArray[$i - 1]))
+            {
+                return null;
+            }
+        }
+
+        return $colorsArray[0];
     }
 }

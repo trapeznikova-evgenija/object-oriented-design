@@ -73,7 +73,7 @@ class GroupShapeTest extends TestCase
         $triangle2->getFillStyle()->enable(true);
         $triangle2->getFillStyle()->setColor(new RGBAColor(45, 45, 45));
 
-        $group = new GroupShapeMock();
+        $group = new GroupShape();
         $group->insertShape($rectangle);
         $group->insertShape($triangle1);
         $group->insertShape($triangle2);
@@ -109,5 +109,55 @@ class GroupShapeTest extends TestCase
         $color = $group->getFillStyle()->getColor();
 
         $this->assertEquals($color, new RGBAColor(0, 0, 0));
+    }
+
+    public function testStrokeWidthGroupWithDiffStrokeWidth()
+    {
+        $rectangle = new Rectangle(new Point(0, 0), 0, 12);
+        $rectangle->getOutlineStyle()->enable(true);
+
+        $triangle1 = new Triangle(new Point(0, 0), new Point(3, 5), new Point(8, 5));
+        $triangle1->getOutlineStyle()->enable(true);
+
+        $triangle2 = new Triangle(new Point(12, 5), new Point(56, 56), new Point(45, 45));
+        $triangle2->getOutlineStyle()->enable(true);
+
+        $group = new GroupShape();
+        $group->insertShape($rectangle);
+        $group->insertShape($triangle1);
+        $group->insertShape($triangle2);
+
+        $rectangle->getOutlineStyle()->setStrokeWidth(3);
+        $triangle1->getOutlineStyle()->setStrokeWidth(2);
+        $triangle2->getOutlineStyle()->setStrokeWidth(3);
+
+        $actualStrokeWidth = $group->getOutlineStyle()->getStrokeWidth();
+
+        $this->assertEquals(null, $actualStrokeWidth);
+    }
+
+    public function testStrokeWidthWithEqualsStrokeWidth()
+    {
+        $rectangle = new Rectangle(new Point(0, 0), 0, 12);
+        $rectangle->getOutlineStyle()->enable(true);
+
+        $triangle1 = new Triangle(new Point(0, 0), new Point(3, 5), new Point(8, 5));
+        $triangle1->getOutlineStyle()->enable(true);
+
+        $triangle2 = new Triangle(new Point(12, 5), new Point(56, 56), new Point(45, 45));
+        $triangle2->getOutlineStyle()->enable(true);
+
+        $group = new GroupShape();
+        $group->insertShape($rectangle);
+        $group->insertShape($triangle1);
+        $group->insertShape($triangle2);
+
+        $rectangle->getOutlineStyle()->setStrokeWidth(3);
+        $triangle1->getOutlineStyle()->setStrokeWidth(3);
+        $triangle2->getOutlineStyle()->setStrokeWidth(3);
+
+        $actualStrokeWidth = $group->getOutlineStyle()->getStrokeWidth();
+
+        $this->assertEquals(3, $actualStrokeWidth);
     }
 }

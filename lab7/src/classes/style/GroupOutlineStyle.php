@@ -2,9 +2,29 @@
 
 namespace style;
 
-
 use common\RGBAColor;
 use shapes\GroupShapeInterface;
+
+function getGroupStyleProperty(callable $enumerator, callable $propertyGetter)
+{
+    $value = null;
+    $isFirstValue = true;
+    call_user_func($enumerator, function($style) use (&$value, &$isFirstValue, $propertyGetter)
+    {
+       $currentValue = $propertyGetter($style);
+
+       if ($isFirstValue)
+       {
+           $value = $currentValue;
+           $isFirstValue = false;
+       }
+       else if ($currentValue !== $value)
+       {
+           $value = null;
+       }
+    });
+    return $value;
+}
 
 class GroupOutlineStyle implements OutlineStyleInterface
 {
@@ -18,40 +38,18 @@ class GroupOutlineStyle implements OutlineStyleInterface
 
     public function getColor(): ?RGBAColor
     {
-        $color = null;
-
-        if (empty($this->groupShape))
-        {
-            return $color;
-        }
-
-        $colorsArray = [];
-
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$color,  &$colorsArray)
-        {
-            $color = $style->getColor();
-            $colorsArray[] = $color;
-        });
-
-        $color = $this->findGroupPropertyIfEquals($colorsArray);
-
-        return $color;
+        return getGroupStyleProperty(
+            array($this->groupShape, "enumerateOutlineStyles"),
+            function (OutlineStyleInterface $style) { return $style->getColor(); }
+        );
     }
 
     public function getStrokeWidth(): ?float
     {
-        $strokeWidth = null;
-        $strokeWidthArray = [];
-
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$strokeWidth, &$strokeWidthArray)
-        {
-           $strokeWidth = $style->getStrokeWidth();
-           $strokeWidthArray[] = $strokeWidth;
-        });
-
-        $strokeWidth = $this->findGroupPropertyIfEquals($strokeWidthArray);
-
-        return $strokeWidth;
+       return getGroupStyleProperty(
+           function ($callback) {$this->groupShape->enumerateOutlineStyles($callback);},
+           function (OutlineStyleInterface $style) { return $style->getStrokeWidth(); }
+       );
     }
 
     public function setColor(RGBAColor $RGBAColor): void
@@ -70,20 +68,11 @@ class GroupOutlineStyle implements OutlineStyleInterface
         });
     }
 
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
-        $enable = true;
-        $enablesArray = [];
-
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$enable, &$enablesArray)
-        {
-            $enable = $style->isEnabled();
-            $enablesArray[] = $enable;
-        });
-
-        $enable = $this->findGroupPropertyIfEquals($enablesArray);
-
-        return $enable;
+        return getGroupStyleProperty(
+            array($this->groupShape, "enumerateOutlineStyles"),
+            function(OutlineStyleInterface $style) { return $style->isEnabled(); });
     }
 
     public function enable(bool $enable)
@@ -92,20 +81,5 @@ class GroupOutlineStyle implements OutlineStyleInterface
         {
             $enable = $style->enable($enable);
         });
-    }
-
-    private function findGroupPropertyIfEquals(array $colorsArray)
-    {
-        $color = null;
-
-        for ($i = 1; $i < count($colorsArray); $i++)
-        {
-            if (!($colorsArray[$i] == $colorsArray[$i - 1]))
-            {
-                return null;
-            }
-        }
-
-        return $colorsArray[0];
     }
 }

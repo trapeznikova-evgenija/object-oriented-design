@@ -17,24 +17,10 @@ class GroupStyle implements StyleInterface
 
     public function getColor(): ?RGBAColor
     {
-        $color = null;
-
-        if (empty($this->groupShape))
-        {
-            return $color;
-        }
-
-        $colorsArray = [];
-
-        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$color, &$colorsArray)
-        {
-            $color = $style->getColor();
-            $colorsArray[] = $color;
-        });
-
-        $color = $this->findGroupPropertyIfEquals($colorsArray);
-
-        return $color;
+        return getGroupStyleProperty(
+            array($this->groupShape, "enumerateOutlineStyles"),
+            function (StyleInterface $style) { return $style->getColor(); }
+        );
     }
 
     public function setColor(RGBAColor $RGBAColor): void
@@ -47,18 +33,9 @@ class GroupStyle implements StyleInterface
 
     public function isEnabled(): bool
     {
-        $enable = true;
-        $enablesArray = [];
-
-        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use (&$enable, $enablesArray)
-        {
-            $enable = $style->isEnabled();
-            $enablesArray[] = $enable;
-        });
-
-        $enable = $this->findGroupPropertyIfEquals($enablesArray);
-
-        return $enable;
+        return getGroupStyleProperty(
+            $this->groupShape->enumerateOutlineStyles,
+            function(StyleInterface $style){ return $style->isEnabled(); });
     }
 
     public function enable(bool $enable)
@@ -67,20 +44,5 @@ class GroupStyle implements StyleInterface
         {
             $style->enable($enable);
         });
-    }
-
-    private function findGroupPropertyIfEquals(array $colorsArray)
-    {
-        $color = null;
-
-        for ($i = 1; $i < count($colorsArray); $i++)
-        {
-            if (!($colorsArray[$i] == $colorsArray[$i - 1]))
-            {
-                return null;
-            }
-        }
-
-        return $colorsArray[0];
     }
 }

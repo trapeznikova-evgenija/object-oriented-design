@@ -7,7 +7,7 @@ use common\RGBAColor;
 
 interface StyleInterface
 {
-    public function isEnabled() : bool;
+    public function isEnabled() : ?bool;
     public function enable(bool $enable);
 
     public function getColor() : ?RGBAColor;

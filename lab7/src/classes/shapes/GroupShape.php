@@ -5,7 +5,7 @@ namespace shapes;
 use common\Point;
 use common\RectD;
 use common\RGBAColor;
-use style\FillStyleEnumeratorInterface;
+use style\EnumeratorInterface;
 use style\FillStylesEnumerator;
 use style\GroupOutlineStyle;
 use style\GroupStyle;
@@ -16,7 +16,7 @@ use style\StyleInterface;
 use style\OutlineStylesEnumerator;
 use style\Style;
 
-class GroupShape implements GroupShapeInterface, FillStyleEnumeratorInterface, OutlineStyleEnumeratorInterface
+class GroupShape implements GroupShapeInterface
 {
     /**
      * @var OutlineStyleInterface
@@ -35,8 +35,8 @@ class GroupShape implements GroupShapeInterface, FillStyleEnumeratorInterface, O
 
     public function __construct()
     {
-        $this->fillStyle = new GroupStyle($this);
-        $this->outlineStyle = new GroupOutlineStyle($this);
+        $this->fillStyle = new GroupStyle(new FillStylesEnumerator($this->shapes));
+        $this->outlineStyle = new GroupOutlineStyle(new OutlineStylesEnumerator($this->shapes));
     }
 
     public function draw(CanvasInterface $canvas)
@@ -49,15 +49,15 @@ class GroupShape implements GroupShapeInterface, FillStyleEnumeratorInterface, O
 
     public function getFrame(): RectD
     {
-       if (empty($this->shapes))
+       if ($this->getShapesCount() == 0)
        {
-           return null;
+           return new RectD(0, 0, 0, 0);
        }
 
-       $topY = (float)PHP_FLOAT_MAX;
-       $leftX = (float)PHP_FLOAT_MAX;
-       $rightX = (float)PHP_FLOAT_MIN;
-       $bottomY = (float)PHP_FLOAT_MIN;
+       $topY = PHP_INT_MAX;
+       $leftX = PHP_INT_MAX;
+       $rightX = PHP_INT_MIN;
+       $bottomY = PHP_INT_MIN;
 
        foreach ($this->shapes as $value)
        {
@@ -172,24 +172,6 @@ class GroupShape implements GroupShapeInterface, FillStyleEnumeratorInterface, O
         else
         {
             echo "Невозможно получить фигуру по позиции: " . $index . PHP_EOL;
-        }
-    }
-
-    public function enumerateFillStyles(callable $func)
-    {
-        foreach ($this->shapes as $shape)
-        {
-            $style = $shape->getFillStyle();
-            call_user_func($func, $style);
-        }
-    }
-
-    public function enumerateOutlineStyles(callable $func)
-    {
-        foreach ($this->shapes as $shape)
-        {
-            $style = $shape->getOutlineStyle();
-            call_user_func($func, $style);
         }
     }
 }

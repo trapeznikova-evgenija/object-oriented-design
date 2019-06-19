@@ -83,6 +83,30 @@ class GroupShapeTest extends TestCase
         $this->assertEquals(null, $color);
     }
 
+    public function testGetColorGroupShapeWithEqualsColor()
+    {
+        $rectangle = new Rectangle(new Point(0, 0), 0, 12);
+        $rectangle->getFillStyle()->enable(true);
+        $rectangle->getFillStyle()->setColor(new RGBAColor(2, 2, 2));
+
+        $triangle1 = new Triangle(new Point(0, 0), new Point(3, 5), new Point(8, 5));
+        $triangle1->getFillStyle()->enable(true);
+        $triangle1->getFillStyle()->setColor(new RGBAColor(2, 2, 2));
+
+        $triangle2 = new Triangle(new Point(12, 5), new Point(56, 56), new Point(45, 45));
+        $triangle2->getFillStyle()->enable(true);
+        $triangle2->getFillStyle()->setColor(new RGBAColor(2, 2, 2));
+
+        $group = new GroupShape();
+        $group->insertShape($rectangle);
+        $group->insertShape($triangle1);
+        $group->insertShape($triangle2);
+
+        $color = $group->getFillStyle()->getColor();
+
+        $this->assertEquals(new RGBAColor(2, 2, 2), $color);
+    }
+
     public function testStrokeWidthGroupWithDiffStrokeWidth()
     {
         $rectangle = new Rectangle(new Point(0, 0), 0, 12);
@@ -173,5 +197,24 @@ class GroupShapeTest extends TestCase
         $actualStrokeWidth = $group->getOutlineStyle()->isEnabled();
 
         $this->assertEquals(true, $actualStrokeWidth);
+    }
+
+    public function testFrameEmptyGroupInsideGroup()
+    {
+        $rectangle = new Rectangle(new Point(0, 0), 0, 12);
+        $emptyGroup = new GroupShape();
+
+        $expectedFrame = $rectangle->getFrame();
+        var_dump("!!!");
+        var_dump($expectedFrame);
+
+        $resultGroup = new GroupShape();
+        $resultGroup->insertShape($rectangle);
+        $resultGroup->insertShape($emptyGroup);
+
+        var_dump("***");
+        $resultGroup->getFrame();
+
+        $this->assertEquals($expectedFrame, $resultGroup->getFrame());
     }
 }

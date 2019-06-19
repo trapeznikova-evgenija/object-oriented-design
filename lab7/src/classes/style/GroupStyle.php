@@ -7,25 +7,25 @@ use shapes\GroupShapeInterface;
 
 class GroupStyle implements StyleInterface
 {
-    /** @var GroupShapeInterface */
-    private $groupShape;
+    /** @var EnumeratorInterface */
+    private $enumerator;
 
-    public function __construct(GroupShapeInterface $groupShape)
+    public function __construct(EnumeratorInterface $enumerator)
     {
-        $this->groupShape = $groupShape;
+        $this->enumerator = $enumerator;
     }
 
     public function getColor(): ?RGBAColor
     {
         return getGroupStyleProperty(
-            array($this->groupShape, "enumerateOutlineStyles"),
+            array($this->enumerator, "enumerateStyles"),
             function (StyleInterface $style) { return $style->getColor(); }
         );
     }
 
     public function setColor(RGBAColor $RGBAColor): void
     {
-        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use ($RGBAColor)
+        $this->enumerator->enumerateStyles(function (StyleInterface $style) use ($RGBAColor)
         {
             $style->setColor($RGBAColor);
         });
@@ -34,13 +34,13 @@ class GroupStyle implements StyleInterface
     public function isEnabled(): bool
     {
         return getGroupStyleProperty(
-            $this->groupShape->enumerateOutlineStyles,
+            array($this->enumerator, "enumerateStyles"),
             function(StyleInterface $style){ return $style->isEnabled(); });
     }
 
     public function enable(bool $enable)
     {
-        $this->groupShape->enumerateFillStyles(function (StyleInterface $style) use ($enable)
+        $this->enumerator->enumerateStyles(function (StyleInterface $style) use ($enable)
         {
             $style->enable($enable);
         });

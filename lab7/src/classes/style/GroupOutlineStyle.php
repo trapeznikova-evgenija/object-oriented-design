@@ -28,18 +28,18 @@ function getGroupStyleProperty(callable $enumerator, callable $propertyGetter)
 
 class GroupOutlineStyle implements OutlineStyleInterface
 {
-    /** @var GroupShapeInterface */
-    private $groupShape;
+    /** @var EnumeratorInterface */
+    private $enumerator;
 
-    public function __construct(GroupShapeInterface $groupShape)
+    public function __construct(EnumeratorInterface $enumerator)
     {
-        $this->groupShape = $groupShape;
+        $this->enumerator = $enumerator;
     }
 
     public function getColor(): ?RGBAColor
     {
         return getGroupStyleProperty(
-            array($this->groupShape, "enumerateOutlineStyles"),
+            array($this->enumerator, "enumerateStyles"),
             function (OutlineStyleInterface $style) { return $style->getColor(); }
         );
     }
@@ -47,14 +47,14 @@ class GroupOutlineStyle implements OutlineStyleInterface
     public function getStrokeWidth(): ?float
     {
        return getGroupStyleProperty(
-           function ($callback) {$this->groupShape->enumerateOutlineStyles($callback);},
+           function ($callback) {$this->enumerator->enumerateStyles($callback);},
            function (OutlineStyleInterface $style) { return $style->getStrokeWidth(); }
        );
     }
 
     public function setColor(RGBAColor $RGBAColor): void
     {
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use ($RGBAColor)
+        $this->enumerator->enumerateStyles(function (OutlineStyleInterface $style) use ($RGBAColor)
         {
             $style->setColor($RGBAColor);
         });
@@ -62,7 +62,7 @@ class GroupOutlineStyle implements OutlineStyleInterface
 
     public function setStrokeWidth(float $width)
     {
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use ($width)
+        $this->enumerator->enumerateStyles(function (OutlineStyleInterface $style) use ($width)
         {
             $style->setStrokeWidth($width);
         });
@@ -71,13 +71,13 @@ class GroupOutlineStyle implements OutlineStyleInterface
     public function isEnabled(): ?bool
     {
         return getGroupStyleProperty(
-            array($this->groupShape, "enumerateOutlineStyles"),
+            array($this->enumerator, "enumerateStyles"),
             function(OutlineStyleInterface $style) { return $style->isEnabled(); });
     }
 
     public function enable(bool $enable)
     {
-        $this->groupShape->enumerateOutlineStyles(function (OutlineStyleInterface $style) use (&$enable)
+        $this->enumerator->enumerateStyles(function (OutlineStyleInterface $style) use (&$enable)
         {
             $enable = $style->enable($enable);
         });

@@ -56,17 +56,17 @@ class GroupShapeMock
         return $this->shapes;
     }
 
-    public function getFrame(): RectD
+    public function getFrame(): ?RectD
     {
         if (empty($this->shapes))
         {
-            return new RectD(0, 0, 0, 0);
+            return null;
         }
 
-        $topY = (float)PHP_FLOAT_MAX;
-        $leftX = (float)PHP_FLOAT_MAX;
-        $rightX = (float)PHP_FLOAT_MIN;
-        $bottomY = (float)PHP_FLOAT_MIN;
+        $topY = PHP_INT_MAX;
+        $leftX = PHP_INT_MAX;
+        $rightX = PHP_INT_MIN;
+        $bottomY = PHP_INT_MIN;
 
         foreach ($this->shapes as $value)
         {

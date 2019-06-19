@@ -1,0 +1,17 @@
+<svg  width="700" height="700"><polyline points="5, 0 705, 0 705, 150 5, 150 5, 0 " fill="#3a85ab" 
+                                        stroke="#c151a"
+                                        stroke-width="2"
+                                        />
+<polyline points="20, 120 220, 120 220, 320 20, 320 20, 120 " fill="#ffffff" 
+                                        stroke="#c71051"
+                                        stroke-width="4"
+                                        />
+<polyline points="30, 180 80, 180 80, 230 30, 230 30, 180 " fill="#ffffff" 
+                                        stroke="#c71051"
+                                        stroke-width="4"
+                                        />
+<polyline points="20, 120 120, 0 220, 120 20, 120 " fill="#ffffff" 
+                                        stroke="#c71051"
+                                        stroke-width="4"
+                                        />
+</svg>

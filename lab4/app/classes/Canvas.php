@@ -23,7 +23,7 @@ class Canvas implements CanvasInterface
 
     public function drawEllipse(Point $center, float $hR, float $vR)
     {
-        $this->writeInFile("<ellipse cx=\"{$center->getXCoord()}\" cy=\"{$center->getYCoord()}\" rx=\"{$hR}\" ry=\"{$vR}\" fill=\"{$this->color}\"/>");
+        $this->writeInFile("<ellipse cx=\"{$center->getXCoord()}\" cy=\"{$center->getYCoord()}\" rx=\"{$hR}\" ry=\"{$vR}\" fill="" stroke=\"{$this->color}\"/>");
     }
 
     public function drawLine(Point $from, Point $to)

@@ -5,17 +5,12 @@ namespace editor;
 
 interface EditorInterface
 {
-    public function insertParagraph();
-    public function insertImage();
-    public function setTitle();
-    public function resizeImage();
-    public function deleteItem();
-    public function replaceText();
-    public function undo();
-    public function redo();
-    public function save();
-
-    public function printHelp() : void;
-    public function printDocument() : void;
-    public function handleCommand() : void;
+    public function setTitle(string $title): void;
+    public function insertImage(string $path, int $width, int $height, ?int $position = 0): void;
+    public function insertParagraph(string $text, ?int $position = 0);
+    public function canUndo(): bool;
+    public function undo(): void;
+    public function canRedo(): bool;
+    public function redo(): void;
+    public function save(string $path): void;
 }

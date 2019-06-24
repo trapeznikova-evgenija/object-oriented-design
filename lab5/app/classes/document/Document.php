@@ -1,97 +1,69 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 14.06.19
- * Time: 20:21
- */
 
 namespace document;
 
 
-use history\CommandsHistory;
+use history\CommandHistory;
 
 class Document implements DocumentInterface
 {
     /** @var string */
-    private $title;
+    private $title = '';
 
-    /** @var CommandsHistory */
-    private $commandsHistory;
+    /** @var array */
+    private $documentItems = [];
 
-    /** @var DocumentElementsList */
-    private $elements;
-
-
-    public function __construct()
+    public function addDocumentItem(DocumentElementInterface $documentItem, ?int $index = null): void
     {
-        $this->title = "Lorem ipsum";
-    }
+        if (!isset($index))
+        {
+            array_push($this->documentItems, $documentItem);
+            return;
+        }
 
-    public function insertParagraph(string $text, ?int $position = 0): ParagraphInterface
-    {
-        $paragraphDocumentElement = new ParagraphDocumentElement($text, $this->commandsHistory);
+        if ($index < 0 && $index >= count($this->documentItems))
+        {
+            throw new \OutOfRangeException('Позиция не входит в диапазон массива');
+        }
 
-    }
-
-    public function getItem(int $index): DocumentElementInterface
-    {
-        // TODO: Implement getItem() method.
+        $this->documentItems = array_merge(
+            array_slice($this->documentItems, 0, $index),
+            [$documentItem],
+            array_slice($this->documentItems, $index, count($this->documentItems))
+        );
     }
 
     public function getItemsCount(): int
     {
-        // TODO: Implement getItemsCount() method.
+        return count($this->documentItems);
     }
 
-    public function getTitle(): string
+    public function getItem(int $index): ?DocumentElementInterface
     {
-        // TODO: Implement getTitle() method.
+        return $this->documentItems[$index] ?? null;
     }
 
-    public function insertImage(string $path, int $width, int $height, ?int $position = 0): ImageInterface
+    public function getItems(): array
     {
-        // TODO: Implement insertImage() method.
-    }
-
-    public function undo(): void
-    {
-        // TODO: Implement undo() method.
-    }
-
-    public function canUndo(): bool
-    {
-        // TODO: Implement canUndo() method.
-    }
-
-    public function canRedo(): bool
-    {
-        // TODO: Implement canRedo() method.
-    }
-
-    public function redo(): void
-    {
-        // TODO: Implement redo() method.
+        return $this->documentItems;
     }
 
     public function deleteItem(int $index): void
     {
-        // TODO: Implement deleteItem() method.
+        if (!isset($this->documentItems[$index]))
+        {
+            throw new \LogicException('Unknown document item position.');
+        }
+        unset($this->documentItems[$index]);
     }
 
-    public function save(string $path): void
+    public function getTitle(): string
     {
-        // TODO: Implement save() method.
+        return $this->title;
     }
 
     public function setTitle(string $title): void
     {
-        // TODO: Implement setTitle() method.
-    }
-
-
-    private function validatePosition(int $position)
-    {
-
+        $this->title = $title;
     }
 }

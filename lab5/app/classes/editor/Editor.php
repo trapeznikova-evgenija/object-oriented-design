@@ -9,69 +9,103 @@
 namespace editor;
 
 
+use document\DocumentInterface;
+use menu\Menu;
+use menu\MenuInterface;
+use history\CommandHistory;
+use CommandHistoryException;
+use Exception;
+use document\Paragraph;
+use document\Image;
+use command\InsertImageCommand;
+use command\InsertParagraphCommand;
+use document\ImageControllerInterface;
+use document\ImageController;
+use command\SetTitleCommand;
+use command\SaveCommand;
+
 class Editor implements EditorInterface
 {
-    public function __construct()
+    const WORKING_IMAGE_DIRECTORY = '\\resources\\images';
+
+    /** @var DocumentInterface */
+    private $document;
+
+    /** @var CommandHistory */
+    private $commandHistory;
+
+    /** @var ImageControllerInterface */
+    private $imageController;
+
+    public function __construct(DocumentInterface $document)
     {
+        $this->document = $document;
+        $this->commandHistory = new CommandHistory();
+        $this->imageController = new ImageController(ROOT_DIR . self::WORKING_IMAGE_DIRECTORY);
     }
 
-    public function handleCommand(): void
+    public function setTitle(string $title): void
     {
-        // TODO: Implement handleCommand() method.
+        $command = new SetTitleCommand($this->document, $title);
+        $command->execute();
+        $this->commandHistory->addCommand($command);
     }
 
-    public function printHelp(): void
+    public function insertImage(string $path, int $width, int $height, ?int $position = 0): void
     {
-        // TODO: Implement printHelp() method.
+        $newPath = $this->imageController->addImage($path);
+        $image = new Image($newPath, $width, $height);
+        $command = new InsertImageCommand($this->document, $this->imageController, $image, $position);
+        $command->execute();
+        $this->commandHistory->addCommand($command);
     }
 
-    public function setTitle()
+    public function insertParagraph(string $text, ?int $position = 0)
     {
-        // TODO: Implement setTitle() method.
+        $paragraph = new Paragraph($text);
+        $command = new InsertParagraphCommand($this->document, $paragraph, $position);
+        $command->execute();
+        $this->commandHistory->addCommand($command);
     }
 
-    public function insertParagraph()
+    public function canUndo(): bool
     {
-        // TODO: Implement insertParagraph() method.
+        return $this->commandHistory->canUndo();
     }
 
-    public function insertImage()
+    /**
+     * @throws CommandHistoryException
+     */
+    public function undo(): void
     {
-        // TODO: Implement insertImage() method.
+        $this->commandHistory->undo();
     }
 
-    public function replaceText()
+    public function canRedo(): bool
     {
-        // TODO: Implement replaceText() method.
+        return $this->commandHistory->canRedo();
     }
 
-    public function resizeImage()
+    /**
+     * @throws CommandHistoryException
+     */
+    public function redo(): void
     {
-        // TODO: Implement resizeImage() method.
+        $this->commandHistory->redo();
     }
 
-    public function undo()
+    /**
+     * @param string $path
+     * @throws Exception
+     */
+    public function save(string $path): void
     {
-        // TODO: Implement undo() method.
-    }
-
-    public function redo()
-    {
-        // TODO: Implement redo() method.
-    }
-
-    public function deleteItem()
-    {
-        // TODO: Implement deleteItem() method.
-    }
-
-    public function save()
-    {
-        // TODO: Implement save() method.
-    }
-
-    public function printDocument(): void
-    {
-        // TODO: Implement printDocument() method.
+        if (!is_dir($path))
+        {
+            throw new Exception('Directory isn\'t exists.');
+        }
+        $command = new SaveCommand($this->document, $this->imageController, $path);
+        $command->execute();
+        $this->commandHistory->addCommand($command);
     }
 }

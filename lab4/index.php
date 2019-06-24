@@ -12,6 +12,3 @@
     $client->drawPictureOnCanvas($painter);
 
     $canvas->getSvgFile();
-
-
-    

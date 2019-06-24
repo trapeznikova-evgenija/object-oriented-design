@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/classes/application" isTestSource="false" packagePrefix="application\" />
       <sourceFolder url="file://$MODULE_DIR$/app/classes/command" isTestSource="false" packagePrefix="command\" />
       <sourceFolder url="file://$MODULE_DIR$/app/classes/history" isTestSource="false" packagePrefix="history\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/classes/menu" isTestSource="false" packagePrefix="menu\" />
       <sourceFolder url="file://$MODULE_DIR$/app/classes/document" isTestSource="false" packagePrefix="document\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />

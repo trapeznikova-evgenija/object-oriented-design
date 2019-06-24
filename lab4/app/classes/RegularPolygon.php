@@ -50,7 +50,7 @@ class RegularPolygon extends Shape
             $canvas->drawLine($prevPoint, $point);
 
             $prevPoint = $point;
-            $currAngle = $currAngle +$stepAngle;
+            $currAngle = $currAngle + $stepAngle;
         }
 
         $canvas->drawLine($prevPoint, $topPoint);

@@ -17,6 +17,7 @@ class Rectangle implements CanvasDrawableInterface
         $this->height = $height;
         $this->width = $width;
         $this->leftTop = $leftTop;
+
         if ($rgbColor == null)
         {
             $this->color = new RGBAColor(0,0,0,1);

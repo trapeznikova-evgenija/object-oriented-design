@@ -5,10 +5,10 @@
       "document\\" : "app/classes/document",
       "editor\\" : "app/classes/editor",
       "history\\" : "app/classes/history",
-      "application\\" : "app/classes/application"
+      "application\\" : "app/classes/application",
+      "menu\\" : "app/classes/menu",
+      "exception\\" : "app/classes/exception",
+      "htmlRenderer\\" : "app/classes/htmlRenderer"
     }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^7.5"
   }
 }

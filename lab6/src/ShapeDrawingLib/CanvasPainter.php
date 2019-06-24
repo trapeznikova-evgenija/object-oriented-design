@@ -17,5 +17,4 @@ class CanvasPainter
     {
         $drawable->draw($this->canvas);
     }
-
 }

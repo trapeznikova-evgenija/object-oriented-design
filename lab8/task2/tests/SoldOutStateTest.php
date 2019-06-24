@@ -5,17 +5,21 @@ namespace tests;
 
 use PHPUnit\Framework\TestCase;
 use WithState\classes\GumBallMachine;
+use WithState\interfaces\StateInterface;
 use WithState\states\SoldOutState;
 use WithState\states\SoldState;
 
 class SoldOutStateTest extends TestCase
 {
     private $gumBallMachine;
+    /**
+     * @var SoldOutState
+     */
+    private $currState;
 
     public function testCurrentState()
     {
-        $currState = new SoldOutState($this->gumBallMachine);
-        $this->assertEquals("sold out", $currState->toString());
+        $this->assertEquals("sold out", $this->currState->toString());
     }
 
     public function testTurnCrank()
@@ -50,5 +54,6 @@ class SoldOutStateTest extends TestCase
     {
         parent::setUp();
         $this->gumBallMachine = new GumBallMachineContextMock(0);
+        $this->currState = new SoldOutState($this->gumBallMachine);
     }
 }

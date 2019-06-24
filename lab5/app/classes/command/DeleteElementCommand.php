@@ -9,7 +9,7 @@
 namespace command;
 
 
-use document\DocumentElementInterface;
+use document\DocumentElement;
 use document\DocumentInterface;
 
 class DeleteElementCommand implements CommandInterface
@@ -18,7 +18,7 @@ class DeleteElementCommand implements CommandInterface
     private $document;
     /** @var int */
     private $position;
-    /** @var DocumentElementInterface */
+    /** @var DocumentElement */
     private $documentItem;
 
     public function __construct(DocumentInterface $document, int $position)

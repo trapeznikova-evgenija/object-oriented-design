@@ -7,8 +7,8 @@ use document\Document;
 use menu\Menu;
 use command\CommandsMap;
 use editor\CommandInitializer;
-use CommandNotFoundException;
-use CommandHistoryException;
+use exception\CommandNotFoundException;
+use exception\CommandHistoryException;
 
 class Application
 {

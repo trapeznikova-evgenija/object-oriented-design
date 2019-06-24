@@ -3,7 +3,7 @@
 namespace history;
 
 use command\CommandInterface;
-use CommandHistoryException;
+use exception\CommandHistoryException;
 
 interface CommandHistoryInterface
 {

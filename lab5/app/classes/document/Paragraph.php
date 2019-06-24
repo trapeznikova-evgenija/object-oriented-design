@@ -3,7 +3,7 @@
 namespace document;
 
 
-class Paragraph implements ParagraphInterface, DocumentElementInterface
+class Paragraph extends DocumentElement implements ParagraphInterface
 {
     /** @var string */
     private $text;

@@ -1,19 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 14.06.19
- * Time: 20:21
- */
 
 namespace document;
 
 
 interface DocumentInterface
 {
-    public function addDocumentItem(DocumentElementInterface $documentItem, ?int $index) : void;
+    public function addDocumentItem(DocumentElement $documentItem, ?int $index) : void;
     public function getItemsCount() : int;
-    public function getItem(int $index) : ?DocumentElementInterface;
+    public function getItem(int $index) : ?DocumentElement;
     public function getItems() : array;
     public function deleteItem(int $index) : void;
     public function getTitle() : string;

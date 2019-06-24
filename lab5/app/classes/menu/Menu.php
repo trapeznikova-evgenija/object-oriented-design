@@ -3,7 +3,7 @@
 namespace menu;
 
 use command\CommandInterface;
-use CommandNotFoundException;
+use exception\CommandNotFoundException;
 
 class Menu
 {
@@ -31,7 +31,7 @@ class Menu
      * @param array $commandStr
      * @throws CommandNotFoundException
      */
-    public function executeCommand(string $commandName, string $commandStr): void
+    public function executeCommand(string $commandName, array $commandStr): void
     {
         if (!isset($this->commandMap[$commandName]))
         {

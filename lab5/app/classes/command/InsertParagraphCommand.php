@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 23.06.19
- * Time: 20:50
- */
 
 namespace command;
 
+use document\DocumentElement;
 use document\DocumentInterface;
 use document\Paragraph;
 use document\ParagraphInterface;
@@ -23,7 +18,7 @@ class InsertParagraphCommand implements CommandInterface
     /** @var int */
     private $position;
 
-    public function __construct(DocumentInterface $document, ParagraphInterface $paragraph, ?int $position = null)
+    public function __construct(DocumentInterface $document, DocumentElement $paragraph, ?int $position = null)
     {
         $this->document = $document;
         $this->paragraph = $paragraph;

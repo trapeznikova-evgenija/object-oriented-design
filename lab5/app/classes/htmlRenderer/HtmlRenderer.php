@@ -1,7 +1,9 @@
 <?php
 
+namespace htmlRenderer;
+
 use document\DocumentInterface;
-use document\DocumentElementInterface;
+use document\DocumentElement;
 
 class HtmlRenderer
 {
@@ -15,7 +17,7 @@ class HtmlRenderer
     }
 
     /**
-     * @param DocumentElementInterface[] $documentsItems
+     * @param DocumentElement[] $documentsItems
      * @return string
      */
     private function renderDocumentItems(array $documentsItems): string

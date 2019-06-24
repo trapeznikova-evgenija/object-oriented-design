@@ -13,7 +13,7 @@ class Document implements DocumentInterface
     /** @var array */
     private $documentItems = [];
 
-    public function addDocumentItem(DocumentElementInterface $documentItem, ?int $index = null): void
+    public function addDocumentItem(DocumentElement $documentItem, ?int $index = null) : void
     {
         if (!isset($index))
         {
@@ -33,12 +33,12 @@ class Document implements DocumentInterface
         );
     }
 
-    public function getItemsCount(): int
+    public function getItemsCount() : int
     {
         return count($this->documentItems);
     }
 
-    public function getItem(int $index): ?DocumentElementInterface
+    public function getItem(int $index) : ?DocumentElement
     {
         return $this->documentItems[$index] ?? null;
     }
@@ -48,7 +48,7 @@ class Document implements DocumentInterface
         return $this->documentItems;
     }
 
-    public function deleteItem(int $index): void
+    public function deleteItem(int $index) : void
     {
         if (!isset($this->documentItems[$index]))
         {

@@ -29,16 +29,16 @@ class CommandInitializer
 
     public function initialize()
     {
-        $this->menu->addElement(CommandsMap::$EXIT, "Exit", $this->getExitCommand());
-        $this->menu->addElement(CommandsMap::$HELP, "Help", $this->getHelpCommand());
-        $this->menu->addElement(CommandsMap::$INSERT_IMAGE, "InsertImage <position>|end <width> <height> <path>", $this->getInsertImageCommand());
-        $this->menu->addElement(CommandsMap::$INSERT_PARAGRAPH, "Insert Paragraph <position>|end <text>", $this->getInsertParagraphCommand());
-        $this->menu->addElement(CommandsMap::$SET_TITLE, "Set title. Args: <new title>", $this->getSetTitleCommand());
-        $this->menu->addElement(CommandsMap::$DELETE_ITEM, "DeleteItem <position>", $this->getDeleteItemCommand());
-        $this->menu->addElement(CommandsMap::$RESIZE_IMAGE, "ResizeImage <position>|end <width> <height>", $this->getResizeImageCommand());
-        $this->menu->addElement(CommandsMap::$REDO, "Redo undone command", $this->getRedoCommand());
-        $this->menu->addElement(CommandsMap::$UNDO, "Undo command", $this->getUndoCommand());
-        $this->menu->addElement(CommandsMap::$SAVE, "Save <path>", $this->getSaveCommand());
+        $this->menu->addItem(CommandsMap::$EXIT, "Exit", $this->getExitCommand());
+        $this->menu->addItem(CommandsMap::$HELP, "Help", $this->getHelpCommand());
+//        $this->menu->addItem(CommandsMap::$INSERT_IMAGE, "InsertImage <position>|end <width> <height> <path>", $this->getInsertImageCommand());
+        $this->menu->addItem(CommandsMap::$INSERT_PARAGRAPH, "Insert Paragraph <text> <position>|end", $this->getInsertParagraphCommand());
+        $this->menu->addItem(CommandsMap::$SET_TITLE, "Set title. Args: <new title>", $this->getSetTitleCommand());
+//        $this->menu->addItem(CommandsMap::$DELETE_ITEM, "DeleteItem <position>", $this->getDeleteItemCommand());
+//        $this->menu->addItem(CommandsMap::$RESIZE_IMAGE, "ResizeImage <position>|end <width> <height>", $this->getResizeImageCommand());
+        $this->menu->addItem(CommandsMap::$REDO, "Redo undone command", $this->getRedoCommand());
+        $this->menu->addItem(CommandsMap::$UNDO, "Undo command", $this->getUndoCommand());
+        $this->menu->addItem(CommandsMap::$SAVE, "Save <path>", $this->getSaveCommand());
     }
 
     private function getExitCommand(): callable
@@ -83,7 +83,7 @@ class CommandInitializer
         };
     }
 
-    private function getUndoCommand(EditorInterface $editor) : callable
+    private function getUndoCommand() : callable
     {
         return function(array $commandArgs) {
             $this->editor->undo();

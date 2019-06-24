@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniya
- * Date: 24.06.19
- * Time: 4:53
- */
 
 namespace command;
 
 use document\DocumentInterface;
 use document\ImageControllerInterface;
-use HtmlRenderer;
+use htmlRenderer\HtmlRenderer;
 
 class SaveCommand implements CommandInterface
 {
@@ -24,13 +18,9 @@ class SaveCommand implements CommandInterface
     /** @var string */
     private $path;
 
-    /** @var ImageControllerInterface */
-    private $imageController;
-
-    public function __construct(DocumentInterface $document, ImageControllerInterface $controller, string $path)
+    public function __construct(DocumentInterface $document, string $path)
     {
         $this->document = $document;
-        $this->imageController = $controller;
         $this->path = $path;
     }
 
@@ -41,8 +31,6 @@ class SaveCommand implements CommandInterface
         $htmlDocument = $exporter->export($this->document);
 
         file_put_contents($filePath, $htmlDocument);
-        $this->imageController->deleteImageWhichMarkAsDeleted();
-        $this->imageController->copyFilesToDirectory($this->path . '/' . self::IMAGE_DIRECTORY);
     }
 
     public function unexecute() : void
